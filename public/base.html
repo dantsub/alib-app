@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap-extended.min.css">
+  <link rel="stylesheet" type="text/css" href="css/colors.min.css">
+  <link rel="stylesheet" type="text/css" href="css/components.min.css">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600">
+  <link rel="stylesheet" type="text/css" href="fontawesome/css/all.css">
+  <link rel="stylesheet" type="text/css" href="css/base.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Base</title>
+</head>
+
+<body class="vertical-layout vertical-menu-modern navbar-floating footer-static" data-open="click"
+  data-menu="vertical-menu-modern" data-col="">
+  <!-- BEGIN: Navbar -->
+  <nav class="
+    header-navbar
+    navbar navbar-expand-lg
+    align-items-center
+    floating-nav
+    navbar-light navbar-shadow
+  ">
+    <ul class="
+      nav
+      navbar-nav
+      align-items-center
+      justify-content-between
+      w-100
+      pl-1
+    ">
+      <ul class="nav navbar-nav align-items-center gap-2">
+        <li class="nav-item d-xl-none">
+          <a class="nav-link menu-toggle" href="...">
+            <i class="fa fa-bars feather feather-menu ficon"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <!-- Agregué un acceso directo a login en cerrar sesión -->
+          <a href="...">
+            <i class="fa fa-power-off"></i>
+            <span class="">Cerrar sesión</span>
+          </a>
+        </li>
+      </ul>
+      <li class="nav-item dropdown dropdown-user">
+        <div class="d-flex mr-1 gap-2">
+          <div class="user-nav d-sm-flex d-none flex-column mr-1">
+            <span class="user-name fw-bolder">Lesly Sharyn</span>
+            <span class="user-status">Usuario</span>
+          </div>
+          <span class="avatar" style="width:40px;">
+            <div class="avatar-initials round" width="40" height="40"
+              data-name="js"></div>
+            <span class="avatar-status-online"></span>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </nav>
+  <!-- END: Navbar -->
+
+  <!-- BEGIN: Main Menu -->
+  <div class="
+    main-menu
+    menu-fixed menu-light menu-accordion menu-shadow
+    expanded" 
+    data-scroll-to-active="true">
+    <!-- LOGO -->
+    <div class="navbar-header expanded">
+      <ul class="nav navbar-nav flex-row">
+        <li class="nav-item me-auto">
+          <a class="navbar-brand" href="...">
+            <img class="brand-logo" src="" width="130" height="24" />
+            <h2 class="sr-only">Alib</h2>
+          </a>
+        </li>
+        <li class="nav-item nav-toggle">
+          <a class="nav-link modern-nav-toggle pe-0" data-bs-toggle="collapse">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="
+              feather feather-x
+              d-block d-xl-none
+              text-primary
+              toggle-icon
+              font-medium-4
+            ">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!-- GESTIONES -->
+    <ul class="navigation navigation-main">
+      <li class="navigation-header"><span>GESTIONES</span></li>
+      <li class="nav-item-productos">
+        <a href="...">
+          <i class="fa fa-flag"></i>
+          <span class="menu-title text-truncate">Campeonatos</span>
+        </a>
+      </li>
+      <li class="nav-item-proveedores">
+        <a href="...">
+          <i class="fa fa-users"></i>
+          <span class="menu-title text-truncate">Equipos</span>
+        </a>
+      </li>
+      <li class="nav-item-usuarios">
+        <a href="...">
+          <i class="fa fa-futbol"></i>
+          <span class="menu-title text-truncate">Partidos</span>
+        </a>
+      </li>
+      <li class="nav-item-usuarios">
+        <a href="...">
+          <i class="fa fa-user-friends"></i>
+          <span class="menu-title text-truncate">Usuarios</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <!-- END: Main Menu -->
+
+  <!-- BEGIN: Content -->
+  <div class="app-content content">
+    <!-- Content-wrapper -->
+    <div class="content-wrapper">
+    </div>
+  </div>
+  <!-- END: Content -->
+  <script src="js/jquery.js"></script>
+  <script src="js/vendors.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/app-menu.min.js"></script>
+  <script src="js/app.min.js"></script>
+  <script src="js/customizer.min.js"></script>
+  <script src="js/avatar.js"></script>
+</body>
+
+</html>
