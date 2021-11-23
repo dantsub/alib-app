@@ -1,15 +1,12 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Gestión de campeonatos</title>
-    <script
-    src="https://kit.fontawesome.com/0605c5d612.js"
-    crossorigin="anonymous"
-  ></script>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Gestión de campeonatos</title>
+        <script src="https://kit.fontawesome.com/0605c5d612.js" crossorigin="anonymous"></script>
   </head>
   <body>
     <main class="container card">
@@ -76,9 +73,8 @@
                     <button class="btn btn-primary table-buttons" id="editar" data-toggle="modal" data-target="#modal_editar">
                     <span class="fas fa-edit p-0"></span>
                     </button>
-                    <button class="btn btn-danger table-buttons" id="eliminar" data-toggle="modal"
-                    data-target="#modal_eliminar">
-                    <span class="fa fa-user-times p-0"></span>
+                    <button class="btn btn-danger table-buttons" id="eliminar" data-bs-toggle="modal" data-bs-target="#modalj">
+                        <span class="fa fa-user-times p-0"></span> 
                     </button>
                 </td>
             </tr>
@@ -103,8 +99,8 @@
                     <button class="btn btn-primary table-buttons" id="editar" data-toggle="modal" data-target="#modal_editar">
                     <span class="fas fa-edit p-0"></span>
                     </button>
-                    <button class="btn btn-danger table-buttons" id="eliminar" data-toggle="modal" data-target="#modal_eliminar">
-                    <span class="fa fa-user-times p-0"></span>
+                    <button class="btn btn-danger table-buttons" id="eliminar" data-bs-toggle="modal" data-bs-target="#modalj">
+                        <span class="fa fa-user-times p-0"></span> 
                     </button>
                 </td>
             </tr> 
@@ -129,9 +125,8 @@
                     <button class="btn btn-primary table-buttons" id="editar" data-toggle="modal" data-target="#modal_editar">
                     <span class="fas fa-edit p-0"></span>
                     </button>
-                    <button class="btn btn-danger table-buttons" id="eliminar" data-toggle="modal"
-                    data-target="#modal_eliminar">
-                    <span class="fa fa-user-times p-0"></span>
+                    <button class="btn btn-danger table-buttons" id="eliminar" data-bs-toggle="modal" data-bs-target="#modalj">
+                        <span class="fa fa-user-times p-0"></span> 
                     </button>
                 </td>
             </tr>             
@@ -156,9 +151,8 @@
                     <button class="btn btn-primary table-buttons" id="editar" data-toggle="modal" data-target="#modal_editar">
                     <span class="fas fa-edit p-0"></span>
                     </button>
-                    <button class="btn btn-danger table-buttons" id="eliminar" data-toggle="modal"
-                    data-target="#modal_eliminar">
-                    <span class="fa fa-user-times p-0"></span>
+                    <button class="btn btn-danger table-buttons" id="eliminar" data-bs-toggle="modal" data-bs-target="#modalj">
+                        <span class="fa fa-user-times p-0"></span> 
                     </button>
                 </td>
             </tr> 
@@ -183,18 +177,38 @@
                     <button class="btn btn-primary table-buttons" id="editar" data-toggle="modal" data-target="#modal_editar">
                     <span class="fas fa-edit p-0"></span>
                     </button>
-                    <button class="btn btn-danger table-buttons" id="eliminar" data-toggle="modal"
-                    data-target="#modal_eliminar">
-                    <span class="fa fa-user-times p-0"></span>
+                    <button class="btn btn-danger table-buttons" id="eliminar" data-bs-toggle="modal" data-bs-target="#modalj">
+                        <span class="fa fa-user-times p-0"></span> 
                     </button>
                 </td>
             </tr>
         </tbody>
-
-        </table>
+      </table>
     </div>
     </main>
-</body>
+  </body>
+    
+    <!--INICIO DEL MODAL ELIMINAR-->
+    <div class="modal" tabindex="-1" id="modalj">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title">Eliminar Campeonatos</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            <p>¿Está seguro de eliminar el campeonato?.</p>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary">Eliminar</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!--FIN DEL MODAL ELIMINAR-->
+
+</html>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
   integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
