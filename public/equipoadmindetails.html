@@ -5,13 +5,78 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Equipos</title>
+    <title>Integrantes de Equipo</title>
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="fontawesome/css/all.css">
 </head>
 
 <body>
-    
+    <!-- Modal Adicionar Jugador  -->
+
+    <div
+            class="modal fade"
+            id="modal_adicionar"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    Adicioanr Jugador
+                </h5>
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                ></button>
+                </div>
+                <form
+                id="adicionarjugador"
+                action=""
+                >
+                <input type="hidden" name="oculto" value="adicionarjugador">
+                <input type="hidden" name="ocultoborrar" value="">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="" class="form-label">Nombre del Jugador</label>
+                        <input type="text"  class="form-control" id="nombre" placeholder="Nombre del jugador">
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="form-label">Documento</label>
+                        <input type="number"  class="form-control" id="documento" placeholder="Documento">
+                    </div>
+                    <div class="form-group">
+                      <label for="" class="form-label">Fecha de nacimiento</label>
+                      <input type="date"  class="form-control" id="nacimiento" placeholder="Fecha Nacimiento">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-dismiss="modal"
+                >
+                    Cancelar
+                </button>
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                >
+                    Adicionar Jugador
+                </button>
+
+
+                </div>
+                </form>
+            </div>
+            </div>
+        </div>
+
+        <!-- FIN MODAL ADICIONAR JUGADOR -->
+
         <!-- Modal Eliminar -->
         <div
             class="modal fade"
@@ -24,7 +89,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">
-                    Eliminar equipo
+                    Eliminar jugador
                 </h5>
                 <button
                     type="button"
@@ -41,7 +106,7 @@
                 <input type="hidden" name="ocultoborrar" value="">
                 <div class="modal-body">
                 <p class="text-center">
-                    ¿Está seguro que desea eliminar el equipo?
+                    ¿Está seguro que desea eliminar el jugador?
                     </p>
                     <!-- <p class="text-center fw-bold">{{producto.1}}</p> -->
                 </div>
@@ -57,7 +122,7 @@
                     type="submit"
                     class="btn btn-primary"
                 >
-                    Eliminar Equipo
+                    Eliminar Jugador
                 </button>
 
 
@@ -67,49 +132,61 @@
             </div>
         </div>
 
-    <main class="container">
+        <!-- FIN MODAL ELIMINAR -->
 
-        <h2 class="my-2">Equipos</h2>
+    <main class="container">
+        <div class="container">
+            <div class="row">
+              <div class="col">
+                <h1 class="my-2">Integrantes del Equipo</h1>
+                <h2 class="my-2">Equipo: Tiburos F.C </h2>
+              </div>
+              <div class="col col-lg-2">
+                <span class="brand-logo" style="width:40px;">
+                    <div class="brand-logo round" width="40" height="40" >
+                      <img  src='../src/asset/tiburonesfc.jpg' width="120" height="120" />
+                    </div>
+                    <span class="avatar-status-online"></span>
+                  </span>
+                
+              </div>
+            </div>
+          </div>
+
+        
+        
         <div class="row">
         <div class="col-7 d-flex flex-wrap align-items-center mb-1">
             <input aria-label="Busqueda de usuarios" class="form-control col-4 mr-1" type="text" placeholder="Busqueda"
             aria-controls="Buscar">
             
         </div>
-        <div class="col-5 d-flex justify-content-end">
+        <div class="col-5 d-flex">
             <div>
-                <label for="">Crear Equipo</label>
-                <a href='crea_equipo.html'>
-                    <button class="btn btn-primary" id="crear">Crear</button>
-                </a>
+                <label for="">Adicionar Integrante</label>
+                    <button class="btn btn-primary" id="crear" data-toggle="modal"
+                    data-target="#modal_adicionar">Adicionar</button>
             </div>
         </div>
         </div>
+        
 
         <div class="table-responsive">
            
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>Logo</th>
-                        <th>Nombre Equipo</th>
-                        <th>Fecha Creación</th>
-                        <th>Representante Equipo</th>
+                        <th>Documento</th>
+                        <th>Nombres y Apellidos</th>
+                        <th>Edad</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>
-                            <div class="container">
-                                <div class="col-md-4 px-0">
-                                    <img src='../src/asset/pescaito.jpg' class="img-fluid" width="150px" height="150px">
-                                </div>
-                            </div>
-                        </td>
-                        <td>Real Pescaito</td>
-                        <td>22/05/2021</td>
-                        <td>Julio Gonzalez</td>
+                        <td>5421545</td>
+                        <td>James Rodriguez</td>
+                        <td>32</td>
                         <td> 
                             <button
                                 class="btn btn-danger table-buttons"
@@ -118,22 +195,13 @@
                                 >
                                 <i class="fa fa-trash"></i>
                                 </button>
-                            <button class="btn btn-primary" id="detalles" >
-                                <i class="fa fa-window-restore"></i>
-                            </button>
+                           
                         </td>
                     </tr>
                     <tr>
-                        <td>
-                            <div class="container">
-                                <div class="col-md-4 px-0">
-                                    <img src='../src/asset/tiburonesfc.jpg' class="img-fluid" width="150px" height="150px">
-                                </div>
-                            </div>
-                        </td>
-                        <td>Tiburones F.C.</td>
-                        <td>23/07/2021</td>
-                        <td>Carlos Mercado</td>
+                        <td>26515154</td>
+                        <td>Radamel Falcao</td>
+                        <td>38</td>
                         <td> 
                             <button
                                 class="btn btn-danger table-buttons"
@@ -142,23 +210,13 @@
                                 >
                                 <i class="fa fa-trash"></i>
                                 </button>
-
-                            <button class="btn btn-primary" id="detalles" >
-                                <i class="fa fa-window-restore"></i>
-                            </button>
+                           
                         </td>
                     </tr>
                     <tr>
-                        <td>
-                            <div class="container">
-                                <div class="col-md-4 px-0">
-                                    <img src='../src/asset/india.jpg' class="img-fluid"  width="150px" height="150px">
-                                </div>
-                            </div>
-                        </td>
-                        <td>Atletico India Catalina</td>
-                        <td>22/11/2021</td>
-                        <td>Melissa Henao</td>
+                        <td>465151215</td>
+                        <td>David Ospina</td>
+                        <td>34</td>
                         <td> 
                             <button
                                 class="btn btn-danger table-buttons"
@@ -167,9 +225,7 @@
                                 >
                                 <i class="fa fa-trash"></i>
                                 </button>
-                            <button class="btn btn-primary" id="detalles" >
-                                <i class="fa fa-window-restore"></i>
-                            </button>
+                            
                         </td>
                     </tr>
                 </tbody>
