@@ -1,0 +1,52 @@
+h1,
+p {
+  font-family: cambria;
+  width: 400px;
+  margin: 35px auto;
+  text-align: center;
+  color: lightgreen;
+}
+p {
+  width: 500px;
+}
+table {
+  width: 720px;
+  margin: 0 auto;
+  color: white;
+  text-align: center;
+}
+tr {
+  cursor: pointer;
+}
+.destacado {
+  font-family: Arial;
+  font-weight: bold;
+  font-size: 22px;
+  background-color: #0d6859;
+}
+
+body {
+  background-color: #0f3e76;
+}
+/* Impares */
+table tr:nth-child(odd) {
+  font-family: Verdana;  
+  background-color: #a0c55e;
+}
+
+table tr:nth-child(odd):hover {
+  font-family: Verdana;  
+  color: black;
+  background-color: #00aa00;
+}
+/* Pares */
+table tr:nth-child(even) {
+  font-family: Verdana;
+  background-color: #7ab318;
+}
+
+table tr:nth-child(even):hover {
+  font-family: Verdana;
+  color: black;
+  background-color: #007700;
+}
