@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gestión de campeonatos</title>
+    <script
+    src="https://kit.fontawesome.com/0605c5d612.js"
+    crossorigin="anonymous"
+  ></script>
+  </head>
+  <body>
+    <main class="container card">
+    <div class="table-responsive">
+        <h2 class="my-2">Campeonatos</h2>
+        <div class="row">
+        <div class="col-7 d-flex flex-wrap align-items-center mb-1">
+            <input aria-label="Busqueda de usuarios" class="form-control col-4 mr-1" type="text" placeholder="Busqueda"
+            aria-controls="Buscar">
+            <button class="btn btn-primary" id="buscar">Buscar</button>
+            <div class="w-100 mt-1">
+                <input aria-label="usuario" type="radio" name="tipo_b" value="1" checked>
+                Tipo campeonato
+                <input class="ml-1" aria-label="nombre" type="radio" name="tipo_b" value="2">
+                Campeonato
+                <input class="ml-1" aria-label="nombre" type="radio" name="tipo_b" value="3">
+                Organizador
+            </div>
+        </div>
+        <div class="col-5 d-flex justify-content-end">
+            <div>
+                <label for="">Crear campeonato</label>
+                <a href='crea_campeonatos.html'>
+                    <button class="btn btn-primary" id="crear">Crear</button>
+                </a>
+            </div>
+        </div>
+        </div>
+
+
+        <table class="table table-hover">
+        <thead>
+            <tr>
+            <th>Logo</th>
+            <th>Campeonato</th>
+            <th>Fecha Ini.</th>
+            <th>Fecha fin</th>
+            <th>Organizador</th>
+            <th>email</th>
+            <th>Télefono</th>
+            <th>Estado</th>
+            <th colspan="2">Acciones</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>
+                    <div class="container">
+                        <div class="col-md-4 px-0">
+                            <img src='../src\asset\uefa.jpg' class="img-fluid">
+                        </div>
+                    </div>
+                </td>
+                <td>Liga de campeones de la UEFA</td>
+                <td>01-01-2021</td>
+                <td>31-01-2021</td>
+                <td>Nora Lila Dams Pérez</td>
+                <td>ndams@uninorte.edu.co</td>
+                <td>3011000025</td>
+                <td>En curso</td>
+                
+                <td class="py-1 px-2">
+                    <button class="btn btn-primary table-buttons" id="editar" data-toggle="modal" data-target="#modal_editar">
+                    <span class="fas fa-edit p-0"></span>
+                    </button>
+                    <button class="btn btn-danger table-buttons" id="eliminar" data-toggle="modal"
+                    data-target="#modal_eliminar">
+                    <span class="fa fa-user-times p-0"></span>
+                    </button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <div class="container">
+                        <div class="col-md-4 px-0">
+                            <img src='../src\asset\LigaBetPlay.jpg' class="img-fluid">
+                        </div>
+                    </div>
+                </td>
+                <td>Liga Betplay Dimayor</td>
+                <td>01-01-2021</td>
+                <td>31-01-2021</td>
+                <td>Lesly Sharyn Campo Jimenez</td>
+                <td>leslyj@uninorte.edu.co</td>
+                <td>3011550025</td>
+                <td>En curso</td>
+                
+                <td class="py-1 px-2">
+                    <button class="btn btn-primary table-buttons" id="editar" data-toggle="modal" data-target="#modal_editar">
+                    <span class="fas fa-edit p-0"></span>
+                    </button>
+                    <button class="btn btn-danger table-buttons" id="eliminar" data-toggle="modal" data-target="#modal_eliminar">
+                    <span class="fa fa-user-times p-0"></span>
+                    </button>
+                </td>
+            </tr> 
+
+            <tr>
+                <td>
+                    <div class="container">
+                        <div class="col-md-4 px-0">
+                            <img src='../src\asset\conmebol.jpg' class="img-fluid">
+                        </div>
+                    </div>
+                </td>
+                <td>Eliminatorias Sudamericanas Catar 2022</td>
+                <td>01-01-2021</td>
+                <td>31-01-2021</td>
+                <td>Luis Alejandro Gómez Cuellar</td>
+                <td>alcuellar@uninorte.edu.co</td>
+                <td>3025550025</td>
+                <td>Suspendido</td>
+                
+                <td class="py-1 px-2">
+                    <button class="btn btn-primary table-buttons" id="editar" data-toggle="modal" data-target="#modal_editar">
+                    <span class="fas fa-edit p-0"></span>
+                    </button>
+                    <button class="btn btn-danger table-buttons" id="eliminar" data-toggle="modal"
+                    data-target="#modal_eliminar">
+                    <span class="fa fa-user-times p-0"></span>
+                    </button>
+                </td>
+            </tr>             
+
+            <tr>
+                <td>
+                    <div class="container">
+                        <div class="col-md-4 px-0">
+                            <img src='../src\asset\Logo_Mundial_de_Voli.jpg' class="img-fluid">
+                        </div>
+                    </div>
+                </td>
+                <td>Campeonato Mundial de Voleibol Masculino</td>
+                <td>01-01-2021</td>
+                <td>31-01-2021</td>
+                <td>Joshua Daniel Martinez</td>
+                <td>joshua@uninorte.edu.co</td>
+                <td>3025550025</td>
+                <td>Por iniciar</td>
+                
+                <td class="py-1 px-2">
+                    <button class="btn btn-primary table-buttons" id="editar" data-toggle="modal" data-target="#modal_editar">
+                    <span class="fas fa-edit p-0"></span>
+                    </button>
+                    <button class="btn btn-danger table-buttons" id="eliminar" data-toggle="modal"
+                    data-target="#modal_eliminar">
+                    <span class="fa fa-user-times p-0"></span>
+                    </button>
+                </td>
+            </tr> 
+            
+            <tr>
+                <td>
+                    <div class="container">
+                        <div class="col-md-4 px-0">
+                            <img src='../src\asset\Roland_Garros.jpg' class="img-fluid">
+                        </div>
+                    </div>
+                </td>
+                <td>Torneo de Roland Garros</td>
+                <td>01-01-2021</td>
+                <td>31-01-2021</td>
+                <td>Manuel Guillermo Garcia Torres</td>
+                <td>torresmg@uninorte.edu.co</td>
+                <td>3025550025</td>
+                <td>Creado</td>
+                
+                <td class="py-1 px-2">
+                    <button class="btn btn-primary table-buttons" id="editar" data-toggle="modal" data-target="#modal_editar">
+                    <span class="fas fa-edit p-0"></span>
+                    </button>
+                    <button class="btn btn-danger table-buttons" id="eliminar" data-toggle="modal"
+                    data-target="#modal_eliminar">
+                    <span class="fa fa-user-times p-0"></span>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+
+        </table>
+    </div>
+    </main>
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+  integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+  integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
+  integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
+<script src="{{ url_for('static', filename='js/validacionCrearUsuario.js') }}"></script>
