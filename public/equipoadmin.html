@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipos</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="fontawesome/css/all.css">
+</head>
+
+<body>
+    
+        <!-- Modal Eliminar -->
+        <div
+            class="modal fade"
+            id="modal_eliminar"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    Eliminar equipo
+                </h5>
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                ></button>
+                </div>
+                <form
+                id="borrarequipo"
+                action=""
+                >
+                <input type="hidden" name="oculto" value="eliminar">
+                <input type="hidden" name="ocultoborrar" value="">
+                <div class="modal-body">
+                <p class="text-center">
+                    ¿Está seguro que desea eliminar el equipo?
+                    </p>
+                    <!-- <p class="text-center fw-bold">{{producto.1}}</p> -->
+                </div>
+                <div class="modal-footer">
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-dismiss="modal"
+                >
+                    Cancelar
+                </button>
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                >
+                    Eliminar Equipo
+                </button>
+
+
+                </div>
+                </form>
+            </div>
+            </div>
+        </div>
+
+    <main class="container">
+        <div class="table-responsive">
+
+            
+            <div class="crearprov">
+                <label for="">Crear Equipo</label>
+            <button class="btn btn-primary" id="crear" data-toggle="modal" data-target="#modal_crear">
+                <span class="fas fa-folder-plus"></span>
+            </button>
+            </div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Nombre Equipo</th>
+                        <th>Fecha Creación</th>
+                        <th>Usuario</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Real Pescaito</td>
+                        <td>22/05/2021</td>
+                        <td>froca</td>
+                        <td> 
+                            <button
+                                class="btn btn-danger table-buttons"
+                                data-toggle="modal"
+                                data-target="#modal_eliminar"
+                                >
+                                <i class="fa fa-trash"></i>
+                                </button>
+                            <button class="btn btn-primary" id="detalles" >
+                                <i class="fa fa-window-restore"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Tiburones F.C.</td>
+                        <td>23/07/2021</td>
+                        <td>jgonzalez</td>
+                        <td> 
+                            <button
+                                class="btn btn-danger table-buttons"
+                                data-toggle="modal"
+                                data-target="#modal_eliminar"
+                                >
+                                <i class="fa fa-trash"></i>
+                                </button>
+
+                            <button class="btn btn-primary" id="detalles" >
+                                <i class="fa fa-window-restore"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Atletico India Catalina</td>
+                        <td>22/11/2021</td>
+                        <td>mtorres</td>
+                        <td> 
+                            <button
+                                class="btn btn-danger table-buttons"
+                                data-toggle="modal"
+                                data-target="#modal_eliminar"
+                                >
+                                <i class="fa fa-trash"></i>
+                                </button>
+                            <button class="btn btn-primary" id="detalles" >
+                                <i class="fa fa-window-restore"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+    </main>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
+integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+crossorigin="anonymous"></script>
+
+</html>
