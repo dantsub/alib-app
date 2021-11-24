@@ -3,6 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF"
+      crossorigin="anonymous"
+    />
 
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
     <link
@@ -12,6 +18,11 @@
     />
     <link rel="stylesheet" type="text/css" href="css/colors.min.css" />
     <link rel="stylesheet" type="text/css" href="css/components.min.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="css/bootstrap-extended.min.css"
+    />
 
     <link
       rel="stylesheet"
@@ -21,6 +32,43 @@
     <link rel="stylesheet" type="text/css" href="css/base.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Base</title>
+    <!-- BEGIN: Theme CSS-->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css'" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="css/bootstrap-extended.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="css/colors.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/components.min.css" />
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css" href="css/vertical-menu.min.css" />
+    <!-- END: Page CSS-->
+    <!-- DATATABLES CSS -->
+    <!-- <link
+      href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css"
+      rel="stylesheet"
+      type="text/css"
+    /> -->
+    <link
+      href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <!-- DATATABLES JS -->
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
+
+    <!-- END DATA TABLE -->
+
+    <!-- BEGIN: Font Awesome -->
+    <script
+      src="https://kit.fontawesome.com/e96df3b32d.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- END: Font Awesome -->
   </head>
 
   <body
@@ -169,7 +217,7 @@
       <div class="content-wrapper">
         <div class="card">
           <div class="card-body border-bottom">
-            <h2>Productos</h2>
+            <h2>Usuarios</h2>
             <!-- Seccion de filtros -->
             <h4 class="card-title">Busqueda y filtros</h4>
             <div class="row">
@@ -243,7 +291,7 @@
                       <td>Juan Rodrigo Jimenez</td>
                       <td>Jrodrigo@correo.com</td>
                       <td>Usuario Interno</td>
-                      <td class="badge badge-success">Activo</td>
+                      <td class="badge">Activo</td>
                       <td
                         class="py-1 px-2"
                         style="min-width: 127px"
@@ -268,7 +316,32 @@
                       <td>Luis Felipe Cifuentes</td>
                       <td>LCifuentes@correo.com</td>
                       <td>Usuario Externo</td>
-                      <td class="badge badge-danger">Inactivo</td>
+                      <td>Inactivo</td>
+                      <td
+                        class="py-1 px-2"
+                        style="min-width: 127px"
+                        text-align="center"
+                      >
+                        <button
+                          class="btn btn-primary table-buttons"
+                          id="editar"
+                        >
+                          <span class="fas fa-edit"></span>
+                        </button>
+                        <button
+                          class="btn btn-primary table-buttons"
+                          id="editar"
+                        >
+                          <span class="fa fa-window-close"></span>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr class="js-row">
+                      <td>123456789</td>
+                      <td>Juan Rodrigo Jimenez</td>
+                      <td>Jrodrigo@correo.com</td>
+                      <td>Usuario Interno</td>
+                      <td>Activo</td>
                       <td
                         class="py-1 px-2"
                         style="min-width: 127px"
@@ -294,36 +367,11 @@
                       <td>Jrodrigo@correo.com</td>
                       <td>Usuario Interno</td>
                       <td
-                        style="text-aling: center"
-                        class="badge badge-success"
+                        class="badge badge-glow bg-success"
+                        style="text-align: center"
                       >
                         Activo
                       </td>
-                      <td
-                        class="py-1 px-2"
-                        style="min-width: 127px"
-                        text-align="center"
-                      >
-                        <button
-                          class="btn btn-primary table-buttons"
-                          id="editar"
-                        >
-                          <span class="fas fa-edit"></span>
-                        </button>
-                        <button
-                          class="btn btn-primary table-buttons"
-                          id="editar"
-                        >
-                          <span class="fa fa-window-close"></span>
-                        </button>
-                      </td>
-                    </tr>
-                    <tr class="js-row">
-                      <td>123456789</td>
-                      <td>Juan Rodrigo Jimenez</td>
-                      <td>Jrodrigo@correo.com</td>
-                      <td>Usuario Interno</td>
-                      <td class="badge badge-success">Activo</td>
                       <td
                         class="py-1 px-2"
                         style="min-width: 127px"
