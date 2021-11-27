@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 
 
 export function Crearequipo(){
+        document.title="Crear Equipo";
     return (
         <>
 

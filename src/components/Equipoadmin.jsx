@@ -7,6 +7,8 @@ import india from '../asset/india.jpg';
 
 
 export function Equipoadmin(){
+    document.title="Equipo";
+    
     const equipo = [{
         "logo":pescaito,
         "nombre":"Real Pescaito",

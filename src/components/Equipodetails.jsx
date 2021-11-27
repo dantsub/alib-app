@@ -7,7 +7,8 @@ import tiburones from '../asset/tiburonesfc.jpg';
 
 
 export function Equipodetails(){
-
+    document.title="Equipo";
+    
     const jugador = [{
         "documento":"5421545",
         "nombre":"James Rodriguez",
