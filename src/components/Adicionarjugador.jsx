@@ -1,4 +1,20 @@
+import { useState } from "react";
+
 export function Adicionarjugador(){
+
+    const [validated, setValidated] = useState("false");
+
+    const handleSubmit = (event) => {
+        const form = event.currentTarget;
+        if (form.checkValidity() === false) {
+        event.preventDefault();
+        event.stopPropagation();
+        }
+        event.target.className += " was-validated";
+
+        setValidated(true);
+    };
+
     return (
         <>
 
@@ -32,21 +48,31 @@ export function Adicionarjugador(){
             <form
             id="adicionarjugador"
             action=""
+            noValidate validated={validated} onSubmit={handleSubmit}
             >
             <input type="hidden" name="oculto" value="adicionarjugador"/>
             <input type="hidden" name="ocultoborrar" value=""/>
             <div className="modal-body">
                 <div className="form-group">
                     <label for="" className="form-label">Nombre del Jugador</label>
-                    <input type="text"  className="form-control" id="nombre" placeholder="Nombre del jugador"/>
+                    <input type="text"  className="form-control" id="nombre" placeholder="Nombre del jugador" required/>
+                    <div className="invalid-feedback">
+                        Por favor ingrese el nombre del jugador
+                    </div>
                 </div>
                 <div className="form-group">
                     <label for="" className="form-label">Documento</label>
-                    <input type="number"  className="form-control" id="documento" placeholder="Documento"/>
+                    <input type="number"  className="form-control" id="documento" placeholder="Documento" required/>
+                    <div className="invalid-feedback">
+                        Por favor ingrese un documento válido
+                    </div>
                 </div>
                 <div className="form-group">
-                <label for="" className="form-label">Fecha de nacimiento</label>
-                <input type="date"  className="form-control" id="nacimiento" placeholder="Fecha Nacimiento"/>
+                    <label for="" className="form-label">Fecha de nacimiento</label>
+                    <input type="date"  className="form-control" id="nacimiento" placeholder="Fecha Nacimiento" required/>
+                    <div className="invalid-feedback">
+                            Por favor ingrese la fecha de nacimiento
+                    </div>
                 </div>
             </div>
             <div className="modal-footer">
