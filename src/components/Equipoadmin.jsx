@@ -7,6 +7,7 @@ import india from '../asset/india.jpg';
 
 
 export function Equipoadmin(){
+  // Con esto cambiamos el título a la página que por default esta en Alib-app
     document.title="Equipo";
     
     const equipo = [{

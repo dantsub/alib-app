@@ -7,6 +7,7 @@ import tiburones from '../asset/tiburonesfc.jpg';
 
 
 export function Equipodetails(){
+    // Con esto cambiamos el título a la página que por default esta en Alib-app
     document.title="Equipo";
     
     const jugador = [{

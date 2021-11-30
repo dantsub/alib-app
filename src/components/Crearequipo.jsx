@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 
 
 export function Crearequipo(){
+    // Con esto cambiamos el título a la página que por default esta en Alib-app
         document.title="Crear Equipo";
     return (
         <>
