@@ -82,7 +82,7 @@ export function Listadoequipos (){
                                 </thead>
 
 
-                                <tbody className="js-table-body" id="tablaequipos">
+                                <tbody className="table-body" id="tablaequipos">
                                     {listado_equipos.map(equip=>
                                         <tr>
                                             <td>
@@ -95,7 +95,7 @@ export function Listadoequipos (){
                                             <td>{equip.equipo}</td>
                                             <td>{equip.manager}</td>
                                             <td>
-                                                <div class="form-check">
+                                                <div class="form-check text-center">
                                                     <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
                                                     <label className="form-check-label" for="flexCheckDefault"/>
                                                 </div>
