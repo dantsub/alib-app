@@ -1,6 +1,6 @@
 import { Base } from "./Base";
 import { Eliminarcampeonato } from "./Eliminarcampeonato";
-import { Adicionarjugador } from "./Adicionarjugador";
+import { Listadoequipos } from "./Listadoequipos";
 import { useRef, useState } from "react";
 import uefa from '../asset/uefa.jpg';
 import { Aprobarequipo } from "./Aprobarequipo";
@@ -89,7 +89,7 @@ const buscar_equipos = (evento)=>{
     
                     <div className="col-md-3 d-flex align-items-end">
             
-                        <Adicionarjugador />
+                        <Listadoequipos />
             
                     </div>
                     <div className="col-md-3 d-flex align-items-end">

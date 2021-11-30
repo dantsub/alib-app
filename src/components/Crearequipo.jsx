@@ -29,8 +29,12 @@ export function Crearequipo(){
                                 <form action="">
                                     <div className="form-group">
                                         <label for="" className="form-label">Nombre del Equipo</label>
-                                        <input type="text"  className="form-control" id="doc" placeholder="Nombre del campeonato" />
+                                        <input type="text"  className="form-control" id="doc" placeholder="Nombre del equipo" />
                                     </div>
+                                    <div className="form-group">
+                                        <label for="" className="form-label">Manager del Equipo</label>
+                                        <input type="text"  className="form-control" id="manager" placeholder="Nombre del manager" />
+                                    </div>                                    
                                     <div className="form-group">
                                     <label for="" className="form-label">Logo del Equipo</label>
                                     <input type="file"  className="form-control" id="logo" placeholder="logo" />
