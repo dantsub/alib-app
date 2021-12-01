@@ -19,7 +19,7 @@ export function Gescampeonatos(){
   
       };
       solicitar_campeonato();
-    },)
+    },[])
 
     const buscar_campeonato = (evento)=>{
       var resultado_busqueda = Listar_cam.filter(e=> {

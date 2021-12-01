@@ -9,7 +9,7 @@
         "URL": "http://localhost:53000/campeonatos"
     },
     "CAMPEONATOS_EQUIP_API":{
-        "URL": "http://localhost:53000/campeonatos_eqip"
+        "URL": "http://localhost:53000/equipo"
     },
     "LISTAR_EQUIPOS_API":{
         "URL": "http://localhost:53000/listaequipos"
