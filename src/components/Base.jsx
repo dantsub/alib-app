@@ -1,4 +1,6 @@
 import logo from '../asset/logoAlib.jpg' 
+import { Link } from "react-router-dom";
+
 export function Base(){
     return (
         <>
@@ -118,28 +120,28 @@ export function Base(){
       <ul className="navigation navigation-main">
         <li className="navigation-header"><span>GESTIONES</span></li>
         <li className="nav-item-productos">
-          <a href="...">
-            <i className="fa fa-flag"></i>
-            <span className="menu-title text-truncate">Campeonatos</span>
-          </a>
+          <Link to ="/campeonatos">
+              <i className="fa fa-flag"></i>
+              <span className="menu-title text-truncate">Campeonatos</span>
+          </Link>
         </li>
         <li className="nav-item-proveedores">
-          <a href="...">
+          <Link to ="/equipo">
             <i className="fa fa-users"></i>
             <span className="menu-title text-truncate">Equipos</span>
-          </a>
+          </Link>
         </li>
         <li className="nav-item-usuarios">
-          <a href="...">
+          <Link to ="/partido">
             <i className="fa fa-futbol"></i>
             <span className="menu-title text-truncate">Partidos</span>
-          </a>
+          </Link>
         </li>
         <li className="nav-item-usuarios">
-          <a href="...">
+          <Link to ="/usuario">
             <i className="fa fa-user-friends"></i>
             <span className="menu-title text-truncate">Usuarios</span>
-          </a>
+          </Link>
         </li>
       </ul>
     </div>

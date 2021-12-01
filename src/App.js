@@ -9,6 +9,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Gescampeonatos } from './components/Gescampeonatos';
 import { Campeonatodetails } from './components/Campeonatodetails';
 
+
 function App() {
   return (
     <>

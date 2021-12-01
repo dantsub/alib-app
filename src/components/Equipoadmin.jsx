@@ -110,10 +110,15 @@ const buscar_equipo = (evento)=>{
                             <td>{eq.fecha}</td>
                             <td>{eq.rep}</td>
                             <td> 
-                               <Eliminarequipo />
+                               <Eliminarequipo />+
+
+                               <Link to ="/equipo">
                                 <button className="btn btn-primary" id="detalles" >
-                                    <i className="fa fa-window-restore"></i>
-                                </button>
+                                      <i className="fa fa-window-restore"></i>
+                                  </button>
+          
+                                </Link>
+                               
                             </td>
                         </tr>
                         )}
