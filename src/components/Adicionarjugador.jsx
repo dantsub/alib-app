@@ -55,7 +55,7 @@ export function Adicionarjugador(){
             <div className="modal-body">
                 <div className="form-group">
                     <label for="" className="form-label">Nombre del Jugador</label>
-                    <input type="text"  className="form-control" id="nombre" placeholder="Nombre del jugador" required/>
+                    <input type="text"  className="form-control" id="nombre" placeholder="Nombre del jugador" required minlength="2" />
                     <div className="invalid-feedback">
                         Por favor ingrese el nombre del jugador
                     </div>

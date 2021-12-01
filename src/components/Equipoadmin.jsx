@@ -1,41 +1,42 @@
 import { Base } from "./Base";
 import { Eliminarequipo } from "./Eliminarequipo";
-import { useRef, useState } from "react";
-import pescaito from '../asset/pescaito.jpg';
-import tiburones from '../asset/tiburonesfc.jpg';
-import india from '../asset/india.jpg';
-
+import { useEffect, useState } from "react";
+// import pescaito from '../asset/pescaito.jpg';
+// import tiburones from '../asset/tiburonesfc.jpg';
+// import india from '../asset/india.jpg';
+import { consumirequipo } from "../API/Alip_Api"
 
 export function Equipoadmin(){
   // Con esto cambiamos el título a la página que por default esta en Alib-app
     document.title="Equipo";
-    
-    const equipo = [{
-        "logo":pescaito,
-        "nombre":"Real Pescaito",
-        "fecha":"22/05/2021",
-        "rep":"Julio Gonzalez",
-       },
-       {
-        "logo":tiburones,
-        "nombre":"Tiburones F.C.",
-        "fecha":"23/07/2021",
-        "rep":"Carlos Mercado",
-       },
-       {
-        "logo":india,
-        "nombre":"Atletico India Catalina",
-        "fecha":"22/11/2021",
-        "rep":"Melissa Henao",
-       },
-      
-    
-    ]
 
-const [listar_equipo, setListar_equipo] = useState(equipo);
+    let [Refrescar, setRefrescar]  = useState(true);
+    let [Listar_Eq,setListar_Eq] = useState([]);
+    let [listar_equipo, setListar_equipo] = useState([]);
+    
+    useEffect ( () => {
+        const solicitar_equipo= async () => {
+            const dato = await consumirequipo();
+            setListar_Eq(dato);
+            setListar_equipo(dato);
+    
+        };
+        solicitar_equipo();
+    }, [Refrescar])
+    console.log(Listar_Eq);
+
 
 const buscar_equipo = (evento)=>{
-    setListar_equipo(equipo.filter(e=> e.nombre.toLowerCase().includes(evento.target.value.toLowerCase())));
+  var resultado_busqueda = Listar_Eq.filter(e=> {
+      if(e.nombre.toLowerCase().includes(evento.target.value.toLowerCase()) 
+      || e.rep.toLowerCase().includes(evento.target.value.toLowerCase())
+
+    ){
+      return e;
+    }
+    
+  });
+  setListar_equipo(resultado_busqueda);
 }
 
     

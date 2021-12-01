@@ -1,5 +1,9 @@
 {
-    "COMMENTS_API":{
-        "URL":"https://jsonplaceholder.typicode.com/posts/1/comments"
+
+    "EQUIPOS_API":{
+        "URL": "http://localhost:53000/equipo"
+    },
+    "JUGADORES_API":{
+        "URL": "http://localhost:53000/jugadores"
     }
 }

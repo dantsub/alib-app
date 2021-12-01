@@ -1,0 +1,41 @@
+{
+    "jugadores":[
+        {
+            "documento":"5421545",
+            "nombre":"James Rodriguez",
+            "edad":"32"
+        },
+        {
+            "documento":"26515154",
+            "nombre":"Radamel Falcao",
+            "edad":"38"
+        },
+        {
+            "documento":"465151215",
+            "nombre":"David Ospina",
+            "edad":"34"
+        }
+    ],
+
+
+    "equipo":[
+        {
+            "logo":"https://pbs.twimg.com/media/EYjoWu9X0AcUf1G.jpg",
+            "nombre":"Real Pescaito",
+            "fecha":"22/05/2021",
+            "rep":"Julio Gonzalez"
+        },
+           {
+            "logo":"https://cdn.enjore.com/source/img/team/badge/s/775631trcZp9Svg9nE3Os.jpg",
+            "nombre":"Tiburones F.C.",
+            "fecha":"23/07/2021",
+            "rep":"Carlos Mercado"
+           },
+           {
+            "logo":"https://s3.amazonaws.com/rtvc-assets-senalcolombia.gov.co/s3fs-public/field/image/premiosindiacatalina_web_853x480_1.jpg",
+            "nombre":"Atletico India Catalina",
+            "fecha":"22/11/2021",
+            "rep":"Melissa Henao"
+           }
+    ]
+}

@@ -2,38 +2,44 @@ import { Base } from "./Base";
 import { Eliminarequipo } from "./Eliminarequipo";
 import { Eliminarjugador } from "./Eliminarjugador";
 import { Adicionarjugador } from "./Adicionarjugador";
-import { useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import tiburones from '../asset/tiburonesfc.jpg';
-
+import { consumirjugadores } from "../API/Alip_Api"
 
 export function Equipodetails(){
     // Con esto cambiamos el título a la página que por default esta en Alib-app
     document.title="Equipo";
-    
-    const jugador = [{
-        "documento":"5421545",
-        "nombre":"James Rodriguez",
-        "edad":"32",
-       },
-       {
-        "documento":"26515154",
-        "nombre":"Radamel Falcao",
-        "edad":"38",
-       },
-       {
-        "documento":"465151215",
-        "nombre":"David Ospina",
-        "edad":"34",
-       },
-      
-    
-    ]
 
-const [listar_jugador, setListar_jugador] = useState(jugador);
+    let [Refrescar, setRefrescar]  = useState(true);
+    let [Listar_Jug,setListar_Jug] = useState([]);
+    let [listar_jugador, setListar_jugador] = useState([]);
+    
+    useEffect ( () => {
+        const solicitar_jugador= async () => {
+            const dato = await consumirjugadores();
+            setListar_Jug(dato);
+            setListar_jugador(dato);
+    
+        };
+        solicitar_jugador();
+    }, [Refrescar])
+    
 
 const buscar_jugador = (evento)=>{
-    setListar_jugador(jugador.filter(j=> j.nombre.toLowerCase().includes(evento.target.value.toLowerCase())));
-}
+    var resultado_busqueda = Listar_Jug.filter(e=> {
+        if(e.nombre.toLowerCase().includes(evento.target.value.toLowerCase()) 
+        || e.documento.toLowerCase().includes(evento.target.value.toLowerCase())
+        || e.edad.toLowerCase().includes(evento.target.value.toLowerCase())
+  
+      ){
+        return e;
+      }
+      
+    });
+    setListar_jugador(resultado_busqueda);
+  }
+
+
 
     
     return (
