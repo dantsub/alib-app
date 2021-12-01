@@ -1,43 +1,23 @@
-import real_madrid from '../asset/real_madrid.jpg';
-import Chelsea_FC from '../asset/Chelsea_FC.jpg';
-import juventus from '../asset/juventus.jpg';
-import barza from '../asset/barza.jpg';
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { consumirlistarequipos } from "../API/Alip_Api"
 
 export function Listadoequipos (){
     document.title="Listadoequipo";
     
-    const listaequipos = [{
-        "logo":real_madrid,
-        "equipo":"Real Madrid",
-        "manager":"Carlo Ancelotti"
-       },
-       {
-        "logo":Chelsea_FC,
-        "equipo":"Chelsea FC",
-        "manager":"Thomas Tuchel"
-       },
-       {
-        "logo":juventus,
-        "equipo":"Juventus",
-        "manager":"Massimiliano Allegri"
-       },
-       {
-        "logo":barza,
-        "equipo":"Barcelona FC",
-        "manager":"Xavi Hernández"
-       },
+    let [Refrescar, setRefrescar]  = useState(true);
+    let [listado_equipos, setListado_equipos] = useState([]);
+
+    useEffect ( () => {
+        const solicitar_listadoequipos= async () => {
+            const dato = await consumirlistarequipos();
+            setListado_equipos(dato);
     
-    ]
+        };
+        solicitar_listadoequipos();
+    }, [Refrescar])
+    console.log (listado_equipos);
 
-
-    const [listado_equipos, setListado_equipos] = useState(listaequipos);
-
-    const buscar_equipos = (evento)=>{
-        setListado_equipos(listaequipos.filter(j=> j.equipo.toLowerCase().includes(evento.target.value.toLowerCase())));
-    }
-
-    return (
+     return (
         <>
             <button className="btn btn-primary" id="crear" data-bs-toggle="modal"
                 data-bs-target="#modal_adicionar_campeonato">
