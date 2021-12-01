@@ -37,5 +37,61 @@
             "fecha":"22/11/2021",
             "rep":"Melissa Henao"
            }
+    ],
+
+    "listaequipos" : [
+         {
+        "logo":"https://1000marcas.net/wp-content/uploads/2020/01/logo-Real-Madrid.png",
+        "equipo":"Real Madrid",
+        "manager":"Carlo Ancelotti"
+       },
+       {
+        "logo":"https://1000marcas.net/wp-content/uploads/2020/03/Logo-Chelsea.png",
+        "equipo":"Chelsea FC",
+        "manager":"Thomas Tuchel"
+       },
+       {
+        "logo":"https://1000marcas.net/wp-content/uploads/2020/01/Juventus-logo.png",
+        "equipo":"Juventus",
+        "manager":"Massimiliano Allegri"
+       },
+       {
+        "logo":"https://1000marcas.net/wp-content/uploads/2020/03/Logo-Barcelona.png",
+        "equipo":"Barcelona FC",
+        "manager":"Xavi Hernández"
+       }
+    ],
+
+    "campeonatos" : [
+        {
+        "logo":"https://1000marcas.net/wp-content/uploads/2020/10/UEFA-Champions-League-Logo.png",
+        "nombre":"Liga de campeones de la UEFA",
+        "fecha_ini":"01/05/2021",
+        "fecha_fin":"31/05/2022",
+        "organizador":"Nora Lila Dams Pérez",
+        "num_equpos":"30",
+        "lugar":"Europa",
+        "estado":"En inscripciones"
+       },
+       {
+        "logo":"https://1.bp.blogspot.com/--Rhlz92Or5E/X2P5ydGx6iI/AAAAAAABgLo/eAFUsxe_ggorjC0h7W7IC3RcM6-PT3iTgCLcBGAsYHQ/s512/Liga%2BBetPlay.png",
+        "nombre":"Liga Betplay Dimayor",
+        "fecha_ini":"01/05/2021",
+        "fecha_fin":"31/05/2022",
+        "organizador":"Lesly Sharyn Campo Jimenez",
+        "num_equpos":"20",
+        "lugar":"Colombia",
+        "estado":"En proceso"
+       },
+       {
+        "logo":"https://1000marcas.net/wp-content/uploads/2020/03/Logo-Conmebol.png",
+        "nombre":"Eliminatorias Sudamericanas Catar 2022",
+        "fecha_ini":"01/05/2021",
+        "fecha_fin":"31/05/2022",
+        "organizador":"Luis Alejandro Gómez Cuellar",
+        "num_equpos":"20",
+        "lugar":"Colombia",
+        "estado":"Terminado"
+       }
     ]
 }

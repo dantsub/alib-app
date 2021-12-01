@@ -4,12 +4,28 @@ export const consumirequipo = async () =>{
     const path = new URL(CONFIG.EQUIPOS_API.URL);
     const results = await fetch(path);
     return  await results.json();
-    
 }
 
 export const consumirjugadores = async () =>{
      const path = new URL(CONFIG.JUGADORES_API.URL);
      const results = await fetch(path);
      return  await results.json();
-    
+}
+
+export const consumircampeonatos = async () =>{
+    const path = new URL(CONFIG.CAMPEONATOS_API.URL);
+    const results = await fetch(path);
+    return  await results.json();  
+}
+
+export const consumircampeonatosequip = async () =>{
+    const path = new URL(CONFIG.CAMPEONATOS_EQUIP_API.URL);
+    const results = await fetch(path);
+    return  await results.json();
+}
+
+export const consumirlistarequipos = async () =>{
+    const path = new URL(CONFIG.LISTAR_EQUIPOS_API.URL);
+    const results = await fetch(path);
+    return  await results.json();
 }
