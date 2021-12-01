@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 // import tiburones from '../asset/tiburonesfc.jpg';
 // import india from '../asset/india.jpg';
 import { consumirequipo } from "../API/Alip_Api"
+import { Link } from "react-router-dom";
 
 export function Equipoadmin(){
   // Con esto cambiamos el título a la página que por default esta en Alib-app
@@ -110,10 +111,10 @@ const buscar_equipo = (evento)=>{
                             <td>{eq.fecha}</td>
                             <td>{eq.rep}</td>
                             <td> 
-                               <Eliminarequipo />+
+                               <Eliminarequipo />
 
-                               <Link to ="/equipo">
-                                <button className="btn btn-primary" id="detalles" >
+                               <Link to ="/jugadores">
+                                  <button className="btn btn-primary" id="detalles" >
                                       <i className="fa fa-window-restore"></i>
                                   </button>
           
