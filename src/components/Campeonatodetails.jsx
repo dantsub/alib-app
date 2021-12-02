@@ -1,48 +1,42 @@
 import { Base } from "./Base";
 import { Eliminarcampeonato } from "./Eliminarcampeonato";
 import { Listadoequipos } from "./Listadoequipos";
-import { useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import uefa from '../asset/uefa.jpg';
 import { Aprobarequipo } from "./Aprobarequipo";
 import { Eliminarequipo } from "./Eliminarequipo";
-import real_madrid from '../asset/real_madrid.jpg';
-import Chelsea_FC from '../asset/Chelsea_FC.jpg';
-import juventus from '../asset/juventus.jpg';
-import barza from '../asset/barza.jpg';
+import { consumircampeonatosequip } from "../API/Alip_Api"
 
 
 export function Campeonatodetails(){
     document.title="Equipo";
     
-    const equipos = [{
-        "logo":real_madrid,
-        "equipo":"Real Madrid",
-        "manager":"Carlo Ancelotti"
-       },
-       {
-        "logo":Chelsea_FC,
-        "equipo":"Chelsea FC",
-        "manager":"Thomas Tuchel"
-       },
-       {
-        "logo":juventus,
-        "equipo":"Juventus",
-        "manager":"Massimiliano Allegri"
-       },
-       {
-        "logo":barza,
-        "equipo":"Barcelona FC",
-        "manager":"Xavi Hernández"
-       },
+    let [listar_equipos, setListar_equipos] = useState([]);
+    let [Listar_eqip,setListar_equip] = useState([]);
+
+    useEffect ( () => {
+      const solicitar_campeonatosequip= async () => {
+          const dato = await consumircampeonatosequip();
+          setListar_equipos(dato);
+          setListar_equip(dato);
+  
+      };
+      solicitar_campeonatosequip();
+    },[])
+
+    const buscar_equipos = (evento)=>{
+      var resultado_busqueda = Listar_eqip.filter(e=> {
+          if(e.nombre.toLowerCase().includes(evento.target.value.toLowerCase()) 
+          || e.manager.toLowerCase().includes(evento.target.value.toLowerCase())
     
-    ]
+        ){
+          return e;
+        }
+        
+      });
+      setListar_equipos(resultado_busqueda);
+    }
 
-
-const [listar_equipos, setListar_equipos] = useState(equipos);
-
-const buscar_equipos = (evento)=>{
-    setListar_equipos(equipos.filter(j=> j.equipo.toLowerCase().includes(evento.target.value.toLowerCase())));
-}
     
     return (
         <>
@@ -131,8 +125,8 @@ const buscar_equipos = (evento)=>{
                                         </div>
                                     </div>
                                 </td>
-                                <td>{equip.equipo}</td>
-                                <td>{equip.manager}</td>
+                                <td>{equip.nombre}</td>
+                                <td>{equip.rep}</td>
                                 <td>
                                     <Aprobarequipo/>
                                 </td>

@@ -1,53 +1,39 @@
 import { Base } from "./Base";
 import { Eliminarcampeonato } from "./Eliminarcampeonato";
-import { useRef, useState } from "react";
-import uefa from '../asset/uefa.jpg'
-import LigaBetPlay from '../asset/LigaBetPlay.jpg'
-import conmebol from '../asset/conmebol.jpg'
+import { useEffect, useState } from "react";
 import { Adicionarcampeonato } from "./Adicionarcampeonato";
+import { consumircampeonatos } from "../API/Alip_Api"
 
 
 export function Gescampeonatos(){
     document.title="Campeonato";
     
-    const campeonato = [{
-        "logo":uefa,
-        "nombre":"Liga de campeones de la UEFA",
-        "fecha_ini":"01/05/2021",
-        "fecha_fin":"31/05/2022",
-        "organizador":"Nora Lila Dams Pérez",
-        "num_equpos":"30",
-        "lugar":"Europa",
-        "estado":"En inscripciones"
-       },
-       {
-        "logo":LigaBetPlay,
-        "nombre":"Liga Betplay Dimayor",
-        "fecha_ini":"01/05/2021",
-        "fecha_fin":"31/05/2022",
-        "organizador":"Lesly Sharyn Campo Jimenez",
-        "num_equpos":"20",
-        "lugar":"Colombia",
-        "estado":"En proceso"
-       },
-       {
-        "logo":conmebol,
-        "nombre":"Eliminatorias Sudamericanas Catar 2022",
-        "fecha_ini":"01/05/2021",
-        "fecha_fin":"31/05/2022",
-        "organizador":"Luis Alejandro Gómez Cuellar",
-        "num_equpos":"20",
-        "lugar":"Colombia",
-        "estado":"Terminado"
-       },
-    ]
+    let [listar_campeonato, setListar_campeonato] = useState([]);
+    let [Listar_cam,setListar_cam] = useState([]);
 
-    const [listar_campeonato, setListar_campeonato] = useState(campeonato);
+    useEffect ( () => {
+      const solicitar_campeonato= async () => {
+          const dato = await consumircampeonatos();
+          setListar_campeonato(dato);
+          setListar_cam(dato);
+  
+      };
+      solicitar_campeonato();
+    },[])
 
     const buscar_campeonato = (evento)=>{
-      setListar_campeonato(campeonato.filter(e=> e.nombre.toLowerCase().includes(evento.target.value.toLowerCase())));
+      var resultado_busqueda = Listar_cam.filter(e=> {
+          if(e.nombre.toLowerCase().includes(evento.target.value.toLowerCase()) 
+          || e.organizador.toLowerCase().includes(evento.target.value.toLowerCase())
+    
+        ){
+          return e;
+        }
+        
+      });
+      setListar_campeonato(resultado_busqueda);
     }
-  
+
     return (
     <>
       <Base />
@@ -112,7 +98,7 @@ export function Gescampeonatos(){
                         <tr className="js-row">
                             <td>
                                 <div className="container">
-                                    <div className="col-md-4 px-0">
+                                    <div className="px-0">
                                         <img src={camp.logo} className="img-fluid" width="150px" height="150px" />
                                     </div>
                                 </div>
