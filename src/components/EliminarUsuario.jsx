@@ -1,4 +1,4 @@
-export function Eliminarusuario() {
+export function EliminarUsuario() {
     return (
         <>
             <button

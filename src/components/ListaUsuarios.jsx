@@ -1,6 +1,6 @@
 import { Base } from "./Base";
 import { useRef, useState } from "react";
-import { Eliminarusuario } from ".EliminarUsuario";
+import { EliminarUsuario } from "./EliminarUsuario";
 
 export function ListaUsuarios() {
     document.title = "Lista de Usuários";
@@ -70,7 +70,7 @@ export function ListaUsuarios() {
               {/* <!-- Boton y Modal Crear Producto --> */}
 
               <div className="col-md-3 d-flex align-items-end">
-                <span className="mr-1" style="margin-bottom: 10px">
+                <span className="mr-1" style={{margin:'10px'}}>
                     Crear Usuario
                 </span>
                                     
@@ -96,8 +96,8 @@ export function ListaUsuarios() {
           <div>
             {/* <!-- Seccion de tabla --> */}
             <div
-              className="card-dataTable table-responsive pt-0"
-              style="padding: 5px !important"
+                  className="card-dataTable table-responsive pt-0"
+                  style={{ padding: '5px !important' }}
             >
               <div
                 className="table-responsive table-bordered"
@@ -116,18 +116,18 @@ export function ListaUsuarios() {
                   </thead>
                     <tbody className="js-table-body" id="tablausuarios">
                                             {listarUsuario.map(usuario => (
-                                                <tr key={usuario.documento}>
+                                                <tr>
                                                     <td>{usuario.documento}</td>
                                                     <td>{usuario.nombre}</td>
                                                     <td>{usuario.email}</td>
                                                     <td>{usuario.rol}</td>
                                                     <td>{usuario.estado}</td>
                                                     <td>
-                                                        <a href="..."><button class="btn btn-primary table-buttons" id="editar" >
-                                                            <span class="fas fa-edit"></span>
+                                                        <a href="..."><button className="btn btn-primary table-buttons" id="editar" >
+                                                            <span className="fas fa-edit"></span>
                                                             </button>
                                                         </a>
-                                                        <Eliminarusuario />
+                                                        <EliminarUsuario />
                                                     </td>
                                                 </tr>
                                             ))}
