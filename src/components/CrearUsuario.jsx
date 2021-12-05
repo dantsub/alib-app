@@ -32,7 +32,7 @@ export function CrearUsuario(){
           <div className="card-body border-bottom">
       <div className="container">
         <div className="row">
-          <div className="col-md-12 col-lg-6 mx-auto" style="text-align: center">
+          <div className="col-md-12 col-lg-6 mx-auto" style={{'text-align': 'center'}}>
             <h2>Formulario de creación de usuarios</h2>
           </div>
         </div>
