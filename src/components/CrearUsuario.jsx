@@ -76,7 +76,7 @@ export function CrearUsuario(){
                         <input className="form-control form-control-merge" id="login-password" type="password"
                           name="login-password" placeholder="Contraseña" aria-describedby="login-password"
                           tabindex="0" />
-                        <span className="input-group-text cursor-pointer">
+                        {/* <span className="input-group-text cursor-pointer">
                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                             className="feather feather-eye-off font-small-4">
@@ -85,7 +85,7 @@ export function CrearUsuario(){
                             </path>
                             <line x1="1" y1="1" x2="23" y2="23"></line>
                           </svg>
-                        </span>
+                        </span> */}
                       </div>
               </div>
               <div className="form-group">

@@ -14,7 +14,7 @@ export function Equipodetails(){
     let [Listar_Jug,setListar_Jug] = useState([]);
     let [listar_jugador, setListar_jugador] = useState([]);
     
-    useEffect ( () => {
+    useEffect (() => {
         const solicitar_jugador= async () => {
             const dato = await consumirjugadores();
             setListar_Jug(dato);

@@ -13,5 +13,8 @@
     },
     "LISTAR_EQUIPOS_API":{
         "URL": "http://localhost:53000/listaequipos"
+    },
+    "LISTAR_USUARIOS_API":{
+        "URL": "http://localhost:53000/listausuarios"
     }
 }

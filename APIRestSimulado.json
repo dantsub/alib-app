@@ -93,5 +93,38 @@
         "lugar":"Colombia",
         "estado":"Terminado"
        }
+    ],
+
+    "listausuarios" : [
+        
+        {
+        "documento": "123456789",
+        "nombre": "Juan Rodrigo Jimenez",
+        "email": "Jrodrigo@correo.com",
+        "rol": "Usuario Interno",
+        "estado": "Activo"
+    },
+    {
+        "documento": "987654321",
+        "nombre": "Luis Felipe Cifuentes",
+        "email": "LCifuentes@correo.com",
+        "rol": "Usuario Externo",
+        "estado": "Inactivo"
+    },
+    {
+        "documento": "192837465",
+        "nombre": "Juan Felipe Jimenez",
+        "email": "JFelipe@correo.com",
+        "rol": "Usuario Interno",
+            "estado": "Activo"
+    },
+        {
+        "documento": "987654321",
+        "nombre": "Luis Felipe Cifuentes",
+        "email": "LCifuentes@correo.com",
+        "rol": "Usuario Externo",
+        "estado": "Inactivo"
+        }
+
     ]
 }

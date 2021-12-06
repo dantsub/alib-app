@@ -1,45 +1,35 @@
 import { Base } from "./Base";
-import { useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { EliminarUsuario } from "./EliminarUsuario";
-
+import { consumirlistarusuarios } from "../API/Alip_Api";
+import { Link } from "react-router-dom";
+  
 export function ListaUsuarios() {
-    document.title = "Lista de Usuários";
+  document.title = "Lista de Usuarios";
+  
+  let [Refrescar, setRefrescar] = useState(true);
+  let [listar_us, setlistar_us] = useState([]);
+  let [listarUsuario, setListarUsuario] = useState([]);
+  
+  useEffect(() => {
+    const solicitar_usuarios = async () => {
+      const dato = await consumirlistarusuarios();
+      setlistar_us(dato);
+      setListarUsuario(dato);
+    };
+    solicitar_usuarios();
+  }, [Refrescar])
+  console.log(listar_us);
 
-    const usuarios = [{
-        documento: "123456789",
-        nombre: "Juan Rodrigo Jimenez",
-        email: "Jrodrigo@correo.com",
-        rol: "Usuario Interno",
-        estado: "Activo"
-    },
-    {
-        documento: "987654321",
-        nombre: "Luis Felipe Cifuentes",
-        email: "LCifuentes@correo.com",
-        rol: "Usuario Externo",
-        estado: "Inactivo"
-    },
-    {
-        documento: "192837465",
-        nombre: "Juan Felipe Jimenez",
-        correo: "JFelipe@correo.com",
-        rol: "Usuario Interno",
-            estado: "Activo"
-    },
-        {
-        documento: "987654321",
-        nombre: "Luis Felipe Cifuentes",
-        email: "LCifuentes@correo.com",
-        rol: "Usuario Externo",
-        estado: "Inactivo"
-        },
-    ];
-
-    const [listarUsuario, setListarUsuario] = useState(usuarios);
-
-    const buscar_usuarios = (evento) => {
-        setListarUsuario(usuarios.filter(usuario => usuario.nombre.toLowerCase().includes(evento.target.value.toLowerCase())));
-    }
+  const buscar_usuarios = (evento) => {
+    var busqueda = listar_us.filter(e => {
+      if (e.nombre.toLowerCase().includes(evento.target.value.toLowerCase()) || e.correo.toLowerCase().includes(evento.target.value.toLowerCase()) || e.rol.toLowerCase().includes(evento.target.value.toLowerCase()) || e.estado.toLowerCase().includes(evento.target.value.toLowerCase())) {
+        return e;
+      }
+    });
+    setListarUsuario(busqueda);
+  }
+    
 
     return (
         <>
@@ -146,6 +136,5 @@ export function ListaUsuarios() {
             
         </>
     );
+  
 }
-            
-        
