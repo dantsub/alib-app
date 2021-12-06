@@ -29,3 +29,21 @@ export const consumirlistarequipos = async () =>{
     const results = await fetch(path);
     return  await results.json();
 }
+
+export const consumirpartidos = async () =>{
+    const path = new URL(CONFIG.PARTIDOS_API.URL);
+    const results = await fetch(path);
+    return  await results.json();
+}
+
+export const consumirposiciones = async () =>{
+    const path = new URL(CONFIG.POSICIONES_API.URL);
+    const results = await fetch(path);
+    return  await results.json();
+}
+
+export const consumirfechas = async () =>{
+    const path = new URL(CONFIG.FECHAS_API.URL);
+    const results = await fetch(path);
+    return  await results.json();
+}
