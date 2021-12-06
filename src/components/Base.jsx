@@ -126,13 +126,13 @@ export function Base(){
           </Link>
         </li>
         <li className="nav-item-proveedores">
-          <Link to ="/equipo">
+          <Link to ="/equipos">
             <i className="fa fa-users"></i>
             <span className="menu-title text-truncate">Equipos</span>
           </Link>
         </li>
         <li className="nav-item-usuarios">
-          <Link to ="/partido">
+          <Link to ="/partidos">
             <i className="fa fa-futbol"></i>
             <span className="menu-title text-truncate">Partidos</span>
           </Link>

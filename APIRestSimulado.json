@@ -18,7 +18,7 @@
     ],
 
 
-    "equipo":[
+    "equipos":[
         {
             "logo":"https://pbs.twimg.com/media/EYjoWu9X0AcUf1G.jpg",
             "nombre":"Real Pescaito",
@@ -95,7 +95,85 @@
        }
     ],
 
-    "listausuarios" : [
+    "posiciones":[
+        {
+            "logo":"https://cdn-icons-png.flaticon.com/512/451/451921.png",
+            "nombre":"Real Pescaito",
+            "PG":"20",
+            "PP":"7",
+            "PE":"2",
+            "GF":"16",
+            "GC":"4",
+            "POS":"1"
+        },
+           {
+            "logo":"https://cdn-icons-png.flaticon.com/512/451/451921.png",
+            "nombre":"Tiburones F.C.",
+            "PG":"20",
+            "PP":"7",
+            "PE":"2",
+            "GF":"16",
+            "GC":"4",
+            "POS":"1"
+           },
+           {
+            "logo":"https://cdn-icons-png.flaticon.com/512/451/451921.png",
+            "nombre":"Atletico India Catalina",
+            "PG":"20",
+            "PP":"7",
+            "PE":"2",
+            "GF":"16",
+            "GC":"4",
+            "POS":"1"
+           }
+    ],
+
+    "partidos":[
+        {
+            "estado":"Jugado",
+            "encuentro":"Equipo A Vs Equipo B",
+            "resultado":"1 / 0",
+            "fecha":"01/11/2021",
+            "cancha":"Magdalena"
+            
+        },
+        {
+            "estado":"Sin decidir",
+            "encuentro":"Equipo C Vs Equipo D",
+            "resultado":"0 / 0",
+            "fecha":"01/11/2021",
+            "cancha":"Murillo"
+        },
+        {
+            "estado":"Jugado",
+            "encuentro":"Equipo B Vs Equipo C",
+            "resultado":"3 / 1",
+            "fecha":"06/11/2021",
+            "cancha":"San Nicolas"
+        }
+    ],
+
+    "fechas":[
+        {
+            "jornada":"Jornada 1",
+            "fecha_ini":"01/11/2021",
+            "fecha_fin":"03/11/2021"            
+        },
+        {
+            "jornada":"Jornada 2",
+            "fecha_ini":"04/11/2021",
+            "fecha_fin":"05/11/2021"
+            
+        },
+        {
+            "jornada":"Jornada 3",
+            "fecha_ini":"06/11/2021",
+            "fecha_fin":"09/11/2021"
+            
+        }
+    ]
+
+     "listausuarios" : [
         
         {
         "documento": "123456789",
@@ -125,6 +203,5 @@
         "rol": "Usuario Externo",
         "estado": "Inactivo"
         }
-
     ]
 }

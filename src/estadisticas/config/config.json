@@ -1,6 +1,6 @@
 {
     "EQUIPOS_API":{
-        "URL": "http://localhost:53000/equipo"
+        "URL": "http://localhost:53000/equipos"
     },
     "JUGADORES_API":{
         "URL": "http://localhost:53000/jugadores"
@@ -8,13 +8,21 @@
     "CAMPEONATOS_API":{
         "URL": "http://localhost:53000/campeonatos"
     },
-    "CAMPEONATOS_EQUIP_API":{
-        "URL": "http://localhost:53000/equipo"
+    "POSICIONES_API":{
+        "URL": "http://localhost:53000/posiciones"
     },
+    "PARTIDOS_API":{
+        "URL": "http://localhost:53000/partidos"
+    },
+
+    "FECHAS_API":{
+        "URL": "http://localhost:53000/fechas"
+    },
+
     "LISTAR_EQUIPOS_API":{
         "URL": "http://localhost:53000/listaequipos"
     },
     "LISTAR_USUARIOS_API":{
         "URL": "http://localhost:53000/listausuarios"
-    }
+
 }
