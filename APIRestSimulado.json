@@ -183,8 +183,8 @@
         "estado": "Activo"
     },
     {
-        "documento": "987654321",
-        "nombre": "Luis Felipe Cifuentes",
+        "documento": "555555",
+        "nombre": "Luis Felipes. Cifuentes",
         "email": "LCifuentes@correo.com",
         "rol": "Usuario Externo",
         "estado": "Inactivo"
@@ -197,7 +197,7 @@
             "estado": "Activo"
     },
         {
-        "documento": "987654321",
+        "documento": "9876543211",
         "nombre": "Luis Felipe Cifuentes",
         "email": "LCifuentes@correo.com",
         "rol": "Usuario Externo",

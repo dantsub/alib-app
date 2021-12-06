@@ -104,7 +104,7 @@ const buscar_partido = (evento)=>{
                       </tr>
                     </thead>
                     <tbody className="js-table-body" id="tablaequipos">
-                    {listar_partidos.map(pa=>
+                    {listar_partidos.map(pa=>(
                         <tr>
                             <td>{pa.estado}</td>
                             <td>{pa.encuentro}</td>
@@ -115,7 +115,7 @@ const buscar_partido = (evento)=>{
                                <Editarresultado />                                                              
                             </td>
                         </tr>
-                        )}
+                        ))}
                        
                     </tbody>
                   </table>

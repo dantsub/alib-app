@@ -13,7 +13,7 @@ export function Equipoadmin(){
 
     let [Refrescar, setRefrescar]  = useState(true);
     let [Listar_Eq,setListar_Eq] = useState([]);
-    let [listar_equipo, setListar_equipo] = useState([]);
+    let [listar_equipo,setListar_equipo] = useState([]);
     
     useEffect ( () => {
         const solicitar_equipo= async () => {
@@ -98,7 +98,7 @@ const buscar_equipo = (evento)=>{
                       </tr>
                     </thead>
                     <tbody className="js-table-body" id="tablaequipos">
-                    {listar_equipo.map(eq=>
+                    {listar_equipo.map(eq=>(
                         <tr>
                             <td>
                                 <div className="container">
@@ -122,7 +122,7 @@ const buscar_equipo = (evento)=>{
                                
                             </td>
                         </tr>
-                        )}
+                        ))}
                        
                     </tbody>
                   </table>
