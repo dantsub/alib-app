@@ -16,22 +16,6 @@ import { Fechas } from "./components/Fechas";
 
 function App() {
   return (
-<<<<<<< HEAD
-    // <>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Base />}></Route>
-        <Route path="/equipo" element={<Equipoadmin />}></Route>
-        <Route path="/jugadores" element={<Equipodetails />}></Route>
-        <Route path="/crearequipo" element={<Crearequipo />}></Route>
-        <Route path="/campeonatos" element={<Gescampeonatos />}></Route>
-        <Route path="/campeonatos_eqip" element={<Campeonatodetails />}></Route>
-        <Route path="/listausuarios" element={<ListaUsuarios />}></Route>
-        <Route path="/crearusuario" element={<CrearUsuario />}></Route>
-      </Routes>
-    </BrowserRouter>
-    // </>
-=======
     <>
       <BrowserRouter>
         <Routes>
@@ -40,7 +24,10 @@ function App() {
           <Route path="/jugadores" element={<Equipodetails />}></Route>
           <Route path="/crearequipo" element={<Crearequipo />}></Route>
           <Route path="/campeonatos" element={<Gescampeonatos />}></Route>
-          <Route path="/campeonatos_eqip" element={<Campeonatodetails />}></Route>
+          <Route
+            path="/campeonatos_eqip"
+            element={<Campeonatodetails />}
+          ></Route>
           <Route path="/listausuarios" element={<ListaUsuarios />}></Route>
           <Route path="/crearusuario" element={<CrearUsuario />}></Route>
           <Route path="/partidos" element={<Partidos />}></Route>
@@ -49,7 +36,6 @@ function App() {
         </Routes>
       </BrowserRouter>
     </>
->>>>>>> 26ae7c24fe379cae3790e45a8f69b0ea422d2eb2
   );
 }
 
