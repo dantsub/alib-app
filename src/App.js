@@ -24,10 +24,7 @@ function App() {
           <Route path="/jugadores" element={<Equipodetails />}></Route>
           <Route path="/crearequipo" element={<Crearequipo />}></Route>
           <Route path="/campeonatos" element={<Gescampeonatos />}></Route>
-          <Route
-            path="/campeonatos_eqip"
-            element={<Campeonatodetails />}
-          ></Route>
+          <Route path="/campeonatos_eqip" element={<Campeonatodetails />}></Route>
           <Route path="/listausuarios" element={<ListaUsuarios />}></Route>
           <Route path="/crearusuario" element={<CrearUsuario />}></Route>
           <Route path="/partidos" element={<Partidos />}></Route>
