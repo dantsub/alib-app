@@ -34,7 +34,9 @@ export function Crearequipo(){
                         <h2>¡CREA TU EQUIPO!</h2>
         
                         </div>
-                    </div>
+
+
+                    
         
                     <div>
                     {/* <!-- Seccion de Formulario --> */}
@@ -61,10 +63,11 @@ export function Crearequipo(){
                                         <button className="btn btn-primary" type="submit" >Guardar</button>
                                     </div>
                                     </div>
-                                    
+                                    <br />
                                 </form>
                             </div>
                         </div>
+                    </div>
                     </div>
                 </div>
             </div>

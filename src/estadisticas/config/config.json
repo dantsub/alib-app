@@ -8,6 +8,9 @@
     "CAMPEONATOS_API":{
         "URL": "http://localhost:53000/campeonatos"
     },
+    "CAMPEONATOS_EQUIP_API":{
+        "URL": "http://localhost:53000/equipos"
+    },
     "POSICIONES_API":{
         "URL": "http://localhost:53000/posiciones"
     },
@@ -25,5 +28,5 @@
     "LISTAR_USUARIOS_API":{
         "URL": "http://localhost:53000/listausuarios"
 
-}
+    }
 }
