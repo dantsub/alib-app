@@ -64,6 +64,7 @@ export function ListaUsuarios() {
                     Crear Usuario
                 </span>
                                     
+                <Link to ='/CrearUsuario'>
                 <button
                   type="button"
                   id="crear usuario"
@@ -74,6 +75,7 @@ export function ListaUsuarios() {
                 >
                   <i className="fa fa-address-book"></i>
                 </button>
+                </Link>
               </div>
 
               {/* <!-- Fin Boton y Modal Crear Producto  --> */}
