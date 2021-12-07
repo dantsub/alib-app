@@ -13,6 +13,8 @@ import { CrearUsuario } from "./components/CrearUsuario";
 import { Partidos } from "./components/Partidos";
 import { Posiciones } from "./components/Posiciones";
 import { Fechas } from "./components/Fechas";
+import LogIn from "./components/LogIn";
+import Register from "./components/Register";
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Base />}></Route>
           <Route path="/equipos" element={<Equipoadmin />}></Route>
+          <Route path="/login" element={<LogIn />}></Route>
+          <Route path="/register" element={<Register />}></Route>
           <Route path="/jugadores" element={<Equipodetails />}></Route>
           <Route path="/crearequipo" element={<Crearequipo />}></Route>
           <Route path="/campeonatos" element={<Gescampeonatos />}></Route>
