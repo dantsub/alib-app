@@ -3,6 +3,7 @@ import { Eliminarcampeonato } from "./Eliminarcampeonato";
 import { useEffect, useState } from "react";
 import { Adicionarcampeonato } from "./Adicionarcampeonato";
 import { consumircampeonatos } from "../API/Alip_Api"
+import { Editarcampeonato } from "./Editarcampeonato";
 
 
 export function Gescampeonatos(){
@@ -112,9 +113,10 @@ export function Gescampeonatos(){
                             <td>{camp.estado}</td>
                             <td> 
                                <Eliminarcampeonato />
-                                <button className="btn btn-primary" id="detalles" >
+                               <Editarcampeonato />
+                                {/* <button className="btn btn-primary" id="detalles" >
                                     <i className="fa fa-window-restore"></i>
-                                </button>
+                                </button> */}
                             </td>
                         </tr>
                         )}
