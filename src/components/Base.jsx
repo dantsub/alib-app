@@ -138,7 +138,7 @@ export function Base(){
           </Link>
         </li>
         <li className="nav-item-usuarios">
-          <Link to ="/usuario">
+          <Link to ="/ListaUsuarios">
             <i className="fa fa-user-friends"></i>
             <span className="menu-title text-truncate">Usuarios</span>
           </Link>
