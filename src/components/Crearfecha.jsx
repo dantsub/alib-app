@@ -9,7 +9,6 @@ export function Crearfecha(){
         event.stopPropagation();
         }
         event.target.className += " was-validated";
-
         setValidated(true);
     };
     return (
@@ -40,7 +39,7 @@ export function Crearfecha(){
                     </div>
                     <div className="modal-body">
                     <form
-                        id="editarpartido"
+                        id="crearfecha"
                         action=""
                         noValidate validated={validated} onSubmit={handleSubmit}
                         >
