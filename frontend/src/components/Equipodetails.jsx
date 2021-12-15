@@ -19,6 +19,7 @@ export function Equipodetails(){
             const dato = await consumirjugadores();
             setListar_Jug(dato);
             setListar_jugador(dato);
+            console.log(dato);
     
         };
         solicitar_jugador();

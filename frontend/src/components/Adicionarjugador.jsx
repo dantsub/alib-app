@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 export function Adicionarjugador(){
 
@@ -14,6 +14,37 @@ export function Adicionarjugador(){
 
         setValidated(true);
     };
+
+    const nomjug = useRef();
+    const docjug = useRef();
+    const fnacjug = useRef();
+  
+
+    function guardar(){
+        const nombre = nomjug.current.value;
+        const documento = docjug.current.value;
+        const fnacimiento = fnacjug.current.value;
+        fetch(`http://localhost:8081/players/guardar`,{
+            headers: {"content-type":"application/json"},
+            method: "POST",
+            body: JSON.stringify({nombre, documento, fnacimiento})
+             })
+        .then(dato=>dato.json())
+        .then(dato=>alert(dato.msg))
+        .catch(error=>alert(error));
+    };
+
+// function consultar(){
+//         const nombre =nomjug.current.value;
+//         fetch(`http://localhost:8081/jugadores/consultar/${nombre}`)
+//         .then(res=>res.json())
+//         .then(res=>{
+//             posjug.current.value=res.posicion;
+//             numjug.current.value=res.numerocamiseta;
+//         });
+//     }
+
+
 
     return (
         <>
@@ -55,21 +86,21 @@ export function Adicionarjugador(){
             <div className="modal-body">
                 <div className="form-group">
                     <label for="" className="form-label">Nombre del Jugador</label>
-                    <input type="text"  className="form-control" id="nombre" placeholder="Nombre del jugador" required minlength="2" />
+                    <input type="text"  className="form-control" id="nombre" placeholder="Nombre del jugador" required minlength="2" ref={nomjug} />
                     <div className="invalid-feedback">
                         Por favor ingrese el nombre del jugador
                     </div>
                 </div>
                 <div className="form-group">
                     <label for="" className="form-label">Documento</label>
-                    <input type="number"  className="form-control" id="documento" placeholder="Documento" required/>
+                    <input type="number"  className="form-control" id="documento" placeholder="Documento" required ref={docjug} />
                     <div className="invalid-feedback">
                         Por favor ingrese un documento válido
                     </div>
                 </div>
                 <div className="form-group">
                     <label for="" className="form-label">Fecha de nacimiento</label>
-                    <input type="date"  className="form-control" id="nacimiento" placeholder="Fecha Nacimiento" required/>
+                    <input type="date"  className="form-control" id="nacimiento" placeholder="Fecha Nacimiento" required ref={fnacjug} />
                     <div className="invalid-feedback">
                             Por favor ingrese la fecha de nacimiento
                     </div>
@@ -86,6 +117,7 @@ export function Adicionarjugador(){
             <button
                 type="submit"
                 className="btn btn-primary"
+                onClick={guardar}
             >
                 Adicionar Jugador
             </button>
