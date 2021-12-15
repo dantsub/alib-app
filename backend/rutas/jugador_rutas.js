@@ -16,7 +16,7 @@ jugador_rutas.post("/guardar", function(req,res){
 });
 
 jugador_rutas.get("/listar", async function(req,res){
-    const jugadores = await jugadormodel.find();
+    const jugadores = await jugadormodel.find().lean();
 
     console.log(jugadores);
     // if (error){
@@ -25,10 +25,10 @@ jugador_rutas.get("/listar", async function(req,res){
     // }
     // else{
         if (jugadores == null){
-            res.send({status:"Error", msg:"La base de datos está vacía", jugadores});
+            res.status(400).send({status:"Error", msg:"La base de datos está vacía", jugadores});
         
         }else
-            res.send({status:"OK",msg:"Se está devolviendo la base de datos", jugadores});
+            res.status(200).send({status:"Ok", msg:"Jugadores encontrados", jugadores});
            
     // }
 })

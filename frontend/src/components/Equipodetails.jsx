@@ -17,9 +17,9 @@ export function Equipodetails(){
     useEffect (() => {
         const solicitar_jugador= async () => {
             const dato = await consumirjugadores();
-            setListar_Jug(dato);
-            setListar_jugador(dato);
-            console.log(dato);
+            setListar_Jug(dato.jugadores);
+            setListar_jugador(dato.jugadores);
+            console.log(dato.jugadores);
     
         };
         solicitar_jugador();
@@ -126,7 +126,7 @@ const buscar_jugador = (evento)=>{
                             <tr>
                                 <td>{jug.documento}</td>
                                 <td>{jug.nombre}</td>
-                                <td>{jug.edad}</td>
+                                <td>{jug.fnacimiento}</td>
                                 <td> 
                                     <Eliminarjugador />
                                 

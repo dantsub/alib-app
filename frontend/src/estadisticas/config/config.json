@@ -3,7 +3,7 @@
         "URL": "http://localhost:53000/equipos"
     },
     "JUGADORES_API":{
-        "URL": "http://localhost:53000/jugadores"
+        "URL": "http://localhost:8081/players/listar"
     },
     "CAMPEONATOS_API":{
         "URL": "http://localhost:53000/campeonatos"
