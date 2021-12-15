@@ -6,9 +6,11 @@ app.use(cors());
 app.use(express.json());
 
 const {jugador_rutas} = require("./rutas/jugador_rutas")
+const {campeonato_rutas} = require("./rutas/campeonato_rutas")
 
 
 app.use("/players",jugador_rutas);
+app.use("/campeonatos", campeonato_rutas);
 
 mongoose.connect("mongodb://localhost:27017/alibdb")
 .then(res=> console.log(res,"Conectado a la base de datos"))
