@@ -63,4 +63,6 @@ equipo_rutas.get("/listar", async function(req,res){
 })
 
 
+
+
 exports.equipo_rutas=equipo_rutas;

@@ -1,5 +1,6 @@
 import { Base } from "./Base";
 import { useRef, useState } from "react";
+import axios from "axios";
 
 
 export function Crearequipo(){
@@ -21,27 +22,31 @@ export function Crearequipo(){
         };
 
         const nomequ = useRef();
-        const logoequ = useRef();
+        
     const uploadfile = (event) => {
         setLogo(event.target.files[0]);
 
     }
 
-    function guardar(){
+    function guardar(event){
+        event.preventDefault();
         const nombre = nomequ.current.value;
         const datos = new FormData();
         datos.append("nombre", nombre)
         datos.append("logo", logo)
         console.log(nombre)
         console.log(logo)
-        fetch(`http://localhost:8081/equipos/guardar`,{
-
-            method: "POST",
-            body: datos
-             })
-        .then(dato=>dato.json())
-        .then(dato=>alert(dato.msg))
-        .catch(error=>alert(error));
+        axios.post(`http://localhost:8081/equipos/guardar`,datos,{headers: {'Content-Type': 'multipart/form-data'}})
+        .then(res => {
+        const respuesta = res.data;
+        alert(respuesta.msg)
+        if (respuesta.status==="Ok"){
+            {window.location.href="/jugadores"}
+        }
+        })
+        .catch(error=>alert(error)); 
+    nomequ.current.value="";
+      setLogo("");
     };
     return (
         <>
