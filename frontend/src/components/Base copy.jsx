@@ -119,55 +119,35 @@ export function Base(){
       {/* <!-- GESTIONES --> */}
       <ul className="navigation navigation-main">
         <li className="navigation-header"><span>GESTIONES</span></li>
+        <li className="nav-item-productos">
+          <Link to ="/campeonatos">
+              <i className="fa fa-flag"></i>
+              <span className="menu-title text-truncate">Campeonatos</span>
+          </Link>
+        </li>
+        <li className="nav-item-proveedores">
+          <Link to ="/equipos">
+            <i className="fa fa-users"></i>
+            <span className="menu-title text-truncate">Equipos</span>
+          </Link>
+        </li>
+        <li className="nav-item-usuarios">
+          <Link to ="/partidos">
+            <i className="fa fa-futbol"></i>
+            <span className="menu-title text-truncate">Partidos</span>
+          </Link>
+        </li>
+        <li className="nav-item-usuarios">
+          <Link to ="/ListaUsuarios">
+            <i className="fa fa-user-friends"></i>
+            <span className="menu-title text-truncate">Usuarios</span>
+          </Link>
+        </li>
       </ul>
-      <div>
-      
-        <a className="nav-link dropdown-toggle">
-        <Link to ="/campeonatos">
-        <i className="fa fa-flag"></i>  Campeonatos                
-          </Link>
-          </a>
-          
-        </div>
-      <div> 
-        <a className="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i className="fa fa-users"></i>  Equipos
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        <Link to ="/equipos">
-          <a class="dropdown-item">Gestión</a>
-          </Link>
-          <Link to ="/jugadores">
-          <a class="dropdown-item">Jugadores</a>
-          </Link>
-        </div>
-      </div>
-      <div> 
-        <a className="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i className="fa fa-futbol"></i>  Partidos
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        <Link to ="/partidos">
-          <a class="dropdown-item">Gestión</a>
-          </Link>
-          <Link to ="/fechas">
-          <a class="dropdown-item">Fechas</a>
-          </Link>
-          <Link to ="/posiciones">
-          <a class="dropdown-item">Tabla de Posiciones</a>
-          </Link>
-        </div>
-      </div>
-      <div> 
-        <a className="nav-link dropdown-toggle">
-        <Link to ="/listausuarios">
-        <i className="fa fa-user-friends"></i>  Usuarios                
-          </Link>
-          </a>
-        </div>
-      
-</div>
+    </div>
     {/* <!-- END: Main Menu --> */}
+
+
         </>
 
     );
