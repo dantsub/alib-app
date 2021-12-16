@@ -30,7 +30,11 @@
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "file-system": "^2.2.2",
+    "formidable": "^2.0.1",
+    "fs-filesystem": "^2.1.2",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.1.1"
+    "mongoose": "^6.1.1",
+    "path": "^0.12.7"
   }
 }

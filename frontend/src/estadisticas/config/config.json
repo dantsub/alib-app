@@ -1,6 +1,6 @@
 {
     "EQUIPOS_API":{
-        "URL": "http://localhost:53000/equipos"
+        "URL": "http://localhost:8081/equipos/listar"
     },
     "JUGADORES_API":{
         "URL": "http://localhost:8081/players/listar"

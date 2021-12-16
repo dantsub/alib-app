@@ -18,8 +18,8 @@ export function Equipoadmin(){
     useEffect ( () => {
         const solicitar_equipo= async () => {
             const dato = await consumirequipo();
-            setListar_Eq(dato);
-            setListar_equipo(dato);
+            setListar_Eq(dato.equipos);
+            setListar_equipo(dato.equipos);
     
         };
         solicitar_equipo();
