@@ -23,7 +23,7 @@ export function Adicionarcampeonato(){
 	const lugarcampg    = useRef();
 	const numequipcampg = useRef();
 	const premioscampg  = useRef();
-	const logocampg     = useRef();  
+	const logocampg     = useRef(); 
 
     function guardarcamp(){
         const nombrecamp    = nombrecampg.current.value;
@@ -34,11 +34,12 @@ export function Adicionarcampeonato(){
         const numequipcamp  = numequipcampg.current.value;
         const premioscamp   = premioscampg.current.value;
         const logocamp      = logocampg.current.value;
+        const estadocamp    = "En inscripciones";
 
         fetch(`http://localhost:8081/campeonatos/guardarcamp`,{
             headers: {"content-type":"application/json"},
             method: "POST",
-            body: JSON.stringify({nombrecamp, fecinicamp, fecfincamp, orgcamp, lugarcamp, numequipcamp, premioscamp, logocamp})
+            body: JSON.stringify({nombrecamp, fecinicamp, fecfincamp, orgcamp, lugarcamp, numequipcamp, premioscamp, logocamp, estadocamp})
              })
         .then(dato=>dato.json())
         .then(dato=>alert(dato.msg))
