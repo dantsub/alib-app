@@ -122,24 +122,29 @@ export function Base(){
       </ul>
       <div>
       
-        <a className="nav-link dropdown-toggle">
-        <Link to ="/campeonatos">
+      <a className="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i className="fa fa-flag"></i>  Campeonatos                
-          </Link>
           </a>
-          
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <Link to ="/campeonatos">
+              <a class="dropdown-item">Gestión</a>
+              </Link>
+              <Link to ="/campeonatos_eqip">
+              <a class="dropdown-item">Camp. Equipos</a>
+            </Link>
+          </div>
         </div>
       <div> 
         <a className="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i className="fa fa-users"></i>  Equipos
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        <Link to ="/equipos">
-          <a class="dropdown-item">Gestión</a>
-          </Link>
-          <Link to ="/jugadores">
-          <a class="dropdown-item">Jugadores</a>
-          </Link>
+          <Link to ="/equipos">
+            <a class="dropdown-item">Gestión</a>
+            </Link>
+            <Link to ="/jugadores">
+            <a class="dropdown-item">Jugadores</a>
+            </Link>
         </div>
       </div>
       <div> 
