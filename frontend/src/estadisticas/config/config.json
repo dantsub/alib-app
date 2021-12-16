@@ -9,7 +9,10 @@
         "URL": "http://localhost:8081/campeonatos/listarcamp"
     },
     "CAMPEONATOS_EQUIP_API":{
-        "URL": "http://localhost:53000/equipos"
+        "URL": "http://localhost:8081/equipos/listar"
+    },
+    "LISTAR_EQUIPOS_API":{
+        "URL": "http://localhost:8081/listaequipos/listar"
     },
     "POSICIONES_API":{
         "URL": "http://localhost:53000/posiciones"
@@ -20,10 +23,6 @@
 
     "FECHAS_API":{
         "URL": "http://localhost:53000/fechas"
-    },
-
-    "LISTAR_EQUIPOS_API":{
-        "URL": "http://localhost:53000/listaequipos"
     },
     "LISTAR_USUARIOS_API":{
         "URL": "http://localhost:53000/listausuarios"

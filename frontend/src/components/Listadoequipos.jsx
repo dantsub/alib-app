@@ -10,7 +10,7 @@ export function Listadoequipos (){
     useEffect ( () => {
         const solicitar_listadoequipos= async () => {
             const dato = await consumirlistarequipos();
-            setListado_equipos(dato);
+            setListado_equipos(dato.equipos);
     
         };
         solicitar_listadoequipos();
@@ -72,8 +72,8 @@ export function Listadoequipos (){
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td>{equip.equipo}</td>
-                                            <td>{equip.manager}</td>
+                                            <td>{equip.nombre}</td>
+                                            <td>{equip.rep}</td>
                                             <td>
                                                 <div class="form-check text-center">
                                                     <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
