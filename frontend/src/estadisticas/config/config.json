@@ -1,12 +1,12 @@
 {
     "EQUIPOS_API":{
-        "URL": "http://localhost:53000/equipos"
+        "URL": "http://localhost:8081/equipos/listar"
     },
     "JUGADORES_API":{
         "URL": "http://localhost:8081/players/listar"
     },
     "CAMPEONATOS_API":{
-        "URL": "http://localhost:53000/campeonatos"
+        "URL": "http://localhost:8081/campeonatos/listarcamp"
     },
     "CAMPEONATOS_EQUIP_API":{
         "URL": "http://localhost:53000/equipos"

@@ -19,6 +19,23 @@ export function Crearequipo(){
             setValidated(true);
         };
 
+        const nomequ = useRef();
+        const logoequ = useRef();
+  
+
+    function guardar(){
+        const nombre = nomequ.current.value;
+        const logo = logoequ.current.value;
+
+        fetch(`http://localhost:8081/equipos/guardar`,{
+            headers: {"content-type":"multipart"},
+            method: "POST",
+            body: JSON.stringify({nombre, logo})
+             })
+        .then(dato=>dato.json())
+        .then(dato=>alert(dato.msg))
+        .catch(error=>alert(error));
+    };
     return (
         <>
 
@@ -45,14 +62,14 @@ export function Crearequipo(){
                                 <form action="" noValidate validated={validated} onSubmit={handleSubmit}>
                                     <div className="form-group">
                                         <label for="" className="form-label" >Nombre del Equipo</label>
-                                        <input type="text"  className="form-control" id="doc" placeholder="Nombre del equipo" required/>
+                                        <input type="text"  className="form-control" id="doc" placeholder="Nombre del equipo" required ref={nomequ}/>
                                         <div className="invalid-feedback">
                                             Por favor ingrese el nombre del equipo
                                         </div>
                                     </div>                                    
                                     <div className="form-group">
                                     <label for="" className="form-label">Logo del Equipo</label>
-                                    <input type="file"  className="form-control" id="logo" placeholder="logo" required/>
+                                    <input type="file"  className="form-control" id="logo" placeholder="logo" required ref={logoequ} />
                                     <div className="invalid-feedback">
                                             Por favor ingrese el logo del equipo
                                     </div>
@@ -60,7 +77,7 @@ export function Crearequipo(){
                                     <br/>
                                     <div className="row">
                                     <div className="col-lg-4 center-content">
-                                        <button className="btn btn-primary" type="submit" >Guardar</button>
+                                        <button className="btn btn-primary" type="submit" onClick={guardar} >Guardar</button>
                                     </div>
                                     </div>
                                     <br />

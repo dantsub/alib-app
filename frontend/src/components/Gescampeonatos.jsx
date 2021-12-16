@@ -15,8 +15,8 @@ export function Gescampeonatos(){
     useEffect ( () => {
       const solicitar_campeonato= async () => {
           const dato = await consumircampeonatos();
-          setListar_campeonato(dato);
-          setListar_cam(dato);
+          setListar_campeonato(dato.campeonatos);
+          setListar_cam(dato.campeonatos);
   
       };
       solicitar_campeonato();
@@ -100,17 +100,17 @@ export function Gescampeonatos(){
                             <td>
                                 <div className="container">
                                     <div className="px-0">
-                                        <img src={camp.logo} className="img-fluid" width="150px" height="150px" />
+                                        <img src={camp.logocamp} className="img-fluid" width="150px" height="150px" />
                                     </div>
                                 </div>
                             </td>
-                            <td>{camp.nombre}</td>
-                            <td>{camp.fecha_ini}</td>
-                            <td>{camp.fecha_fin}</td>
-                            <td>{camp.organizador}</td>
-                            <td>{camp.num_equpos}</td>
-                            <td>{camp.lugar}</td>
-                            <td>{camp.estado}</td>
+                            <td>{camp.nombrecamp}</td>
+                            <td>{camp.fecinicamp}</td>
+                            <td>{camp.fecfincamp}</td>
+                            <td>{camp.orgcamp}</td>
+                            <td>{camp.numequipcamp}</td>
+                            <td>{camp.lugarcamp}</td>
+                            <td>{camp.estadocamp}</td>
                             <td> 
                                <Eliminarcampeonato />
                                <Editarcampeonato />
