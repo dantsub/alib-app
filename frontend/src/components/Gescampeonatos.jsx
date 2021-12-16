@@ -34,7 +34,10 @@ export function Gescampeonatos(){
       });
       setListar_campeonato(resultado_busqueda);
     }
-
+    function dateformat(fecha) {
+      const newfecha = new Date(fecha).toLocaleDateString();
+      return newfecha;
+   }
     return (
     <>
       <Base />
@@ -105,8 +108,8 @@ export function Gescampeonatos(){
                                 </div>
                             </td>
                             <td>{camp.nombrecamp}</td>
-                            <td>{camp.fecinicamp}</td>
-                            <td>{camp.fecfincamp}</td>
+                            <td>{dateformat(camp.fecinicamp)}</td>
+                            <td>{dateformat(camp.fecfincamp)}</td>
                             <td>{camp.orgcamp}</td>
                             <td>{camp.numequipcamp}</td>
                             <td>{camp.lugarcamp}</td>

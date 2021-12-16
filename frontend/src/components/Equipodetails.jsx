@@ -40,7 +40,18 @@ const buscar_jugador = (evento)=>{
   }
   console.log(listar_jugador);
 
+  function calcularEdad(fecha) {
+    const hoy = new Date();
+    const cumpleanos = new Date(fecha);
+    const edad = hoy.getFullYear() - cumpleanos.getFullYear();
+    const m = hoy.getMonth() - cumpleanos.getMonth();
 
+    if (m < 0 || (m === 0 && hoy.getDate() < cumpleanos.getDate())) {
+        edad--;
+    }
+
+    return edad;
+}
 
     
     return (
@@ -123,10 +134,10 @@ const buscar_jugador = (evento)=>{
                         </thead>
                         <tbody className="js-table-body" id="tablajugadores">
                         {listar_jugador?.map((jug,idx)=>
-                            <tr key={idx} >
+                                <tr key={idx} >
                                 <td>{jug.documento}</td>
                                 <td>{jug.nombre}</td>
-                                <td>{jug.fnacimiento}</td>
+                                <td>{calcularEdad(jug.fnacimiento)}</td>
                                 <td> 
                                     <Eliminarjugador nombre={jug.nombre} documento={jug.documento} />
                                 
