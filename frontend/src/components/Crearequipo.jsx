@@ -5,6 +5,7 @@ import { useRef, useState } from "react";
 export function Crearequipo(){
     // Con esto cambiamos el título a la página que por default esta en Alib-app
         document.title="Crear Equipo";
+        const [logo, setLogo] = useState();
 
         const [validated, setValidated] = useState("false");
 
@@ -21,16 +22,22 @@ export function Crearequipo(){
 
         const nomequ = useRef();
         const logoequ = useRef();
-  
+    const uploadfile = (event) => {
+        setLogo(event.target.files[0]);
+
+    }
 
     function guardar(){
         const nombre = nomequ.current.value;
-        const logo = logoequ.current.value;
-
+        const datos = new FormData();
+        datos.append("nombre", nombre)
+        datos.append("logo", logo)
+        console.log(nombre)
+        console.log(logo)
         fetch(`http://localhost:8081/equipos/guardar`,{
-            headers: {"content-type":"multipart"},
+
             method: "POST",
-            body: JSON.stringify({nombre, logo})
+            body: datos
              })
         .then(dato=>dato.json())
         .then(dato=>alert(dato.msg))
@@ -69,7 +76,7 @@ export function Crearequipo(){
                                     </div>                                    
                                     <div className="form-group">
                                     <label for="" className="form-label">Logo del Equipo</label>
-                                    <input type="file"  className="form-control" id="logo" placeholder="logo" required ref={logoequ} />
+                                    <input type="file"  className="form-control" id="logo" placeholder="logo" required onChange={uploadfile} />
                                     <div className="invalid-feedback">
                                             Por favor ingrese el logo del equipo
                                     </div>
