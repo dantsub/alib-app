@@ -17,14 +17,40 @@ export function CrearUsuario(){
             event.target.className += " was-validated";
 
             setValidated(true);
-        };
+  };
+  
+  const docusuario = useRef();
+  const nomusuario = useRef();
+  const emailusuario = useRef();
+  const passusuario = useRef();
+  const rolusuario = useRef();
+
+  const[alerta, setAlerta] = useState(false);
+
+  let registrousuario=[];
+
+  const guardarusuario = () => {
+    const doc = docusuario.current.value;
+    const nom = nomusuario.current.value;
+    const email = emailusuario.current.value;
+    const pass = passusuario.current.value;
+    const idrol = rolusuario.current.value;
+    const idestado = "1";
+    const data = { docusuario:doc, nomusuario:nom, emailusuario:email, passusuario:pass, rolusuario:idrol, idestado:idestado };
+    registrousuario.push(data);
+    localStorage.setItem("registrosusuario", JSON.stringify(registrousuario));
+    console.log(registrousuario);
+    setAlerta(true);
+    
+  };
+
 
     return (
         <>
 
             <Base />
 
-            {/* <!-- BEGIN: Content --> */}
+        {/* <!-- BEGIN: Content --> */}
     <div className="app-content content">
       {/* <!-- Content-wrapper --> */}
       <div className="content-wrapper">
@@ -47,6 +73,7 @@ export function CrearUsuario(){
                   className="form-control"
                   id="doc"
                   placeholder="Numero de documento"
+                  ref={docusuario}
                 />
               </div>
               <div className="form-group">
@@ -56,6 +83,7 @@ export function CrearUsuario(){
                   className="form-control"
                   id="nom"
                   placeholder="Nombres y Apellidos"
+                  ref={nomusuario}
                 />
               </div>
               <div className="form-group">
@@ -65,17 +93,17 @@ export function CrearUsuario(){
                   className="form-control"
                   id="correo"
                   placeholder="Correo Electronico"
+                  ref={emailusuario}
                 />
               </div>
               
               <div className="form-group">
                 <label for="" className="form-label"
-                  >Contraseña</label
-                >
+                  >Contraseña</label>
                 <div className="input-group input-group-merge form-password-toggle">
-                        <input className="form-control form-control-merge" id="login-password" type="password"
-                          name="login-password" placeholder="Contraseña" aria-describedby="login-password"
-                          tabindex="0" />
+                            <input className="form-control form-control-merge" id="login-password" type="password"
+                              name="login-password" placeholder="Contraseña" aria-describedby="login-password"
+                              tabindex="0" ref={passusuario}/>
                         {/* <span className="input-group-text cursor-pointer">
                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -92,7 +120,7 @@ export function CrearUsuario(){
                 <label for="" className="form-label"
                   >Rol del usuario</label
                 >
-                <select className="form-control" id="rol">
+                <select className="form-control" id="rol" ref={rolusuario}>
                   <option value="1">Usuario Interno</option>
                   <option value="2">Usuario Externo</option>
                 </select>
@@ -102,14 +130,13 @@ export function CrearUsuario(){
                 <button
                   className="btn btn-primary"
                   type="button"
-                  onclick="guardar()"
+                  onClick={guardarusuario}
                 >
                   Guardar
                 </button>
                 <button
                   type="button"
                   className="btn btn-secondary"
-                  data-bs-dismiss="modal"
                 >
                   Cerrar
                 </button>
@@ -124,7 +151,7 @@ export function CrearUsuario(){
       {/* <!-- / Content-wrapper --> */}
       </div>
     {/* <!-- END: Content --> */}
-
+            
 
         </>
 
