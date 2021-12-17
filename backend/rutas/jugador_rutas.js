@@ -36,7 +36,7 @@ jugador_rutas.get("/listar", async function(req,res){
 jugador_rutas.post("/eliminar", async function(req,res){
     const {documento} = req.body;
     console.log(documento);
-    //buscar jugador
+    //eliminar jugador
     jugadormodel.deleteOne({documento},function(error,jug){
         console.log(jug);
         if (error){
@@ -55,5 +55,35 @@ jugador_rutas.post("/eliminar", async function(req,res){
     })
 })
 
+jugador_rutas.post("/editar", function(req,res){
+    const datos = req.body;
+    const documento= datos.documento;
+    const nombre = datos.nombre;
+    const fnacimiento = datos.fnacimiento;
+    const filter = { documento: documento };
+    const updateDoc = {
+        $set: {
+          fnacimiento: fnacimiento,
+          nombre: nombre
+        },
+      };
+
+    jugadormodel.updateOne(filter, updateDoc, function(error,jug){
+        console.log(jug);
+        if (error){
+            res.send({status:"Error",msg:"El jugador NO fue encontrado por Error"});
+            return false;
+        }
+        else{
+        if (jug){
+            res.send({status:"Ok",msg:"El jugador fue editado satisfactoriamente", dato:jug})
+        }
+        else{
+            res.send({status:"Error",msg:"El jugador No pudo ser editado, porque no fue encontrado"})
+        }
+    }
+
+    })
+});
 
 exports.jugador_rutas=jugador_rutas;

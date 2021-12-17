@@ -5,6 +5,7 @@ import { Adicionarjugador } from "./Adicionarjugador";
 import { useEffect, useState } from "react";
 import tiburones from '../asset/tiburonesfc.jpg';
 import { consumirjugadores } from "../API/Alip_Api"
+import { Editarjugador } from "./Editarjugador";
 
 export function Equipodetails(){
     // Con esto cambiamos el título a la página que por default esta en Alib-app
@@ -140,7 +141,7 @@ const buscar_jugador = (evento)=>{
                                 <td>{calcularEdad(jug.fnacimiento)}</td>
                                 <td> 
                                     <Eliminarjugador nombre={jug.nombre} documento={jug.documento} />
-                                
+                                    <Editarjugador nombre={jug.nombre} documento={jug.documento} fnacimiento={jug.fnacimiento} />
                                 </td>
                             </tr>
                         )}
