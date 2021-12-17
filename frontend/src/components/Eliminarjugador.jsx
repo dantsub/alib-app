@@ -1,10 +1,28 @@
-export function Eliminarjugador(){
+import axios from "axios";
+
+export function Eliminarjugador({documento,nombre}){
+
+
+const eliminarjug = async (documento) =>{
+    const response = await axios.post(`http://localhost:8081/players/eliminar`,
+        {headers: {"content-type":"application/json"}, documento})
+    const data = response.data;
+    alert(data.msg)
+    if (data.status==="Ok"){
+        window.location.href="/jugadores"
+    }
+            
+    };
+
+
+
+
     return (
         <>
              <button
                 className="btn btn-danger table-buttons"
                 data-bs-toggle="modal"
-                data-bs-target="#modal_eliminar_jugador"
+                data-bs-target={`#modal_${documento}`}
                 >
                 <i class="fa fa-trash"></i> Eliminar jugador
             </button>
@@ -12,7 +30,7 @@ export function Eliminarjugador(){
             {/* <!-- Modal Eliminar --> */}
             <div
                 className="modal fade"
-                id="modal_eliminar_jugador"
+                id={`modal_${documento}`}
                 tabindex="-1"
                 aria-labelledby="exampleModalLabel"
                 aria-hidden="true"
@@ -34,13 +52,15 @@ export function Eliminarjugador(){
                     id="borrarjugador"
                     action=""
                     >
-                    <input type="hidden" name="oculto" value="eliminarjugador"/>
+                    <input type="hidden" name="oculto" />
                     <input type="hidden" name="ocultoborrar" value=""/>
                     <div className="modal-body">
                     <p className="text-center">
                         ¿Está seguro que desea eliminar el jugador?
                         </p>
-                      
+                        <p class="text-center fw-bold">
+                             {nombre}
+                        </p>
                     </div>
                     <div className="modal-footer">
                     <button
@@ -51,8 +71,9 @@ export function Eliminarjugador(){
                         Cancelar
                     </button>
                     <button
-                        type="submit"
+                        type="button"
                         className="btn btn-primary"
+                        onClick={()=>{eliminarjug(documento)}}
                     >
                         Eliminar Jugador
                     </button>

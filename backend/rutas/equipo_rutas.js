@@ -28,12 +28,12 @@ equipo_rutas.post("/guardar", function(req,res){
         const file = files.logo;
         const newruta= path.join(uploadFolder, nombre);
         fs.renameSync(file.filepath, newruta);
-        const logo="/"+nombre;
+        const logo="http://localhost:3001/"+nombre;
         const dato= { logo: logo, nombre: nombre, fecha: fecha, rep: rep };
         const eq = new equipomodel(dato);
         eq.save(function(err){
         if(err){
-            res.send({status:"Error",msg:"El equipo no pudoser guardados"})
+            res.send({status:"Error",msg:"El equipo no pudo ser guardados"})
             return false;
         }
             res.send({status:"Ok",msg:"El equipo fue guardado satisfactoriamente"})
@@ -41,19 +41,7 @@ equipo_rutas.post("/guardar", function(req,res){
     })
         
     })
-    res.send({status:"Prueba",msg:"Prueba"})
-    // const datos = req.body;
-    // const fecha = Date.now();
-
-    // const equ = new equipomodel (datos.nombre, fecha);
-    // equ.save(function(err){
-    //     if(err){
-    //         res.send({status:"Error",msg:"El equipo no pudo ser guardados"})
-    //         return false;
-    //     }
-    //         res.send({status:"Ok",msg:"El equipo fue guardado satisfactoriamente"})
-
-    // })
+   
 });
 
 equipo_rutas.get("/listar", async function(req,res){
@@ -73,6 +61,30 @@ equipo_rutas.get("/listar", async function(req,res){
            
     // }
 })
+
+
+equipo_rutas.post("/eliminar", async function(req,res){
+    const {nombre} = req.body;
+
+    //eliminar jugador
+    equipomodel.deleteOne({nombre},function(error,equ){
+        console.log(equ);
+        if (error){
+            res.send({status:"Error",msg:"El equipo NO fue encontrado por Error"});
+            return false;
+        }
+        else{
+        if (equ){
+            res.send({status:"Ok",msg:"El equipo fue eliminado satisfactoriamente", dato:equ})
+        }
+        else{
+            res.send({status:"Error",msg:"El equipo No pudo ser eliminado"})
+        }
+    }
+
+    })
+})
+
 
 
 exports.equipo_rutas=equipo_rutas;

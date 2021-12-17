@@ -34,7 +34,10 @@ export function Gescampeonatos(){
       });
       setListar_campeonato(resultado_busqueda);
     }
-
+    function dateformat(fecha) {
+      const newfecha = new Date(fecha).toLocaleDateString();
+      return newfecha;
+   }
     return (
     <>
       <Base />
@@ -95,8 +98,9 @@ export function Gescampeonatos(){
                       </tr>
                     </thead>
                     <tbody className="js-table-body" id="tablaequipos">
-                    {listar_campeonato.map(camp=>
-                        <tr className="js-row">
+
+                    {listar_campeonato?.map((camp,idx)=>
+                        <tr key={idx} className="js-row">
                             <td>
                                 <div className="container">
                                     <div className="px-0">
@@ -105,14 +109,14 @@ export function Gescampeonatos(){
                                 </div>
                             </td>
                             <td>{camp.nombrecamp}</td>
-                            <td>{camp.fecinicamp}</td>
-                            <td>{camp.fecfincamp}</td>
+                            <td>{dateformat(camp.fecinicamp)}</td>
+                            <td>{dateformat(camp.fecfincamp)}</td>
                             <td>{camp.orgcamp}</td>
                             <td>{camp.numequipcamp}</td>
                             <td>{camp.lugarcamp}</td>
                             <td>{camp.estadocamp}</td>
                             <td> 
-                               <Eliminarcampeonato />
+                               <Eliminarcampeonato nombrecamp={camp.nombrecamp}/>
                                <Editarcampeonato />
                                 {/* <button className="btn btn-primary" id="detalles" >
                                     <i className="fa fa-window-restore"></i>

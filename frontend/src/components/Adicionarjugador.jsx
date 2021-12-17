@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import axios from "axios";
 
 export function Adicionarjugador(){
 
@@ -20,30 +21,28 @@ export function Adicionarjugador(){
     const fnacjug = useRef();
   
 
-    function guardar(){
+    function guardar(event){
+        event.preventDefault();
         const nombre = nomjug.current.value;
         const documento = docjug.current.value;
         const fnacimiento = fnacjug.current.value;
-        fetch(`http://localhost:8081/players/guardar`,{
+        axios.post(`http://localhost:8081/players/guardar`,{
             headers: {"content-type":"application/json"},
-            method: "POST",
-            body: JSON.stringify({nombre, documento, fnacimiento})
+            nombre, documento, fnacimiento
              })
-        .then(dato=>dato.json())
-        .then(dato=>alert(dato.msg))
-        .catch(error=>alert(error));
+             .then(res => {
+                const respuesta = res.data;
+                alert(respuesta.msg)
+                if (respuesta.status==="Ok"){
+                    {window.location.href="/jugadores"}
+                }
+              })
+              .catch(error=>alert(error)); 
+              nomjug.current.value="";
+              docjug.current.value="";
+              fnacjug.current.value="";
+
     };
-
-// function consultar(){
-//         const nombre =nomjug.current.value;
-//         fetch(`http://localhost:8081/jugadores/consultar/${nombre}`)
-//         .then(res=>res.json())
-//         .then(res=>{
-//             posjug.current.value=res.posicion;
-//             numjug.current.value=res.numerocamiseta;
-//         });
-//     }
-
 
 
     return (

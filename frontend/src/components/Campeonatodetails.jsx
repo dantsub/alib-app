@@ -17,8 +17,8 @@ export function Campeonatodetails(){
     useEffect ( () => {
       const solicitar_campeonatosequip= async () => {
           const dato = await consumircampeonatosequip();
-          setListar_equipos(dato);
-          setListar_equip(dato);
+          setListar_equipos(dato.equipos);
+          setListar_equip(dato.equipos);
   
       };
       solicitar_campeonatosequip();

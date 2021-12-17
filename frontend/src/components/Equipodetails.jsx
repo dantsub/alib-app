@@ -5,12 +5,13 @@ import { Adicionarjugador } from "./Adicionarjugador";
 import { useEffect, useState } from "react";
 import tiburones from '../asset/tiburonesfc.jpg';
 import { consumirjugadores } from "../API/Alip_Api"
+import { Editarjugador } from "./Editarjugador";
 
 export function Equipodetails(){
     // Con esto cambiamos el título a la página que por default esta en Alib-app
     document.title="Equipo";
 
-    let [Refrescar, setRefrescar]  = useState(true);
+
     let [Listar_Jug,setListar_Jug] = useState([]);
     let [listar_jugador, setListar_jugador] = useState([]);
     
@@ -19,15 +20,14 @@ export function Equipodetails(){
             const dato = await consumirjugadores();
             setListar_Jug(dato.jugadores);
             setListar_jugador(dato.jugadores);
-            console.log(dato.jugadores);
     
         };
         solicitar_jugador();
-    }, [Refrescar])
+    }, [])
     
 
 const buscar_jugador = (evento)=>{
-    var resultado_busqueda = Listar_Jug.filter(e=> {
+    const resultado_busqueda = Listar_Jug.filter(e=> {
         if(e.nombre.toLowerCase().includes(evento.target.value.toLowerCase()) 
         || e.documento.toLowerCase().includes(evento.target.value.toLowerCase())
         || e.edad.toLowerCase().includes(evento.target.value.toLowerCase())
@@ -39,8 +39,20 @@ const buscar_jugador = (evento)=>{
     });
     setListar_jugador(resultado_busqueda);
   }
+  console.log(listar_jugador);
 
+  function calcularEdad(fecha) {
+    const hoy = new Date();
+    const cumpleanos = new Date(fecha);
+    const edad = hoy.getFullYear() - cumpleanos.getFullYear();
+    const m = hoy.getMonth() - cumpleanos.getMonth();
 
+    if (m < 0 || (m === 0 && hoy.getDate() < cumpleanos.getDate())) {
+        edad--;
+    }
+
+    return edad;
+}
 
     
     return (
@@ -93,7 +105,7 @@ const buscar_jugador = (evento)=>{
             
                     </div>
                     <div className="col-md-3 d-flex align-items-end">
-                        <Eliminarequipo />
+                        <Eliminarequipo nombre="Tiburones F. C."/>
             
                     </div>
                 </div>
@@ -122,14 +134,14 @@ const buscar_jugador = (evento)=>{
                         </tr>
                         </thead>
                         <tbody className="js-table-body" id="tablajugadores">
-                        {listar_jugador.map(jug=>
-                            <tr>
+                        {listar_jugador?.map((jug,idx)=>
+                                <tr key={idx} >
                                 <td>{jug.documento}</td>
                                 <td>{jug.nombre}</td>
-                                <td>{jug.fnacimiento}</td>
+                                <td>{calcularEdad(jug.fnacimiento)}</td>
                                 <td> 
-                                    <Eliminarjugador />
-                                
+                                    <Eliminarjugador nombre={jug.nombre} documento={jug.documento} />
+                                    <Editarjugador nombre={jug.nombre} documento={jug.documento} fnacimiento={jug.fnacimiento} />
                                 </td>
                             </tr>
                         )}
