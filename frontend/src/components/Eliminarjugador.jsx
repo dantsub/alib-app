@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export function Eliminarjugador({documento,nombre}){
-console.log("esto es lo que traemos a eliminar",nombre);
+
 
 const eliminarjug = async (documento) =>{
     const response = await axios.post(`http://localhost:8081/players/eliminar`,

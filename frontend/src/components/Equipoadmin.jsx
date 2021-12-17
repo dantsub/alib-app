@@ -94,12 +94,13 @@ const buscar_equipo = (evento)=>{
                         <th>Nombre Equipo</th>
                         <th>Fecha Creación</th>
                         <th>Representante Equipo</th>
-                        <th>Acciones</th>
+                        <th>Eliminar</th>
+                        <th>Detalles</th>
                       </tr>
                     </thead>
                     <tbody className="js-table-body" id="tablaequipos">
-                    {listar_equipo.map(eq=>(
-                        <tr>
+                    {listar_equipo?.map((eq,idx)=>
+                        <tr key={idx}>
                             <td>
                                 <div className="container">
                                     <div className="col-md-4 px-0">
@@ -111,18 +112,20 @@ const buscar_equipo = (evento)=>{
                             <td>{eq.fecha}</td>
                             <td>{eq.rep}</td>
                             <td> 
-                               <Eliminarequipo />
+                               <Eliminarequipo nombre={eq.nombre} />
 
-                               <Link to ="/jugadores">
+                            </td>
+                            <td>
+                              
+                            <Link to ="/jugadores">
                                   <button className="btn btn-primary" id="detalles" >
                                       <i className="fa fa-window-restore"></i>
                                   </button>
           
                                 </Link>
-                               
                             </td>
                         </tr>
-                        ))}
+                        )}
                        
                     </tbody>
                   </table>

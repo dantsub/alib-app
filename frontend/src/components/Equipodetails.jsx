@@ -105,7 +105,7 @@ const buscar_jugador = (evento)=>{
             
                     </div>
                     <div className="col-md-3 d-flex align-items-end">
-                        <Eliminarequipo />
+                        <Eliminarequipo nombre="Tiburones F. C."/>
             
                     </div>
                 </div>

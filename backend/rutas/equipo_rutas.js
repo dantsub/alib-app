@@ -63,6 +63,28 @@ equipo_rutas.get("/listar", async function(req,res){
 })
 
 
+equipo_rutas.post("/eliminar", async function(req,res){
+    const {nombre} = req.body;
+
+    //eliminar jugador
+    equipomodel.deleteOne({nombre},function(error,equ){
+        console.log(equ);
+        if (error){
+            res.send({status:"Error",msg:"El equipo NO fue encontrado por Error"});
+            return false;
+        }
+        else{
+        if (equ){
+            res.send({status:"Ok",msg:"El equipo fue eliminado satisfactoriamente", dato:equ})
+        }
+        else{
+            res.send({status:"Error",msg:"El equipo No pudo ser eliminado"})
+        }
+    }
+
+    })
+})
+
 
 
 exports.equipo_rutas=equipo_rutas;

@@ -1,10 +1,26 @@
-export function Eliminarequipo(){
+import axios from "axios";
+
+export function Eliminarequipo({nombre}){
+    
+const eliminarequ = async (nombre) =>{
+    const response = await axios.post(`http://localhost:8081/equipos/eliminar`,
+        {headers: {"content-type":"application/json"}, nombre})
+    const data = response.data;
+    alert(data.msg)
+    if (data.status==="Ok"){
+        window.location.href="/equipos"
+    }
+            
+    };
+
+
+
     return (
         <>
             <button
             className="btn btn-danger table-buttons"
             data-bs-toggle="modal"
-            data-bs-target="#modal_eliminar_equipo"
+            data-bs-target={`#modal_eliminar_${nombre.replace(/[ .]+/g,'').toLowerCase()}`}
             >
             <i className="fa fa-trash"></i>
             </button>
@@ -12,7 +28,7 @@ export function Eliminarequipo(){
             {/* <!-- Modal Eliminar --> */}
                 <div
                 className="modal fade"
-                id="modal_eliminar_equipo"
+                id={`modal_eliminar_${nombre.replace(/[ .]+/g,'').toLowerCase()}`}
                 tabindex="-1"
                 aria-labelledby="exampleModalLabel"
                 aria-hidden="true"
@@ -40,7 +56,9 @@ export function Eliminarequipo(){
                     <p className="text-center">
                         ¿Está seguro que desea eliminar el equipo?
                         </p>
-                        {/* <!-- <p className="text-center fw-bold">{{producto.1}}</p> --> */}
+                        <p class="text-center fw-bold">
+                             {nombre}
+                        </p>
                     </div>
                     <div className="modal-footer">
                     <button
@@ -53,6 +71,7 @@ export function Eliminarequipo(){
                     <button
                         type="submit"
                         className="btn btn-primary"
+                        onClick={()=>{eliminarequ(nombre)}}
                     >
                         Eliminar Equipo
                     </button>
