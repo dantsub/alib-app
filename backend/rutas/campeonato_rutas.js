@@ -23,4 +23,46 @@ campeonato_rutas.get("/listarcamp", async function(req,res){
         }else
             res.status(200).send({status:"Ok", msg:"Campeonatos encontrados", campeonatos});
 })
+
+
+campeonato_rutas.post("/eliminarcamp", async function(req,res){
+    const {nombrecamp} = req.body;
+    console.log(nombrecamp);
+    //buscar campeonato
+    campeonatomodel.deleteOne({nombrecamp},function(error,camp){
+        console.log(camp);
+        if (error){
+            res.send({status:"Error",msg:"El campeonato NO fue encontrado. Error"});
+            return false;
+        }
+        else{
+        if (camp){
+            res.send({status:"Ok",msg:"El campeonato fue eliminado satisfactoriamente", dato:camp})
+        }
+        else{
+            res.send({status:"Error",msg:"El campeonato No pudo ser eliminado"})
+        }
+    }
+
+})
+
+ campeonato_rutas.updateOne(filter, updateCamp, function(error,camp){
+         console.log(camp);
+         if (error){
+             res.send({status:"Error",msg:"El campeonato NO fue encontrado por Error"});
+             return false;
+         }
+         else{
+         if (camp){
+             res.send({status:"Ok",msg:"El campeonato fue editado satisfactoriamente", dato:camp})
+         }
+         else{
+             res.send({status:"Error",msg:"El campeonato No pudo ser editado, porque no fue encontrado"})
+         }
+     }
+
+ })
+
+});
+
 exports.campeonato_rutas=campeonato_rutas;

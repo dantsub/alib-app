@@ -1,10 +1,26 @@
-export function Eliminarcampeonato(){
+import axios from "axios";
+
+export function Eliminarcampeonato({nombrecamp}){
+    console.log("Consele Log Eliminar campeonato",nombrecamp);
+
+    const eliminarcamp = async (nombrecamp) =>{
+        const response = await axios.post(`http://localhost:8081/campeonatos/eliminarcamp`,
+            {headers: {"content-type":"application/json"}, nombrecamp})
+        const data = response.data;
+        alert(data.msg)
+        if (data.status==="Ok"){
+            window.location.href="/campeonatos"
+        }            
+    };
+
+
     return (
     <>
         <button
         className="btn btn-danger table-buttons"
         data-bs-toggle="modal"
-        data-bs-target="#modal_eliminar_campeonato"
+        data-bs-target={`#modal_eliminar_${nombrecamp.replace(/[ .]+/g,'').toLowerCase()}`}   
+
         >
         <i className="fa fa-trash"></i>
         </button>
@@ -12,7 +28,7 @@ export function Eliminarcampeonato(){
         {/* <!-- Modal Eliminar --> */}
             <div
             className="modal fade"
-            id="modal_eliminar_campeonato"
+            id={`modal_eliminar_${nombrecamp.replace(/[ .]+/g,'').toLowerCase()}`}   
             tabindex="-1"
             aria-labelledby="exampleModalLabel"
             aria-hidden="true"
@@ -40,7 +56,9 @@ export function Eliminarcampeonato(){
                         <p className="text-center">
                             ¿Está seguro que desea eliminar el campeonato?
                             </p>
-                            {/* <!-- <p className="text-center fw-bold">{{producto.1}}</p> --> */}
+                            <p class="text-center fw-bold">
+                                {nombrecamp}
+                            </p>
                     </div>
                     <div className="modal-footer">
                         <button
@@ -51,8 +69,9 @@ export function Eliminarcampeonato(){
                             Cancelar
                         </button>
                         <button
-                            type="submit"
+                            type="button"
                             className="btn btn-primary"
+                            onClick={()=>{eliminarcamp(nombrecamp)}}
                         >
                             Eliminar campeonato
                         </button>
