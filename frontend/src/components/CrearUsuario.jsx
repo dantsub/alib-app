@@ -41,6 +41,11 @@ export function CrearUsuario(){
     localStorage.setItem("registrosusuario", JSON.stringify(registrousuario));
     console.log(registrousuario);
     setAlerta(true);
+    //fadeout alert 2 seconds
+    setTimeout(() => {
+      setAlerta(false);
+    }, 2000);
+    
     
   };
 
@@ -48,10 +53,13 @@ export function CrearUsuario(){
     return (
         <>
 
-            <Base />
+        <Base />
+    
+        
 
         {/* <!-- BEGIN: Content --> */}
-    <div className="app-content content">
+        <div className="app-content content">
+          
       {/* <!-- Content-wrapper --> */}
       <div className="content-wrapper">
         <div className="card">
@@ -60,8 +68,13 @@ export function CrearUsuario(){
         <div className="row">
           <div className="col-md-12 col-lg-6 mx-auto" style={{'text-align': 'center'}}>
             <h2>Formulario de creación de usuarios</h2>
-          </div>
-        </div>
+                    </div>
+                  </div>
+                  <div className="row">
+        {alerta && <div className="col-md-12 col-lg-6 mx-auto alert alert-success fade-show" role="alert" style={{"text-align":"center "}}>
+          Usuario creado con exito
+                    </div>}  
+          </div>          
 
         <div className="row">
           <div className="col-md-12 col-lg-4 mx-auto">
