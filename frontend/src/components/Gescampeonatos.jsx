@@ -117,7 +117,8 @@ export function Gescampeonatos(){
                             <td>{camp.estadocamp}</td>
                             <td> 
                                <Eliminarcampeonato nombrecamp={camp.nombrecamp}/>
-                               <Editarcampeonato />
+                               <Editarcampeonato nombrecamp ={camp.nombrecamp} fecinicamp={camp.fecinicamp} fecfincamp={camp.fecfincamp} orgcamp={camp.orgcamp} lugarcamp={camp.lugarcamp} numequipcamp={camp.numequipcamp} premioscamp={camp.premioscamp} logocamp={camp.premioscamp}/>
+                                
                                 {/* <button className="btn btn-primary" id="detalles" >
                                     <i className="fa fa-window-restore"></i>
                                 </button> */}

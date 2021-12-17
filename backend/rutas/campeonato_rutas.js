@@ -36,33 +36,58 @@ campeonato_rutas.post("/eliminarcamp", async function(req,res){
             return false;
         }
         else{
-        if (camp){
-            res.send({status:"Ok",msg:"El campeonato fue eliminado satisfactoriamente", dato:camp})
+            if (camp){
+                res.send({status:"Ok",msg:"El campeonato fue eliminado satisfactoriamente", dato:camp})
+            }
+            else{
+                res.send({status:"Error",msg:"El campeonato No pudo ser eliminado"})
+            }
         }
-        else{
-            res.send({status:"Error",msg:"El campeonato No pudo ser eliminado"})
-        }
-    }
-
+    })
 })
 
- campeonato_rutas.updateOne(filter, updateCamp, function(error,camp){
-         console.log(camp);
-         if (error){
-             res.send({status:"Error",msg:"El campeonato NO fue encontrado por Error"});
-             return false;
-         }
-         else{
-         if (camp){
-             res.send({status:"Ok",msg:"El campeonato fue editado satisfactoriamente", dato:camp})
-         }
-         else{
-             res.send({status:"Error",msg:"El campeonato No pudo ser editado, porque no fue encontrado"})
-         }
-     }
 
- })
+campeonato_rutas.post("/editarcamp", function(req,res){
+    const datos = req.body;
+    const nombrecamp = datos.nombrecamp;
+    const fecinicamp = datos.fecinicamp;
+    const fecfincamp = datos.fecfincamp;
+    const orgcamp = datos.orgcamp;
+    const lugarcamp = datos.lugarcamp;
+    const numequipcamp = datos.numequipcamp;
+    const premioscamp =  datos.premioscamp;
+    const logocamp = datos.logocamp; 
+    const estadocamp = datos.estadocamp; 
 
+    const filter = { nombrecamp: nombrecamp };
+    const updateCamp = {
+        $set: {
+          fecinicamp : fecinicamp,
+          fecfincamp : fecfincamp,
+          orgcamp : orgcamp,
+          lugarcamp : lugarcamp,
+          numequipcamp : numequipcamp,
+          premioscamp : premioscamp,
+          logocamp : logocamp,
+          estadocamp : estadocamp
+        },
+    };
+    
+    campeonatomodel.updateOne(filter, updateCamp, function(error,jug){
+        console.log(camp);
+        if (error){
+            res.send({status:"Error",msg:"El campeonato NO fue encontrado. Error"});
+            return false;
+        }
+        else{
+            if (camp){
+                res.send({status:"Ok",msg:"El campeonato fue editado satisfactoriamente", dato:camp})
+            }
+            else{
+                res.send({status:"Error",msg:"El campeonato No pudo ser editado, porque no fue encontrado"})
+            }
+        }
+    })
 });
 
 exports.campeonato_rutas=campeonato_rutas;
