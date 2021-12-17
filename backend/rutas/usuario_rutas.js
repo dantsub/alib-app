@@ -48,3 +48,14 @@ usuario_rutas.post("/guardar", function (req, res) {
     });
   });
 });
+
+usuario_rutas.get("/listar", async function (req, res) {
+  const usuarios = await usuariosmodel.find().lean();
+
+  console.log(usuarios);
+  if (usuarios == null) {
+    res
+      .status(400)
+      .send({ status: "Error", msg: "La base de datos está vacía", usuarios });
+  } else res.status(200).send({ status: "Ok", msg: "Usuarios encontrados", usuarios });
+});
