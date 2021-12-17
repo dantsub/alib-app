@@ -27,5 +27,8 @@
     "LISTAR_USUARIOS_API":{
         "URL": "http://localhost:53000/listausuarios"
 
+    },
+    "CREAR_USUARIO_API":{
+        "URL": "http://localhost:8081/crearusuario"
     }
 }
