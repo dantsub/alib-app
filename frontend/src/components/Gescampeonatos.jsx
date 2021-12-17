@@ -98,8 +98,9 @@ export function Gescampeonatos(){
                       </tr>
                     </thead>
                     <tbody className="js-table-body" id="tablaequipos">
-                    {listar_campeonato.map(camp=>
-                        <tr className="js-row">
+
+                    {listar_campeonato?.map((camp,idx)=>
+                        <tr key={idx} className="js-row">
                             <td>
                                 <div className="container">
                                     <div className="px-0">
@@ -115,7 +116,7 @@ export function Gescampeonatos(){
                             <td>{camp.lugarcamp}</td>
                             <td>{camp.estadocamp}</td>
                             <td> 
-                               <Eliminarcampeonato />
+                               <Eliminarcampeonato nombrecamp={camp.nombrecamp}/>
                                <Editarcampeonato />
                                 {/* <button className="btn btn-primary" id="detalles" >
                                     <i className="fa fa-window-restore"></i>
