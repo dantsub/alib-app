@@ -25,10 +25,10 @@
         "URL": "http://localhost:53000/fechas"
     },
     "LISTAR_USUARIOS_API":{
-        "URL": "http://localhost:53000/listausuarios"
+        "URL": "http://localhost:8081/usuarios/listar"
 
     },
     "CREAR_USUARIO_API":{
-        "URL": "http://localhost:8081/crearusuario"
+        "URL": "http://localhost:8081/usuarios/guardar"
     }
 }

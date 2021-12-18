@@ -7,19 +7,18 @@ import { Link } from "react-router-dom";
 export function ListaUsuarios() {
   document.title = "Lista de Usuarios";
   
-  let [Refrescar, setRefrescar] = useState(true);
   let [listar_us, setlistar_us] = useState([]);
   let [listarUsuario, setListarUsuario] = useState([]);
   
   useEffect(() => {
     const solicitar_usuarios = async () => {
       const dato = await consumirlistarusuarios();
-      setlistar_us(dato);
-      setListarUsuario(dato);
+      console.log(dato);
+      setlistar_us(dato.usuarios);
+      setListarUsuario(dato.usuarios);
     };
     solicitar_usuarios();
-  }, [Refrescar])
-  console.log(listar_us);
+  }, []);
 
   const buscar_usuarios = (evento) => {
     var busqueda = listar_us.filter(e => {
@@ -109,11 +108,11 @@ export function ListaUsuarios() {
                     <tbody className="js-table-body" id="tablausuarios">
                                             {listarUsuario.map(usuario => (
                                                 <tr>
-                                                    <td>{usuario.documento}</td>
-                                                    <td>{usuario.nombre}</td>
+                                                    <td>{usuario.doc}</td>
+                                                    <td>{usuario.nom}</td>
                                                     <td>{usuario.email}</td>
-                                                    <td>{usuario.rol}</td>
-                                                    <td>{usuario.estado}</td>
+                                                    <td>{usuario.idrol}</td>
+                                                    <td>{usuario.idestado}</td>
                                                     <td>
                                                         <a href="..."><button className="btn btn-primary table-buttons" id="editar" >
                                                             <span className="fas fa-edit"></span>
