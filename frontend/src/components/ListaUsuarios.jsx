@@ -29,6 +29,16 @@ export function ListaUsuarios() {
     setListarUsuario(busqueda);
   }
 
+  function estado(id) {
+    if (id === "Inactivo") {
+      return (<span class="badge rounded-pill badge-light-danger me-1"
+                          >Inactivo</span>)
+    } else {
+      return (<span class="badge rounded-pill badge-light-success me-1"
+                          >Activo</span>)
+    }    
+  }
+
   function botones(id) {
     if(id=="Activado"){
     return (
@@ -149,7 +159,7 @@ export function ListaUsuarios() {
                                                     <td>{usuario.nom}</td>
                                                     <td>{usuario.email}</td>
                                                     <td>{usuario.idrol}</td>
-                                                    <td>{usuario.idestado}</td>
+                                                    <td>{estado(usuario.idestado)}</td>
                                                 <td>
                                                     {botones(usuario.idestado)}
 
