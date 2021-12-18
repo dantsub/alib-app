@@ -52,9 +52,9 @@ export function Campeonatodetails(){
                 <div className="row">
                     <div className="col">
                     <h1 className="my-2">Equipos integrantes del campeonato</h1>
-                    <h2 className="my-2">Campeonato: Uefa</h2>
+                    {/* <h2 className="my-2">Campeonato: Uefa</h2> */}
                 </div>
-                <div className="col col-lg-2">
+                {/* <div className="col col-lg-2">
                     <span className="brand-logo" style={{ width: '40px' }}>
                         <div className="brand-logo round" width="40" height="40" >
                         <img  src={uefa} width="120" height="120" />
@@ -62,12 +62,25 @@ export function Campeonatodetails(){
                         <span className="avatar-status-online"></span>
                     </span>
                     
-                </div>
+                </div> */}
                 </div>
                 {/* <!-- Seccion de filtros --> */}
                 <h4 className="card-title">Busqueda y filtros</h4>
                 <div className="row">
-                    <div className="col-md-3">
+                
+                <h4 class="card-title">Escoja un Campeonato</h4>
+                <div className="col-md-2 ">
+                    <select name="campeonatos" class="form-control">
+                    <option value="camp1"selected>Liga Betplay Dimayor</option>
+                    <option value="camp2" >UEFA</option>
+                    <option value="camp3">Premier</option>
+                  </select>
+                  </div>
+                  <div className="col-md-3 d-flex align-items-end">
+                    <Listadoequipos />
+                  </div>
+                  
+                  
                     <label className="form-label" for="Searchproducto"
                         >Busqueda de equipos</label>
                     <input
@@ -78,16 +91,8 @@ export function Campeonatodetails(){
                         aria-controls="Buscar"
                         onChange={buscar_equipos}
                     />
-                    </div>
-                
-    
                     <div className="col-md-3 d-flex align-items-end">
-            
-                        <Listadoequipos />
-            
-                    </div>
-                    <div className="col-md-3 d-flex align-items-end">
-                        <Eliminarcampeonato />
+                        {/* <Eliminarcampeonato /> */}
             
                     </div>
                 </div>
@@ -131,7 +136,7 @@ export function Campeonatodetails(){
                                     <Aprobarequipo/>
                                 </td>
                                 <td> 
-                                    <Eliminarequipo />
+                                    {/* <Eliminarequipo /> */}
                                 
                                 </td>
                             </tr>

@@ -57,7 +57,7 @@ campeonato_rutas.post("/editarcamp", function(req,res){
     const numequipcamp = datos.numequipcamp;
     const premioscamp =  datos.premioscamp;
     const logocamp = datos.logocamp; 
-    const estadocamp = datos.estadocamp; 
+    //const estadocamp = datos.estadocamp; 
 
     const filter = { nombrecamp: nombrecamp };
     const updateCamp = {
@@ -69,7 +69,7 @@ campeonato_rutas.post("/editarcamp", function(req,res){
           numequipcamp : numequipcamp,
           premioscamp : premioscamp,
           logocamp : logocamp,
-          estadocamp : estadocamp
+          //estadocamp : estadocamp
         },
     };
     

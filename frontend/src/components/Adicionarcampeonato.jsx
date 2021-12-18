@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import axios from "axios";
 
 export function Adicionarcampeonato(){
 
@@ -25,7 +26,8 @@ export function Adicionarcampeonato(){
 	const premioscampg  = useRef();
 	const logocampg     = useRef(); 
 
-    function guardarcamp(){
+    function guardarcamp(event){
+        event.preventDefault();
         const nombrecamp    = nombrecampg.current.value;
         const fecinicamp    = fecinicampg.current.value;
         const fecfincamp    = fecfincampg.current.value;
@@ -36,14 +38,25 @@ export function Adicionarcampeonato(){
         const logocamp      = logocampg.current.value;
         const estadocamp    = "En inscripciones";
 
-        fetch(`http://localhost:8081/campeonatos/guardarcamp`,{
+        axios.post(`http://localhost:8081/campeonatos/guardarcamp`,{
             headers: {"content-type":"application/json"},
-            method: "POST",
-            body: JSON.stringify({nombrecamp, fecinicamp, fecfincamp, orgcamp, lugarcamp, numequipcamp, premioscamp, logocamp, estadocamp})
+            nombrecamp, fecinicamp, fecfincamp, orgcamp, lugarcamp, numequipcamp, premioscamp, logocamp, estadocamp
              })
-        .then(dato=>dato.json())
-        .then(dato=>alert(dato.msg))
-        .catch(error=>alert(error));
+             .then(res => { const respuesta = res.data;
+                alert(respuesta.msg)
+                if (respuesta.status==="Ok"){
+                    {window.location.href="/campeonatos"}
+                }
+              })
+              .catch(error=>alert(error)); 
+              nombrecampg.current.value="";
+              fecinicampg.current.value="";
+              fecfincampg.current.value="";
+              orgcampg.current.value="";
+              lugarcampg.current.value="";
+              numequipcampg.current.value="";
+              premioscampg.current.value="";
+              logocampg.current.value="";
     };
     
     return (

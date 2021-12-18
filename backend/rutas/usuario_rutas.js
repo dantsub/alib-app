@@ -90,6 +90,7 @@ usuario_rutas.post("/guardar", function (req, res) {
   // });
 });
 
+<<<<<<< HEAD
 // usuario_rutas.get("/listar", async function (req, res) {
 //   const usuarios = await usuariosmodel.find().lean();
 
@@ -100,4 +101,6 @@ usuario_rutas.post("/guardar", function (req, res) {
 //       .send({ status: "Error", msg: "La base de datos está vacía", usuarios });
 //   } else res.status(200).send({ status: "Ok", msg: "Usuarios encontrados", usuarios });
 // });
+=======
+>>>>>>> 2c8594ab104ce0ddf65dd5f496cecd85f37188a6
 exports.usuario_rutas = usuario_rutas;
