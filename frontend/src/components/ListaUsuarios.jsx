@@ -28,7 +28,44 @@ export function ListaUsuarios() {
     });
     setListarUsuario(busqueda);
   }
-    
+
+  function botones(id) {
+    if(id=="Activado"){
+    return (
+      <div>
+        <Link
+            className="btn btn-primary table-buttons"
+            to={{
+              pathname: "/editarusuario",
+              state: {
+                id: id
+              }
+            }}
+          >
+            <span className="fas fa-edit"></span>
+          </Link>
+        <EliminarUsuario id={id} />
+      </div>
+    );
+    }
+    else {
+      return (
+        <div className="btn-group">
+          <Link
+            className="btn btn-primary table-buttons"
+            to={{
+              pathname: "/editarusuario",
+              state: {
+                id: id
+              }
+            }}
+          >
+            <span className="fas fa-edit"></span>
+          </Link>
+        </div>
+      );
+    }
+  }
 
     return (
         <>
@@ -113,12 +150,14 @@ export function ListaUsuarios() {
                                                     <td>{usuario.email}</td>
                                                     <td>{usuario.idrol}</td>
                                                     <td>{usuario.idestado}</td>
-                                                    <td>
-                                                        <a href="..."><button className="btn btn-primary table-buttons" id="editar" >
+                                                <td>
+                                                    {botones(usuario.idestado)}
+
+                                                        {/* <a href="..."><button className="btn btn-primary table-buttons" id="editar" >
                                                             <span className="fas fa-edit"></span>
                                                             </button>
                                                         </a>
-                                                        <EliminarUsuario />
+                                                        <EliminarUsuario /> */}
                                                     </td>
                                                 </tr>
                                             ))}
