@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { usuariosmodel } = require("../modelos/usuariosmodel");
+const { usuariomodel } = require("../modelos/usuariosmodel");
 const usuario_rutas = Router();
 var formidable = require("formidable");
 var fs = require("fs");

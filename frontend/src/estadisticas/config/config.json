@@ -29,6 +29,6 @@
 
     },
     "CREAR_USUARIO_API":{
-        "URL": "http://localhost:8081/crearusuario"
+        "URL": "http://localhost:8081/usuarios/guardar"
     }
 }
