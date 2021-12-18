@@ -25,7 +25,7 @@ export function Editarcampeonato({nombrecamp, fecinicamp, fecfincamp, orgcamp, l
 	const numequipcampe = useRef();
 	const premioscampe  = useRef();
 	const logocampe     = useRef();
-    const estadocampe   = useRef();
+    //const estadocampe   = useRef();
 
     const editarcamp = async (doc) =>{
         const nombrecampt    = nombrecampe.current.value;
@@ -36,7 +36,7 @@ export function Editarcampeonato({nombrecamp, fecinicamp, fecfincamp, orgcamp, l
         const numequipcampt  = numequipcampe.current.value;
         const premioscampt   = premioscampe.current.value;
         const logocampt      = logocampe.current.value;
-        const estadocampt    = estadocampe.current.value;
+        //const estadocampt    = estadocampe.current.value;
         const response = await axios.post(`http://localhost:8081/campeonatos/editarcamp`,
         {
             nombrecamp : nombrecampt,
@@ -47,7 +47,7 @@ export function Editarcampeonato({nombrecamp, fecinicamp, fecfincamp, orgcamp, l
             numequipcamp : numequipcampt,
             premioscamp : premioscampt,
             logocamp : logocampt,
-            estadocamp : estadocampt
+            //estadocamp : estadocampt
         },
         {headers: {"content-type":"application/json"}})
         const data = response.data;
@@ -62,7 +62,7 @@ export function Editarcampeonato({nombrecamp, fecinicamp, fecfincamp, orgcamp, l
         numequipcampe.current.value="";
         premioscampe.current.value="";
         logocampe.current.value="";
-        estadocampe.current.value="";
+        //estadocampe.current.value="";
     };
 
 
@@ -105,7 +105,7 @@ export function Editarcampeonato({nombrecamp, fecinicamp, fecfincamp, orgcamp, l
                         <div className="modal-body">
                             <div className="form-group">
                                 <label for="" className="form-label">Nombre del Campeonato</label>
-                                <input type="text"  className="form-control" id="nombre_campeonato" placeholder="Nombre del campeonato" required  value ={nombrecamp}/>
+                                <input type="text" readOnly className="form-control" id="nombre_campeonato" placeholder="Nombre del campeonato" required  value ={nombrecamp}/>
                                 <div className="invalid-feedback">
                                     Por favor ingrese el nombre del campeonato
                                 </div>
@@ -148,14 +148,14 @@ export function Editarcampeonato({nombrecamp, fecinicamp, fecfincamp, orgcamp, l
                             </div>
                             <div className="form-group">
                                 <label for="" className="form-label">Premios</label>
-                                <input type="text"  className="form-control" id="premios" placeholder="Premios" required ref={premioscampe} defaultValue ={premioscamp}/>
+                                <input type="text"  className="form-control" id="premios" placeholder="Premios"  ref={premioscampe} defaultValue ={premioscamp}/>
                                 <div className="invalid-feedback">
                                     Por favor ingrese los premios
                                 </div>                                    
                             </div>
                             <div className="form-group">
                                 <label for="" className="form-label">Logo del campeonato</label>
-                                <input type="file"  className="form-control" id="logo_campeonato" placeholder="Logo del campeonato" required ref={logocampe} defaultValue ={logocamp}/>
+                                <input type="file"  className="form-control" id="logo_campeonato" placeholder="Logo del campeonato"  ref={logocampe} defaultValue ={logocamp}/>
                                 <div className="invalid-feedback">
                                     Por favor ingrese el logo
                                 </div>                                    
