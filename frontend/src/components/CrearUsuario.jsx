@@ -1,6 +1,7 @@
 import { Base } from "./Base";
 import { useRef, useState, useParams} from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export function CrearUsuario(){
 
@@ -166,13 +167,14 @@ export function CrearUsuario(){
                     onClick={guardarusuario}
                   >
                     Guardar
-                  </button>
-                  <button
+                            </button>
+                            <Link to="/listausuarios"> <button
                     type="button"
                     className="btn btn-secondary"
                   >
-                    Cerrar
-                  </button>
+                    Cancelar
+                  </button></Link>
+                 
                 </div>
               </form>
             </div>
