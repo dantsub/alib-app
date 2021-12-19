@@ -44,7 +44,6 @@ jugador_rutas.post("/eliminar", async function(req,res){
     console.log(documento);
     //eliminar jugador
     jugadormodel.deleteOne({documento},function(error,jug){
-        console.log(jug);
         if (error){
             res.send({status:"Error",msg:"El jugador NO fue encontrado por Error"});
             return false;
