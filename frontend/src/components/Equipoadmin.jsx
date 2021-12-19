@@ -1,96 +1,86 @@
-import { Base } from "./Base";
-import { Eliminarequipo } from "./Eliminarequipo";
-import { useEffect, useState } from "react";
-// import pescaito from '../asset/pescaito.jpg';
-// import tiburones from '../asset/tiburonesfc.jpg';
-// import india from '../asset/india.jpg';
-import { consumirequipo } from "../API/Alip_Api"
-import { Link } from "react-router-dom";
+import { Base } from './Base';
+import { Eliminarequipo } from './Eliminarequipo';
+import { useEffect, useState } from 'react';
+import { consumirequipo } from '../API/Alip_Api';
+import { Link } from 'react-router-dom';
 
-export function Equipoadmin(){
+export function Equipoadmin() {
   // Con esto cambiamos el título a la página que por default esta en Alib-app
-    document.title="Equipo";
+  document.title = 'Equipo';
 
-    let [Refrescar, setRefrescar]  = useState(true);
-    let [Listar_Eq,setListar_Eq] = useState([]);
-    let [listar_equipo,setListar_equipo] = useState([]);
-    
-    useEffect ( () => {
-        const solicitar_equipo= async () => {
-            const dato = await consumirequipo();
-            setListar_Eq(dato.equipos);
-            setListar_equipo(dato.equipos);
-    
-        };
-        solicitar_equipo();
-    }, [Refrescar])
-    console.log(Listar_Eq);
+  let [Listar_Eq, setListar_Eq] = useState([]);
+  let [listar_equipo, setListar_equipo] = useState([]);
 
+  useEffect(() => {
+    const solicitar_equipo = async () => {
+      const dato = await consumirequipo();
+      setListar_Eq(dato.equipos);
+      setListar_equipo(dato.equipos);
+    };
+    solicitar_equipo();
+  }, []);
 
-const buscar_equipo = (evento)=>{
-  var resultado_busqueda = Listar_Eq.filter(e=> {
-      if(e.nombre.toLowerCase().includes(evento.target.value.toLowerCase()) 
-      || e.rep.toLowerCase().includes(evento.target.value.toLowerCase())
+  const buscar_equipo = (evento) => {
+    var resultado_busqueda = Listar_Eq.filter((e) => {
+      if (
+        e.nombre.toLowerCase().includes(evento.target.value.toLowerCase()) ||
+        e.rep.toLowerCase().includes(evento.target.value.toLowerCase())
+      ) {
+        return e;
+      }
+      return false;
+    });
+    setListar_equipo(resultado_busqueda);
+  };
 
-    ){
-      return e;
-    }
-    
-  });
-  setListar_equipo(resultado_busqueda);
-}
+  function dateformat(fecha) {
+    const newfecha = new Date(fecha).toLocaleDateString();
+    return newfecha;
+  }
+  return (
+    <>
+      <Base />
 
-function dateformat(fecha) {
-  const newfecha = new Date(fecha).toLocaleDateString();
-  return newfecha;
-}
-    return (
-        <>
-        <Base />
-      
-
-
-    {/* <!-- BEGIN: Content --> */}
-    <div className="app-content content">
+      {/* <!-- BEGIN: Content --> */}
+      <div className='app-content content'>
         {/* <!-- Content-wrapper --> */}
-        <div className="content-wrapper">
-          <div className="card">
-            <div className="card-body border-bottom">
+        <div className='content-wrapper'>
+          <div className='card'>
+            <div className='card-body border-bottom'>
               <h2>Equipos</h2>
               {/* <!-- Seccion de filtros --> */}
-              <h4 className="card-title">Busqueda y filtros</h4>
-              <div className="row">
-                <div className="col-md-3">
-                  <label className="form-label" for="Searchproducto"
-                    >Busqueda de equipos</label>
+              <h4 className='card-title'>Busqueda y filtros</h4>
+              <div className='row'>
+                <div className='col-md-3'>
+                  <label className='form-label' for='Searchproducto'>
+                    Busqueda de equipos
+                  </label>
                   <input
-                    type="text"
-                    className="form-control"
-                    id="Searchproducto"
-                    placeholder="Busqueda"
-                    aria-controls="Buscar"
+                    type='text'
+                    className='form-control'
+                    id='Searchproducto'
+                    placeholder='Busqueda'
+                    aria-controls='Buscar'
                     onChange={buscar_equipo}
                   />
                 </div>
-
-  
               </div>
             </div>
             {/* <!-- Fin card-body -->
   
             <!-- Fin seccion del filtros --> */}
-  
+
             <div>
               {/* <!-- Seccion de tabla --> */}
               <div
-                className="card-dataTable table-responsive pt-0"
+                className='card-dataTable table-responsive pt-0'
                 style={{ padding: '5px' }}
               >
                 <div
-                  className="table-responsive table-bordered"
-                  id="Div-tablaequipo"
+                  className='table-responsive table-bordered'
+                  id='Div-tablaequipo'
                 >
-                  <table className="table table-hover">
+                  <table className='table table-hover'>
                     <thead>
                       <tr>
                         <th>Logo</th>
@@ -101,38 +91,40 @@ function dateformat(fecha) {
                         <th>Detalles</th>
                       </tr>
                     </thead>
-                    <tbody className="js-table-body" id="tablaequipos">
-                    {listar_equipo?.map((eq,idx)=>
+                    <tbody className='js-table-body' id='tablaequipos'>
+                      {listar_equipo?.map((eq, idx) => (
                         <tr key={idx}>
-                            <td>
-                                <div className="container">
-                                    <div className="col-md-4 px-0">
-                                        <img src={eq.logo} className="img-fluid" width="150px" height="150px" />
-                                    </div>
-                                </div>
-                            </td>
-                            <td>{eq.nombre}</td>
-                            <td>{dateformat(eq.fecha)}</td>
-                            <td>{eq.rep}</td>
-                            <td> 
-                               <Eliminarequipo nombre={eq.nombre} />
-
-                            </td>
-                            <td>
-                              
-                            <Link to ="/jugadores">
-                                  <button className="btn btn-primary" id="detalles" >
-                                      <i className="fa fa-window-restore"></i>
-                                  </button>
-          
-                                </Link>
-                            </td>
+                          <td>
+                            <div className='container'>
+                              <div className='col-md-4 px-0'>
+                                <img
+                                  alt=''
+                                  src={eq.logo}
+                                  className='img-fluid'
+                                  width='150px'
+                                  height='150px'
+                                />
+                              </div>
+                            </div>
+                          </td>
+                          <td>{eq.nombre}</td>
+                          <td>{dateformat(eq.fecha)}</td>
+                          <td>{eq.rep}</td>
+                          <td>
+                            <Eliminarequipo nombre={eq.nombre} />
+                          </td>
+                          <td>
+                            <Link to='/jugadores'>
+                              <button className='btn btn-primary' id='detalles'>
+                                <i className='fa fa-window-restore'></i>
+                              </button>
+                            </Link>
+                          </td>
                         </tr>
-                        )}
-                       
+                      ))}
                     </tbody>
                   </table>
-  
+
                   {/* <!-- #fin de la tabla --> */}
                 </div>
               </div>
@@ -140,6 +132,6 @@ function dateformat(fecha) {
           </div>
         </div>
       </div>
-        </>
-    );
+    </>
+  );
 }
