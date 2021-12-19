@@ -27,7 +27,7 @@ const usuarioschema = new Schema({
   },
 });
 
-userschema.pre('save', async function(next){
+usuarioschema.pre('save', async function(next){
   const salt = await genSalt(10)
   this.pass = await hash(this.pass, salt);
   return next();

@@ -50,6 +50,8 @@ const Register = () => {
                         <label for='register-document' className='form-label'>
                           Número de documento
                         </label>
+                        <input type="hidden" name="idrol" value="Externo" />
+                        <input type="hidden" name="idestado" value="Activado" />
                         <input
                           type='text'
                           className='form-control'
