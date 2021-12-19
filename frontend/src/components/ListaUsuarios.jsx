@@ -7,19 +7,18 @@ import { Link } from "react-router-dom";
 export function ListaUsuarios() {
   document.title = "Lista de Usuarios";
   
-  let [Refrescar, setRefrescar] = useState(true);
   let [listar_us, setlistar_us] = useState([]);
   let [listarUsuario, setListarUsuario] = useState([]);
   
   useEffect(() => {
     const solicitar_usuarios = async () => {
       const dato = await consumirlistarusuarios();
-      setlistar_us(dato);
-      setListarUsuario(dato);
+      console.log(dato);
+      setlistar_us(dato.usuarios);
+      setListarUsuario(dato.usuarios);
     };
     solicitar_usuarios();
-  }, [Refrescar])
-  console.log(listar_us);
+  }, []);
 
   const buscar_usuarios = (evento) => {
     var busqueda = listar_us.filter(e => {
@@ -29,7 +28,54 @@ export function ListaUsuarios() {
     });
     setListarUsuario(busqueda);
   }
-    
+
+  function estado(id) {
+    if (id === "Inactivo") {
+      return (<span class="badge rounded-pill badge-light-danger me-1"
+                          >Inactivo</span>)
+    } else {
+      return (<span class="badge rounded-pill badge-light-success me-1"
+                          >Activo</span>)
+    }    
+  }
+
+  function botones(id) {
+    if(id=="Activado"){
+    return (
+      <div>
+        <Link
+            className="btn btn-primary table-buttons"
+            to={{
+              pathname: "/editarusuario",
+              state: {
+                id: id
+              }
+            }}
+          >
+            <span className="fas fa-edit"></span>
+          </Link>
+        <EliminarUsuario id={id} />
+      </div>
+    );
+    }
+    else {
+      return (
+        <div className="btn-group">
+          <Link
+            className="btn btn-primary table-buttons"
+            to={{
+              pathname: "/editarusuario",
+              state: {
+                id: id
+              }
+            }}
+          >
+            <span className="fas fa-edit"></span>
+          </Link>
+        </div>
+      );
+    }
+  }
 
     return (
         <>
@@ -109,17 +155,19 @@ export function ListaUsuarios() {
                     <tbody className="js-table-body" id="tablausuarios">
                                             {listarUsuario.map(usuario => (
                                                 <tr>
-                                                    <td>{usuario.documento}</td>
-                                                    <td>{usuario.nombre}</td>
+                                                    <td>{usuario.doc}</td>
+                                                    <td>{usuario.nom}</td>
                                                     <td>{usuario.email}</td>
-                                                    <td>{usuario.rol}</td>
-                                                    <td>{usuario.estado}</td>
-                                                    <td>
-                                                        <a href="..."><button className="btn btn-primary table-buttons" id="editar" >
+                                                    <td>{usuario.idrol}</td>
+                                                    <td>{estado(usuario.idestado)}</td>
+                                                <td>
+                                                    {botones(usuario.idestado)}
+
+                                                        {/* <a href="..."><button className="btn btn-primary table-buttons" id="editar" >
                                                             <span className="fas fa-edit"></span>
                                                             </button>
                                                         </a>
-                                                        <EliminarUsuario />
+                                                        <EliminarUsuario /> */}
                                                     </td>
                                                 </tr>
                                             ))}

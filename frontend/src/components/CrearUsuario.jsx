@@ -30,7 +30,7 @@ export function CrearUsuario(){
 
     let registrousuario=[];
 
-    const guardarusuario = (event) => {
+    function guardarusuario (event) {
       event.preventDefault();
       const doc = docusuario.current.value;
       const nom = nomusuario.current.value;
@@ -38,25 +38,23 @@ export function CrearUsuario(){
       const pass = passusuario.current.value;
       const idrol = rolusuario.current.value;
       const idestado = "Activado";
-      const datos = new FormData();
-      datos.append("doc", doc)
-      datos.append("nom", nom)
-      datos.append("email", email)
-      datos.append("pass", pass)
-      datos.append("idrol", idrol)
-      datos.append("idestado", idestado)
-      console.log(doc)
-      console.log(nom)
-      console.log(email)
-      console.log(pass)
-      console.log(idrol)
-      console.log(idestado)
-      axios.post(`http://localhost:8081/crearusuario`, datos, { headers: { 'Content-Type': 'multipart/form-data' } })
+      // const datos = new FormData();
+      // datos.append("doc", doc)
+      // datos.append("nom", nom)
+      // datos.append("email", email)
+      // datos.append("pass", pass)
+      // datos.append("idrol", idrol)
+      // datos.append("idestado", idestado)
+      axios.post(`http://localhost:8081/usuarios/guardar`, { headers: { 'Content-Type':"application/json"},doc,nom,email,pass,idrol,idestado})
         .then(res => {
           const respuesta = res.data;
           alert(respuesta.msg)
           if (respuesta.status === "Ok") {
-            { window.location.href = "/listausuarios" }
+            // { window.location.href = "/listausuarios" }
+            setAlerta(true);
+      setTimeout(() => {
+        setAlerta(false);
+      }, 3000);
           }
         })
         .catch(error => alert(error));
@@ -65,10 +63,7 @@ export function CrearUsuario(){
       emailusuario.current.value = "";
       passusuario.current.value = "";
       rolusuario.current.value = "";
-      setAlerta(true);
-      setTimeout(() => {
-        setAlerta(false);
-      }, 3000);
+      
     };
 
     //   const data = { docusuario:doc, nomusuario:nom, emailusuario:email, passusuario:pass, rolusuario:idrol, idestado:idestado };
