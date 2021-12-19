@@ -1,4 +1,5 @@
 const { Schema, model } = require("mongoose");
+const { genSalt, hash } = require('bcrypt');
 const usuarioschema = new Schema({
   doc: {
     type: "string",
@@ -25,5 +26,12 @@ const usuarioschema = new Schema({
     required: true,
   },
 });
+
+userschema.pre('save', async function(next){
+  const salt = await genSalt(10)
+  this.pass = await hash(this.pass, salt);
+  return next();
+});
+
 const usuariomodel = model("usuarios", usuarioschema);
 exports.usuariomodel = usuariomodel;

@@ -59,15 +59,16 @@ export function Editarfecha(){
                         <label for="" className="form-label">Fecha Fin</label>
                         <input type="date" className="form-control" id="fechafin" placeholder="Fecha final"/>
                     </div>
-                    <div>
+                    <table className="table-responsive">
                    
-                            <div>                        
-                                <th width= "10%">Local</th>
-                                <th width= "10%">Visante</th>
-                                <th width= "10%">Fecha</th>
-                            </div>
-                            <div>
-                                <th width= "10%" align="left"><select align="left" name="Equipos" className="form-control-sm">
+                            <tr className="col-4">                        
+                                <th width= "5%">Local</th>
+                                <th width= "5%">Visante</th>
+                                <th width= "5%">Fecha</th>
+                            </tr>
+                            <tr className="col-4">
+
+                                <th align="left"><select align="left" name="Equipos" >
                                 <option value="Eq1">Equipo A</option>
                                 <option value="Eq2">Equipo B</option>
                                 <option value="Eq3">Equipo C</option>
@@ -79,8 +80,8 @@ export function Editarfecha(){
                                 <option value="Eq3">Equipo C</option>
                                 <option value="Eq4">Equipo D</option></select></th>
                                 <th><input type="date" id="fecha" placeholder="Fecha" className="form-control-sm"/></th>
-                            </div>
-                            <tr>
+                            </tr>
+                            <tr className="col-4">
                                 <td><select name="Equipos" className="form-control-sm">
                                 <option value="Eq1">Equipo A</option>
                                 <option value="Eq2">Equipo B</option>
@@ -100,7 +101,7 @@ export function Editarfecha(){
                                     Editar
                                 </button>
                                 </div>
-                                </div>
+                                </table>
                             </form>
                         </div>
                     

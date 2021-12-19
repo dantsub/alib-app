@@ -1,4 +1,4 @@
-const { Router } = require("express") ;
+const { Router } = require("express");
 const campeonato_rutas = Router();
 const {campeonatomodel} = require("../modelos/campeonatosmodel");
 

@@ -14,7 +14,6 @@
   },
   "keywords": [
     "express",
-    "morgan",
     "cors"
   ],
   "author": "",
