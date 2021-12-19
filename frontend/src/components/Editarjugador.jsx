@@ -37,7 +37,11 @@ const editarjug = async (doc) =>{
     fnacjug.current.value=""; 
     };
 
-
+    function dateedit(fecha) {
+        const curr = new Date(fecha)
+        var newfecha = curr.toISOString().substr(0,10);
+        return newfecha;
+      }
 
 
     return (
@@ -94,7 +98,7 @@ const editarjug = async (doc) =>{
                     </div>
                     <div className="form-group">
                         <label for="" className="form-label">Fecha de nacimiento</label>
-                        <input type="date"  className="form-control" id="nacimiento" placeholder="Fecha Nacimiento" required ref={fnacjug} defaultValue ={fnacimiento} />
+                        <input type="date"  className="form-control" id="nacimiento" placeholder="Fecha Nacimiento" required ref={fnacjug} defaultValue ={dateedit(fnacimiento)} />
                         <div className="invalid-feedback">
                                 Por favor ingrese la fecha de nacimiento
                         </div>

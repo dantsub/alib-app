@@ -45,14 +45,13 @@ equipo_rutas.post("/guardar", function(req,res){
 });
 
 equipo_rutas.get("/listar", async function(req,res){
-    const equipos = await equipomodel.find().lean();
-
+    // const equipos = await equipomodel.find();
+        const equipos = await equipomodel.find().populate({
+            path:"integrantesequipo",
+            select: "nombre documento fnacimiento" 
+        });
     console.log(equipos);
-    // if (error){
-    //     res.send({status:"Error",msg:"Error al buscar en base de datos"});
-    //     return false;
-    // }
-    // else{
+
         if (equipos == null){
             res.status(400).send({status:"Error", msg:"La base de datos está vacía", equipos});
         

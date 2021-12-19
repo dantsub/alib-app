@@ -15,7 +15,23 @@ const equiposchema = new Schema({
     rep:{
         type:"string",
         required:true
-    }
-})
+    },
+    ecamp: {
+        type: Schema.Types.ObjectId,
+        ref: 'campeonatos', //nombre de la collection a la que te vas a relacionar 
+        required: true
+     }
+});
+
+equiposchema.virtual("integrantesequipo",{
+    ref : "players", //la collection de datos con las que se relaciona
+    localField: "_id", //
+    foreignField: "jequipo" //el nombre del campo en jugadormodel
+});
+
+equiposchema.set("toObject", { virtuals : true });
+equiposchema.set("toJSON", { virtuals : true})
+
+
 const equipomodel= model("equipos", equiposchema);
 exports.equipomodel=equipomodel;

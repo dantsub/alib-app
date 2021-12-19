@@ -26,9 +26,10 @@ export function Adicionarjugador(){
         const nombre = nomjug.current.value;
         const documento = docjug.current.value;
         const fnacimiento = fnacjug.current.value;
+        const jequipo= "61ba6767356bdee10c857254"; // Aquí tengo que traerme el id del equipo del usuario en sesión
         axios.post(`http://localhost:8081/players/guardar`,{
             headers: {"content-type":"application/json"},
-            nombre, documento, fnacimiento
+            nombre, documento, fnacimiento, jequipo
              })
              .then(res => {
                 const respuesta = res.data;

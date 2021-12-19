@@ -40,7 +40,10 @@ const buscar_equipo = (evento)=>{
   setListar_equipo(resultado_busqueda);
 }
 
-    
+function dateformat(fecha) {
+  const newfecha = new Date(fecha).toLocaleDateString();
+  return newfecha;
+}
     return (
         <>
         <Base />
@@ -109,7 +112,7 @@ const buscar_equipo = (evento)=>{
                                 </div>
                             </td>
                             <td>{eq.nombre}</td>
-                            <td>{eq.fecha}</td>
+                            <td>{dateformat(eq.fecha)}</td>
                             <td>{eq.rep}</td>
                             <td> 
                                <Eliminarequipo nombre={eq.nombre} />
