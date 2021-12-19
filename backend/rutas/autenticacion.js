@@ -14,7 +14,7 @@ autenticacion.post("/login", async function (req, res) {
     }
     const passOK = await compare(clave, usuario.pass);
     if (passOK) {
-      const token = sign({ usuario: usuario.doc, password: usuario.pass }, process.env.SECRET);
+      const token = sign({ usuario: usuario.doc, password: usuario.pass }, process.env.JWT_SECRET_KEY);
       res.status(200).send({ estado: "Ok", msg: "Usuario autenticado", usuario, token });
     } else {
       res.status(401).send({ estado: "Error", msg: "Usuario o clave incorrectos" });
