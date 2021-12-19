@@ -1,6 +1,5 @@
 import { Base } from "./Base";
 import { useEffect, useState } from "react";
-import { EliminarUsuario } from "./EliminarUsuario";
 import { EditarUsuario } from "./EditarUsuario";
 import { consumirlistarusuarios } from "../API/Alip_Api";
 import { Link } from "react-router-dom";
