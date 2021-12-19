@@ -19,6 +19,10 @@ const equiposchema = new Schema({
     ecamp: {
         type: Schema.Types.ObjectId,
         ref: 'campeonatos', //nombre de la collection a la que te vas a relacionar 
+     },
+    eusuario:{
+        type: Schema.Types.ObjectId,
+        ref: 'usuarios', //nombre de la collection a la que te vas a relacionar 
         required: true
      }
 });
