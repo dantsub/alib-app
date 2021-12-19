@@ -49,16 +49,6 @@ export function ListaUsuarios() {
     }    
   }
 
-  function botones(id) {
-    if(id=="Activado"){
-    return (
-      <div>
-        <EliminarUsuario id={id} />
-      </div>
-    );
-    }
-  }
-
     return (
         <>
             <Base />
