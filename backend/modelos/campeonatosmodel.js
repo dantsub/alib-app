@@ -34,6 +34,18 @@ const campeonatoschema = new Schema({
     estadocamp:{
         type:"string"
     }         
-})
+});
+
+
+campeonatoschema.virtual("integrantescampeonato",{
+    ref : "equipos", //la collection de datos con las que se relaciona
+    localField: "_id", //
+    foreignField: "ecamp" //el nombre del campo en jugadormodel
+});
+
+campeonatoschema.set("toObject", { virtuals : true });
+campeonatoschema.set("toJSON", { virtuals : true})
+
+
 const campeonatomodel= model("campeonatos", campeonatoschema);
 exports.campeonatomodel=campeonatomodel;

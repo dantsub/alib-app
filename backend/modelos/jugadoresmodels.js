@@ -12,7 +12,12 @@ const jugadorschema = new Schema({
     fnacimiento:{
         type:"date",
         required:true
-    }
+    },
+    jequipo: {
+        type: Schema.Types.ObjectId,
+        ref: 'equipos', //nombre de la collection a la que te vas a relacionar 
+        required: true
+     }
 })
 const jugadormodel= model("players", jugadorschema);
 exports.jugadormodel=jugadormodel;
