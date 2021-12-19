@@ -10,11 +10,13 @@ const { jugador_rutas } = require("./rutas/jugador_rutas");
 const { campeonato_rutas } = require("./rutas/campeonato_rutas");
 const { equipo_rutas } = require("./rutas/equipo_rutas");
 const { usuario_rutas } = require("./rutas/usuario_rutas");
+const { autenticacion } = require("./rutas/autenticacion");
 
 app.use("/players", jugador_rutas);
 app.use("/campeonatos", campeonato_rutas);
 app.use("/equipos", equipo_rutas);
 app.use("/usuarios", usuario_rutas);
+app.use("/autenticacion", autenticacion);
 
 mongoose
   .connect(process.env.SERVER_DB_URL)
