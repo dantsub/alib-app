@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import axios from "axios";
 
-export function Editarcampeonato({nombrecamp, fecinicamp, fecfincamp, orgcamp, lugarcamp, numequipcamp, premioscamp, logocamp, estadocamp}){
+export function Editarcampeonato({nombrecamp, fecinicamp, fecfincamp, orgcamp, lugarcamp, numequipcamp, premioscamp, logocamp}){
 
     const [validated, setValidated] = useState("false");
 
@@ -17,7 +17,6 @@ export function Editarcampeonato({nombrecamp, fecinicamp, fecfincamp, orgcamp, l
     };
 
 
-    const nombrecampe   = useRef();
 	const fecinicampe   = useRef();
 	const fecfincampe   = useRef();
 	const orgcampe      = useRef();
@@ -25,10 +24,8 @@ export function Editarcampeonato({nombrecamp, fecinicamp, fecfincamp, orgcamp, l
 	const numequipcampe = useRef();
 	const premioscampe  = useRef();
 	const logocampe     = useRef();
-    //const estadocampe   = useRef();
 
     const editarcamp = async (doc) =>{
-        const nombrecampt    = nombrecampe.current.value;
         const fecinicampt    = fecinicampe.current.value;
         const fecfincampt    = fecfincampe.current.value;
         const orgcampt       = orgcampe.current.value;
@@ -36,18 +33,16 @@ export function Editarcampeonato({nombrecamp, fecinicamp, fecfincamp, orgcamp, l
         const numequipcampt  = numequipcampe.current.value;
         const premioscampt   = premioscampe.current.value;
         const logocampt      = logocampe.current.value;
-        //const estadocampt    = estadocampe.current.value;
         const response = await axios.post(`http://localhost:8081/campeonatos/editarcamp`,
         {
-            nombrecamp : nombrecampt,
+            nombrecamp : doc,
             fecinicamp : fecinicampt,
             fecfincamp : fecfincampt,
             orgcamp : orgcampt,
             lugarcamp : lugarcampt,
             numequipcamp : numequipcampt,
             premioscamp : premioscampt,
-            logocamp : logocampt,
-            //estadocamp : estadocampt
+            logocamp : logocampt
         },
         {headers: {"content-type":"application/json"}})
         const data = response.data;
@@ -65,6 +60,11 @@ export function Editarcampeonato({nombrecamp, fecinicamp, fecfincamp, orgcamp, l
         //estadocampe.current.value="";
     };
 
+    function dateedit(fecha) {
+        const curr = new Date(fecha)
+        var newfecha = curr.toISOString().substr(0,10);
+        return newfecha;
+    }
 
     return (
     <>
@@ -112,7 +112,7 @@ export function Editarcampeonato({nombrecamp, fecinicamp, fecfincamp, orgcamp, l
                             </div>
                             <div className="form-group">
                                 <label for="" className="form-label">Fecha inicial</label>
-                                <input type="date"  className="form-control" id="fecha_inicial" placeholder="Fecha inicial" required ref={fecinicampe} defaultValue ={fecinicamp}/>
+                                <input type="date"  className="form-control" id="fecha_inicial" placeholder="Fecha inicial" required ref={fecinicampe} defaultValue ={dateedit(fecinicamp)}/>
                                 <div className="invalid-feedback">
                                     Por favor ingrese la fecha inicial
                                 </div>                                
@@ -120,7 +120,7 @@ export function Editarcampeonato({nombrecamp, fecinicamp, fecfincamp, orgcamp, l
                             
                             <div className="form-group">
                                 <label for="" className="form-label">Fecha final</label>
-                                <input type="date"  className="form-control" id="fecha_final" placeholder="Fecha final" required ref={fecfincampe} defaultValue ={fecfincamp}/>
+                                <input type="date"  className="form-control" id="fecha_final" placeholder="Fecha final" required ref={fecfincampe} defaultValue ={dateedit(fecfincamp)}/>
                                 <div className="invalid-feedback">
                                     Por favor ingrese la fecha fecha
                                 </div>                                

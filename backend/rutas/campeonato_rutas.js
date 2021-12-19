@@ -56,8 +56,7 @@ campeonato_rutas.post("/editarcamp", function(req,res){
     const lugarcamp = datos.lugarcamp;
     const numequipcamp = datos.numequipcamp;
     const premioscamp =  datos.premioscamp;
-    const logocamp = datos.logocamp; 
-    //const estadocamp = datos.estadocamp; 
+    const logocamp = datos.logocamp;
 
     const filter = { nombrecamp: nombrecamp };
     const updateCamp = {
@@ -68,12 +67,11 @@ campeonato_rutas.post("/editarcamp", function(req,res){
           lugarcamp : lugarcamp,
           numequipcamp : numequipcamp,
           premioscamp : premioscamp,
-          logocamp : logocamp,
-          //estadocamp : estadocamp
+          logocamp : logocamp
         },
     };
     
-    campeonatomodel.updateOne(filter, updateCamp, function(error,jug){
+    campeonatomodel.updateOne(filter, updateCamp, function(error,camp){
         console.log(camp);
         if (error){
             res.send({status:"Error",msg:"El campeonato NO fue encontrado. Error"});
