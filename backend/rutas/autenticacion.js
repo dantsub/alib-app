@@ -7,12 +7,12 @@ const autenticacion = Router();
 
 autenticacion.post("/login", async function (req, res) {
   try {
-    const { documento, clave } = req.body;
-    const usuario = await usuariomodel.findOne({ documento });
+    const { doc, pass } = req.body;
+    const usuario = await usuariomodel.findOne({ doc });
     if (usuario == null) {
       res.status(401).send({ estado: "Error", msg: "Usuario o clave incorrectos" });
     }
-    const passOK = await compare(clave, usuario.pass);
+    const passOK = await compare(pass, usuario.pass);
     if (passOK) {
       const token = sign({ usuario: usuario.doc, password: usuario.pass }, process.env.JWT_SECRET_KEY);
       res.status(200).send({ estado: "Ok", msg: "Usuario autenticado", usuario, token });
