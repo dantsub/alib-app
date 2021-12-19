@@ -1,5 +1,5 @@
 import { Base } from "./Base";
-import { useRef, useState } from "react";
+import { useRef, useState, useParams} from "react";
 import axios from "axios";
 
 export function CrearUsuario(){
@@ -18,7 +18,7 @@ export function CrearUsuario(){
       event.target.className += " was-validated";
 
     setValidated(true);
-  };
+  };  
     
     const docusuario = useRef();
     const nomusuario = useRef();
@@ -37,7 +37,7 @@ export function CrearUsuario(){
       const email = emailusuario.current.value;
       const pass = passusuario.current.value;
       const idrol = rolusuario.current.value;
-      const idestado = "Activado";
+      const idestado = "1";
       // const datos = new FormData();
       // datos.append("doc", doc)
       // datos.append("nom", nom)
@@ -97,7 +97,7 @@ export function CrearUsuario(){
         <div className="container">
           <div className="row">
             <div className="col-md-12 col-lg-6 mx-auto" style={{'text-align': 'center'}}>
-              <h2>Formulario de creación de usuarios</h2>
+                        <h2>Formulario de creación de usuarios</h2>
                       </div>
                     </div>
                     <div className="row">
@@ -147,17 +147,7 @@ export function CrearUsuario(){
                               <input className="form-control form-control-merge" id="login-password" type="password"
                                 name="login-password" placeholder="Contraseña" aria-describedby="login-password"
                                 tabindex="0" ref={passusuario}/>
-                          {/* <span className="input-group-text cursor-pointer">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                              className="feather feather-eye-off font-small-4">
-                              <path
-                                d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24">
-                              </path>
-                              <line x1="1" y1="1" x2="23" y2="23"></line>
-                            </svg>
-                          </span> */}
-                        </div>
+                       </div>
                 </div>
                 <div className="form-group">
                   <label for="" className="form-label"
@@ -165,7 +155,7 @@ export function CrearUsuario(){
                   >
                   <select className="form-control" id="rol" ref={rolusuario}>
                     <option value="1">Usuario Interno</option>
-                    <option value="2">Usuario Externo</option>
+                    <option value="0">Usuario Externo</option>
                   </select>
                 </div>
                 <br />
