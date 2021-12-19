@@ -18,8 +18,8 @@ export function Equipodetails(){
     useEffect (() => {
         const solicitar_jugador= async () => {
             const dato = await consumirjugadores();
-            setListar_Jug(dato.jugadores);
-            setListar_jugador(dato.jugadores);
+            setListar_Jug(dato.jugadores.integrantesequipo);
+            setListar_jugador(dato.jugadores.integrantesequipo);
     
         };
         solicitar_jugador();
@@ -86,8 +86,7 @@ const buscar_jugador = (evento)=>{
                 <div className="row">
                     <div className="col-md-3">
                     <label className="form-label" for="Searchproducto"
-                        >Busqueda de jugador</label
-                    >
+                        >Busqueda de jugador</label>
                     <input
                         type="text"
                         className="form-control"
@@ -104,10 +103,15 @@ const buscar_jugador = (evento)=>{
                         <Adicionarjugador />
             
                     </div>
+                   
                     <div className="col-md-3 d-flex align-items-end">
+                    <span className="mr-1" style={{margin:'10px'}}>
+                    Eliminar Equipo
+                     </span>
                         <Eliminarequipo nombre="Tiburones F. C."/>
             
                     </div>
+
                 </div>
                 </div>
                 {/* <!-- Fin card-body --> */}

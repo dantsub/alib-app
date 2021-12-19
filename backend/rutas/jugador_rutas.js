@@ -1,22 +1,28 @@
 const { Router } = require("express") ;
 const jugador_rutas = Router();
 const { jugadormodel } = require("../modelos/jugadoresmodels");
+const { equipomodel } = require("../modelos/equipomodel");
 
 jugador_rutas.post("/guardar", function(req,res){
     const datos = req.body;
     const jug = new jugadormodel(datos);
     jug.save(function(err){
         if(err){
-            res.send({status:"Error",msg:"Los jugadores no pudieron ser guardados"})
+            res.send({status:"Error",msg:"El jugador no pudo ser guardado"})
             return false;
         }
-        res.send({status:"Ok",msg:"Los jugadores fueron guardados satisfactoriamente"})
+        res.send({status:"Ok",msg:"El jugador fue guardado satisfactoriamente"})
 
     })
 });
 
 jugador_rutas.get("/listar", async function(req,res){
-    const jugadores = await jugadormodel.find().lean();
+    // const jugadores = await jugadormodel.find().lean();
+    const filter = { nombre: "Tiburones F.C." };
+    const jugadores = await equipomodel.findOne(filter).populate({
+        path:"integrantesequipo",
+        select: "nombre documento fnacimiento" 
+    });
 
     console.log(jugadores);
     // if (error){
@@ -28,7 +34,7 @@ jugador_rutas.get("/listar", async function(req,res){
             res.status(400).send({status:"Error", msg:"La base de datos está vacía", jugadores});
         
         }else
-           res.status(200).send({status:"Ok", msg:"Jugadores encontrados", jugadores});
+           res.status(200).send({status:"Ok", msg:"Jugador encontrado", jugadores});
            
     // }
 })
