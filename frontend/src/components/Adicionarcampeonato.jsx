@@ -3,6 +3,7 @@ import axios from 'axios';
 
 export function Adicionarcampeonato() {
   const [validated, setValidated] = useState('false');
+  const [logocamp, setLogocamp] = useState();
 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
@@ -22,7 +23,10 @@ export function Adicionarcampeonato() {
   const lugarcampg = useRef();
   const numequipcampg = useRef();
   const premioscampg = useRef();
-  const logocampg = useRef();
+  const uploadfile = (event) => {
+    setLogocamp(event.target.files[0]);
+  };
+
 
   function guardarcamp(event) {
     event.preventDefault();
@@ -33,21 +37,25 @@ export function Adicionarcampeonato() {
     const lugarcamp = lugarcampg.current.value;
     const numequipcamp = numequipcampg.current.value;
     const premioscamp = premioscampg.current.value;
-    const logocamp = logocampg.current.value;
     const estadocamp = 'En inscripciones';
+    const datos = new FormData();
+    datos.append('nombrecamp', nombrecamp);
+    datos.append('fecinicamp', fecinicamp);
+    datos.append('fecfincamp',fecfincamp);
+    datos.append('orgcamp', orgcamp);
+    datos.append('lugarcamp', lugarcamp);
+    datos.append('numequipcamp',numequipcamp);
+    datos.append('premioscamp',premioscamp);
+    datos.append('logocamp',logocamp);
+    datos.append('estadocamp',estadocamp);
+    
+    console.log(nombrecamp);
+    console.log(fecinicamp);
+    console.log(logocamp);
 
     axios
-      .post(`http://localhost:8081/campeonatos/guardarcamp`, {
-        headers: { 'content-type': 'application/json' },
-        nombrecamp,
-        fecinicamp,
-        fecfincamp,
-        orgcamp,
-        lugarcamp,
-        numequipcamp,
-        premioscamp,
-        logocamp,
-        estadocamp,
+      .post(`http://localhost:8081/campeonatos/guardarcamp`, datos, {
+        headers: { 'Content-Type': 'multipart/form-data' },
       })
       .then((res) => {
         const respuesta = res.data;
@@ -57,14 +65,13 @@ export function Adicionarcampeonato() {
         }
       })
       .catch((error) => alert(error));
-    nombrecampg.current.value = '';
-    fecinicampg.current.value = '';
-    fecfincampg.current.value = '';
-    orgcampg.current.value = '';
-    lugarcampg.current.value = '';
-    numequipcampg.current.value = '';
-    premioscampg.current.value = '';
-    logocampg.current.value = '';
+      nombrecampg.current.value = '';
+      fecinicampg.current.value = '';
+      fecfincampg.current.value = '';
+      orgcampg.current.value = '';
+      lugarcampg.current.value = '';
+      numequipcampg.current.value = '';
+      premioscampg.current.value = '';
   }
 
   return (
@@ -231,7 +238,7 @@ export function Adicionarcampeonato() {
                     className='form-control'
                     id='logo_campeonato'
                     placeholder='Logo del campeonato'
-                    ref={logocampg}
+                    onChange={uploadfile}
                   />
                   <div className='invalid-feedback'>
                     Por favor ingrese el logo

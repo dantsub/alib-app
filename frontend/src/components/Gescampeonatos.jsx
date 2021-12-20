@@ -115,13 +115,13 @@ export function Gescampeonatos() {
                         <tr key={idx} className='js-row'>
                           <td>
                             <div className='container'>
-                              <div className='px-0'>
+                            <div className='col-md-4 px-0'>
                                 <img
+                                  alt=''
                                   src={camp.logocamp}
                                   className='img-fluid'
                                   width='150px'
                                   height='150px'
-                                  alt=''
                                 />
                               </div>
                             </div>

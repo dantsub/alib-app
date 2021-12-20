@@ -1,10 +1,60 @@
-import React, { useRef } from 'react';
+import axios from 'axios';
+import React, { useRef, useState } from 'react';
 import logo from '../asset/logoAlib.jpg';
 
 const Register = () => {
   const formDoc = useRef();
+  const formName = useRef();
   const formPass = useRef();
   const formEmail = useRef();
+
+  const [validated, setValidated] = useState('false');
+
+  const handleSubmit = (e) => {
+    const form = e.currentTarget;
+    if (form.checkValidity() === false) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    e.target.className += ' was-validated';
+
+    setValidated(true);
+  };
+
+  const saveUser = () => {
+    const doc = formDoc.current.value;
+    const name = formName.current.value;
+    const pass = formPass.current.value;
+    const email = formEmail.current.value;
+    const idrol = '2';
+    const idestado = '1';
+
+    axios
+      .post('http://localhost:8081/autenticacion/registro', {
+        headers: { 'Content-Type': 'application/json' },
+        doc,
+        name,
+        pass,
+        email,
+        idrol,
+        idestado,
+      })
+      .then((res) => {
+        const respuesta = res.data;
+        alert(respuesta.msg);
+        if (respuesta.estado === 'Ok') {
+          setValidated(true);
+          setTimeout(() => {
+            setValidated(false);
+          }, 3000);
+        }
+      })
+      .catch((error) => alert(error));
+    formDoc.current.value = '';
+    formName.current.value = '';
+    formPass.current.value = '';
+    formEmail.current.value = '';
+  };
 
   return (
     <div
@@ -48,16 +98,19 @@ const Register = () => {
 
                     <form
                       className='auth-register-form mt-2'
-                      action='index.html'
+                      action=''
                       method='POST'
-                      novalidate='novalidate'
+                      noValidate
+                      validated={validated}
+                      onSubmit={handleSubmit}
                     >
                       <div className='mb-1'>
-                        <label htmlFor='register-document' className='form-label'>
+                        <label
+                          htmlFor='register-document'
+                          className='form-label'
+                        >
                           Número de documento
                         </label>
-                        <input aria-label='.' type='hidden' name='idrol' value='Usuario externo' />
-                        <input aria-label='.' type='hidden' name='idestado' value='1' />
                         <input
                           type='text'
                           className='form-control'
@@ -67,10 +120,14 @@ const Register = () => {
                           aria-describedby='register-document'
                           tabindex='1'
                           autofocus=''
+                          ref={formDoc}
                         />
                       </div>
                       <div className='mb-1'>
-                        <label htmlFor='register-username' className='form-label'>
+                        <label
+                          htmlFor='register-username'
+                          className='form-label'
+                        >
                           Nombre completo
                         </label>
                         <input
@@ -81,7 +138,7 @@ const Register = () => {
                           placeholder='johndoe'
                           aria-describedby='register-username'
                           tabindex='1'
-                          autofocus=''
+                          ref={formName}
                         />
                       </div>
                       <div className='mb-1'>
@@ -96,11 +153,15 @@ const Register = () => {
                           placeholder='john@example.com'
                           aria-describedby='register-email'
                           tabindex='2'
+                          ref={formEmail}
                         />
                       </div>
 
                       <div className='mb-1'>
-                        <label htmlFor='register-password' className='form-label'>
+                        <label
+                          htmlFor='register-password'
+                          className='form-label'
+                        >
                           Contraseña
                         </label>
 
@@ -113,6 +174,7 @@ const Register = () => {
                             placeholder='············'
                             aria-describedby='register-password'
                             tabindex='3'
+                            ref={formPass}
                           />
                           <span className='input-group-text cursor-pointer'>
                             <svg
@@ -122,9 +184,9 @@ const Register = () => {
                               viewBox='0 0 24 24'
                               fill='none'
                               stroke='currentColor'
-                              stroke-width='2'
-                              stroke-linecap='round'
-                              stroke-linejoin='round'
+                              strokeWidth='2'
+                              strokeLinecap='round'
+                              strokeLinejoin='round'
                               className='feather feather-eye'
                             >
                               <path d='M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z'></path>
@@ -153,6 +215,8 @@ const Register = () => {
                       <button
                         className='btn btn-primary w-100 waves-effect waves-float waves-light'
                         tabindex='-1'
+                        type='submit'
+                        onClick={saveUser}
                       >
                         Registrar
                       </button>

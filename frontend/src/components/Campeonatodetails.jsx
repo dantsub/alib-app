@@ -1,7 +1,7 @@
+import React, { useEffect, useState } from 'react';
 import { Base } from './Base';
 import { Eliminarcampeonato } from './Eliminarcampeonato';
 import { Listadoequipos } from './Listadoequipos';
-import { useEffect, useState } from 'react';
 import { Aprobarequipo } from './Aprobarequipo';
 import { consumircampeonatosequip } from '../API/Alip_Api';
 

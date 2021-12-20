@@ -1,6 +1,7 @@
 import { Base } from './Base';
-import { useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import axios from 'axios';
+
 
 export function Crearequipo() {
   // Con esto cambiamos el título a la página que por default esta en Alib-app
@@ -51,6 +52,7 @@ export function Crearequipo() {
     nomequ.current.value = '';
     setLogo('');
   }
+  
   return (
     <>
       <Base />
@@ -75,7 +77,7 @@ export function Crearequipo() {
                     onSubmit={handleSubmit}
                   >
                     <div className='form-group'>
-                      <label for='' className='form-label'>
+                      <label htmlFor='doc' className='form-label'>
                         Nombre del Equipo
                       </label>
                       <input
@@ -91,7 +93,7 @@ export function Crearequipo() {
                       </div>
                     </div>
                     <div className='form-group'>
-                      <label for='' className='form-label'>
+                      <label htmlFor='logo' className='form-label'>
                         Logo del Equipo
                       </label>
                       <input
