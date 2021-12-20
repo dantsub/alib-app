@@ -1,15 +1,51 @@
-import React, { useRef } from 'react';
+import axios from 'axios';
+import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../asset/logoAlib.jpg';
 
-const LogIn = () => {
+const LogIn = ({ setUser, setToken }) => {
   const formDoc = useRef();
   const formPass = useRef();
 
+  const [validated, setValidated] = useState('false');
+
   const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(formDoc.current.value);
-    console.log(formPass.current.value);
+    const form = e.currentTarget;
+    if (form.checkValidity() === false) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    e.target.className += ' was-validated';
+
+    setValidated(true);
+  };
+
+  const login = () => {
+    const doc = formDoc.current.value;
+    const pass = formPass.current.value;
+
+    axios
+      .post('http://localhost:8081/autenticacion/login', {
+        headers: { 'Content-Type': 'application/json' },
+        doc,
+        pass,
+      })
+      .then((res) => {
+        const respuesta = res.data;
+        alert(respuesta.msg);
+        if (respuesta.estado === 'Ok') {
+          setValidated(true);
+          setTimeout(() => {
+            setValidated(false);
+          }, 3000);
+          setUser(respuesta.usuario);
+          setToken(respuesta.token);
+          window.location.href = '/';
+        }
+      })
+      .catch((error) => alert(error));
+    formDoc.current.value = '';
+    formPass.current.value = '';
   };
 
   return (
@@ -54,9 +90,11 @@ const LogIn = () => {
 
                     <form
                       className='auth-login-form mt-2'
-                      action='index.html'
+                      action=''
                       method='POST'
-                      noValidate='novalidate'
+                      noValidate
+                      validated={validated}
+                      onSubmit={handleSubmit}
                     >
                       <div className='mb-1'>
                         <label htmlFor='login-doc' className='form-label'>
@@ -132,7 +170,7 @@ const LogIn = () => {
                         className='btn btn-primary w-100 waves-effect waves-float waves-light'
                         tabIndex='-1'
                         type='submit'
-                        onClick={handleSubmit}
+                        onClick={login}
                       >
                         Ingresa
                       </button>

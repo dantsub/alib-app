@@ -1,11 +1,11 @@
 import logo from '../asset/logoAlib.jpg';
 import { Link } from 'react-router-dom';
-/* import LogIn from './LogIn'; */
+import LogIn from './LogIn';
 
 export function Base({ user }) {
   return (
     <>
-      {!user ? (
+      {user ? (
         <>
           <nav
             className='
@@ -58,10 +58,9 @@ export function Base({ user }) {
 
           <div
             className='
-        main-menu
-        menu-fixed menu-light menu-accordion menu-shadow
-        expanded
-      '
+            main-menu
+            menu-fixed menu-light menu-accordion menu-shadow
+            expanded'
             data-scroll-to-active='true'
           >
             <div className='navbar-header expanded'>
@@ -96,12 +95,11 @@ export function Base({ user }) {
                       strokeLinecap='round'
                       strokeLinejoin='round'
                       className='
-                  feather feather-x
-                  d-block d-xl-none
-                  text-primary
-                  toggle-icon
-                  font-medium-4
-                '
+                      feather feather-x
+                      d-block d-xl-none
+                      text-primary
+                      toggle-icon
+                      font-medium-4'
                     >
                       <line x1='18' y1='6' x2='6' y2='18'></line>
                       <line x1='6' y1='6' x2='18' y2='18'></line>
@@ -187,7 +185,7 @@ export function Base({ user }) {
             </div>
           </div>
         </>
-      ) : null
+      ) : <LogIn />
       }
     </>
   );
