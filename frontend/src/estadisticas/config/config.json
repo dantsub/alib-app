@@ -15,14 +15,14 @@
         "URL": "http://localhost:8081/listaequipos/listar"
     },
     "POSICIONES_API":{
-        "URL": "http://localhost:53000/posiciones"
+        "URL": "http://localhost:8081/posiciones/listarposiciones"
     },
     "PARTIDOS_API":{
-        "URL": "http://localhost:53000/partidos"
+        "URL": "http://localhost:8081/partidos/listarpartidos"
     },
 
     "FECHAS_API":{
-        "URL": "http://localhost:53000/fechas"
+        "URL": "http://localhost:8081/fechas/listarfechas"
     },
     "LISTAR_USUARIOS_API":{
         "URL": "http://localhost:8081/usuarios/listar"

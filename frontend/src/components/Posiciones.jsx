@@ -14,8 +14,8 @@ export function Posiciones(){
     useEffect ( () => {
         const solicitar_posicion= async () => {
             const dato = await consumirposiciones();
-            setListar_Pos(dato);
-            setListar_posicion(dato);
+            setListar_Pos(dato.posiciones);
+            setListar_posicion(dato.posiciones);
     
         };
         solicitar_posicion();
