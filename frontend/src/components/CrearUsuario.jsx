@@ -178,9 +178,12 @@ export function CrearUsuario() {
                         >
                           Guardar
                         </button>
-                        <button type='button' className='btn btn-secondary'>
-                          Cerrar
-                        </button>
+                        <Link to="/listausuarios"> <button
+                    type="button"
+                    className="btn btn-secondary"
+                  >
+                    Cancelar
+                  </button></Link>
                       </div>
                     </form>
                   </div>

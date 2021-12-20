@@ -15,8 +15,8 @@ export function Partidos() {
   useEffect(() => {
     const solicitar_partidos = async () => {
       const dato = await consumirpartidos();
-      setListar_Pt(dato);
-      setListar_partidos(dato);
+      setListar_Pt(dato.partidos);
+      setListar_partidos(dato.partidos);
     };
     solicitar_partidos();
   }, []);

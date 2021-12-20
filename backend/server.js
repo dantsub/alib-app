@@ -11,12 +11,18 @@ const { campeonato_rutas } = require("./rutas/campeonato_rutas");
 const { equipo_rutas } = require("./rutas/equipo_rutas");
 const { usuario_rutas } = require("./rutas/usuario_rutas");
 const { autenticacion } = require("./rutas/autenticacion");
+const { fecha_rutas } = require("./rutas/fecha_rutas");
+const { partido_rutas } = require("./rutas/partido_rutas");
+const { posicion_rutas } = require("./rutas/posicion_rutas");
 
 app.use("/players", jugador_rutas);
 app.use("/campeonatos", campeonato_rutas);
 app.use("/equipos", equipo_rutas);
 app.use("/usuarios", usuario_rutas);
 app.use("/autenticacion", autenticacion);
+app.use("/fechas", fecha_rutas);
+app.use("/partidos", partido_rutas);
+app.use("/posiciones", posicion_rutas);
 
 mongoose
   .connect(process.env.SERVER_DB_URL)
