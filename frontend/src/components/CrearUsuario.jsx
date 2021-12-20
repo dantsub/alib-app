@@ -1,6 +1,7 @@
 import { Base } from './Base';
-import { useRef, useState } from 'react';
+import { useRef, useState, useParams } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 export function CrearUsuario() {
   document.title = 'Crear Usuario';
@@ -33,14 +34,7 @@ export function CrearUsuario() {
     const email = emailusuario.current.value;
     const pass = passusuario.current.value;
     const idrol = rolusuario.current.value;
-    const idestado = 'Activado';
-    // const datos = new FormData();
-    // datos.append("doc", doc)
-    // datos.append("nom", nom)
-    // datos.append("email", email)
-    // datos.append("pass", pass)
-    // datos.append("idrol", idrol)
-    // datos.append("idestado", idestado)
+    const idestado = '1';
     axios
       .post(`http://localhost:8081/usuarios/guardar`, {
         headers: { 'Content-Type': 'application/json' },
@@ -55,7 +49,6 @@ export function CrearUsuario() {
         const respuesta = res.data;
         alert(respuesta.msg);
         if (respuesta.status === 'Ok') {
-          // { window.location.href = "/listausuarios" }
           setAlerta(true);
           setTimeout(() => {
             setAlerta(false);
@@ -69,18 +62,6 @@ export function CrearUsuario() {
     passusuario.current.value = '';
     rolusuario.current.value = '';
   }
-
-  //   const data = { docusuario:doc, nomusuario:nom, emailusuario:email, passusuario:pass, rolusuario:idrol, idestado:idestado };
-  //   registrousuario.push(data);
-  //   localStorage.setItem("registrosusuario", JSON.stringify(registrousuario));
-  //   console.log(registrousuario);
-  //   setAlerta(true);
-  //   //fadeout alert 2 seconds
-  //   setTimeout(() => {
-  //     setAlerta(false);
-  //   }, 2000);
-
-  // };
 
   return (
     <>
@@ -122,7 +103,7 @@ export function CrearUsuario() {
                       onSubmit={handleSubmit}
                     >
                       <div className='form-group'>
-                        <label for='' className='form-label'>
+                        <label htmlFor='' className='form-label'>
                           Documento
                         </label>
                         <input
@@ -134,7 +115,7 @@ export function CrearUsuario() {
                         />
                       </div>
                       <div className='form-group'>
-                        <label for='' className='form-label'>
+                        <label htmlFor='' className='form-label'>
                           Nombre Completo
                         </label>
                         <input
@@ -146,7 +127,7 @@ export function CrearUsuario() {
                         />
                       </div>
                       <div className='form-group'>
-                        <label for='' className='form-label'>
+                        <label htmlFor='' className='form-label'>
                           Correo Electronico
                         </label>
                         <input
@@ -159,7 +140,7 @@ export function CrearUsuario() {
                       </div>
 
                       <div className='form-group'>
-                        <label for='' className='form-label'>
+                        <label htmlFor='' className='form-label'>
                           Contraseña
                         </label>
                         <div className='input-group input-group-merge form-password-toggle'>
@@ -176,7 +157,7 @@ export function CrearUsuario() {
                         </div>
                       </div>
                       <div className='form-group'>
-                        <label for='' className='form-label'>
+                        <label htmlFor='' className='form-label'>
                           Rol del usuario
                         </label>
                         <select
