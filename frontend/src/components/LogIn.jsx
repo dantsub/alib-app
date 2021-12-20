@@ -108,6 +108,7 @@ const LogIn = ({ setUser, setToken }) => {
                           placeholder='john@example.com'
                           aria-describedby='login-email'
                           tabIndex='-1'
+                          ref={formDoc}
                         />
                       </div>
 
@@ -129,6 +130,7 @@ const LogIn = ({ setUser, setToken }) => {
                             tabIndex='-1'
                             placeholder='············'
                             aria-describedby='login-password'
+                            ref={formPass}
                           />
                           <span className='input-group-text cursor-pointer'>
                             <svg
