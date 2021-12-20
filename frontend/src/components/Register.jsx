@@ -32,7 +32,9 @@ const Register = () => {
                   <div className='card-body'>
                     <a href='index.html' className='brand-logo'>
                       <img src={logo} alt='logo' width='150' height='100' />
-                      <h2 className='brand-text text-primary ms-1 sr-only'>Alib</h2>
+                      <h2 className='brand-text text-primary ms-1 sr-only'>
+                        Alib
+                      </h2>
                     </a>
 
                     <h4 className='card-title mb-1'>Bienvenido a Alib! 👋</h4>
@@ -47,11 +49,11 @@ const Register = () => {
                       novalidate='novalidate'
                     >
                       <div className='mb-1'>
-                        <label for='register-document' className='form-label'>
+                        <label htmlFor='register-document' className='form-label'>
                           Número de documento
                         </label>
-                        <input type="hidden" name="idrol" value="Externo" />
-                        <input type="hidden" name="idestado" value="Activado" />
+                        <input aria-label='.' type='hidden' name='idrol' value='Usuario externo' />
+                        <input aria-label='.' type='hidden' name='idestado' value='1' />
                         <input
                           type='text'
                           className='form-control'
@@ -64,7 +66,7 @@ const Register = () => {
                         />
                       </div>
                       <div className='mb-1'>
-                        <label for='register-username' className='form-label'>
+                        <label htmlFor='register-username' className='form-label'>
                           Nombre completo
                         </label>
                         <input
@@ -79,7 +81,7 @@ const Register = () => {
                         />
                       </div>
                       <div className='mb-1'>
-                        <label for='register-email' className='form-label'>
+                        <label htmlFor='register-email' className='form-label'>
                           Correo
                         </label>
                         <input
@@ -94,7 +96,7 @@ const Register = () => {
                       </div>
 
                       <div className='mb-1'>
-                        <label for='register-password' className='form-label'>
+                        <label htmlFor='register-password' className='form-label'>
                           Contraseña
                         </label>
 
@@ -137,10 +139,10 @@ const Register = () => {
                           />
                           <label
                             className='form-check-label'
-                            for='register-privacy-policy'
+                            htmlFor='register-privacy-policy'
                           >
                             Estoy de acuerdo con los{' '}
-                            <a href='#'>terminos &amp; condiciones</a>
+                            <a href='...'>terminos &amp; condiciones</a>
                           </label>
                         </div>
                       </div>
