@@ -29,9 +29,11 @@ export function Crearequipo() {
   function guardar(event) {
     event.preventDefault();
     const nombre = nomequ.current.value;
+    const eusuario = '61ba6767356bdee10c857254'; // Aquí tengo que traerme el id  del usuario en sesión
     const datos = new FormData();
     datos.append('nombre', nombre);
     datos.append('logo', logo);
+    datos.append('eusuario', eusuario);
     console.log(nombre);
     console.log(logo);
     axios

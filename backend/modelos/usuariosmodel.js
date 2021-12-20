@@ -34,7 +34,7 @@ usuarioschema.pre('save', async function(next){
 });
 
 usuarioschema.virtual("relacionequsu",{
-  ref : "usuarios", //la collection de datos con las que se relaciona
+  ref : "equipos", //la collection de datos con las que se relaciona
   localField: "_id", //
   foreignField: "eusuario" //el nombre del campo en jugadormodel
 });

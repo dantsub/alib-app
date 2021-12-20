@@ -23,13 +23,13 @@ equipo_rutas.post("/guardar", function(req,res){
         console.log(files);
         console.log(fields);
         const nombre= fields.nombre;
+        const eusuario = fields.eusuario;
         const fecha = Date.now();
-        const rep= "Lesly Campo";
         const file = files.logo;
         const newruta= path.join(uploadFolder, nombre);
         fs.renameSync(file.filepath, newruta);
         const logo="http://localhost:3001/"+nombre;
-        const dato= { logo: logo, nombre: nombre, fecha: fecha, rep: rep };
+        const dato= { logo: logo, nombre: nombre, fecha: fecha, rep: rep, eusuario:eusuario  };
         const eq = new equipomodel(dato);
         eq.save(function(err){
         if(err){
