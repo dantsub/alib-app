@@ -38,8 +38,8 @@ export function Editarfecha({jornada, fecha_ini, fecha_fin}) {
 
   function dateEdit(fecha){
     const fe = new Date(fecha);
-    var fechas = fe.toISOString().substr(0,10);
-    return fechas;
+    var newfecha = fe.toISOString().substr(0,10);
+    return newfecha;
   }
   return (
     <>

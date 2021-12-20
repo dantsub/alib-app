@@ -12,12 +12,11 @@ import { Partidos } from "./components/Partidos";
 import { Posiciones } from "./components/Posiciones";
 import { Fechas } from "./components/Fechas";
 import Register from "./components/Register";
-import LogIn from "./components/LogIn";
 import { Inscribir } from "./components/Inscribir";
-/* import { useState } from "react"; */
+import React from "react";
 
 function App() {
-  /* const [user, setUser] = useState(null); */
+
   return (
     <>
       <BrowserRouter>
@@ -25,7 +24,6 @@ function App() {
           <Route path="/" element={<Base />}></Route>
           <Route path="/equipos" element={<Equipoadmin />}></Route>
           <Route path="/register" element={<Register />}></Route>
-          <Route path="/login" element={<LogIn />}></Route>
           <Route path="/jugadores" element={<Equipodetails />}></Route>
           <Route path="/crearequipo" element={<Crearequipo />}></Route>
           <Route path="/campeonatos" element={<Gescampeonatos />}></Route>
@@ -35,7 +33,7 @@ function App() {
           <Route path="/partidos" element={<Partidos />}></Route>
           <Route path="/posiciones" element={<Posiciones />}></Route>
           <Route path="/fechas" element={<Fechas />}></Route>
-          <Route path="/inscripcion" element={<Inscribir />}></Route>
+          {<Route path="/inscripcion" element={<Inscribir />}></Route>}
         </Routes>
       </BrowserRouter>
     </>

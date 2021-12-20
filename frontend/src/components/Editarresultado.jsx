@@ -54,8 +54,8 @@ export function Editarresultado() {
                 <table className='default'>
                   <tr>
                     <th>--</th>
-                    <th>Equipo A</th>
-                    <th>Equipo B</th>
+                    <th>EquipoA</th>
+                    <th>EquipoB</th>
                   </tr>
                   <tr>
                     <td>Goles</td>

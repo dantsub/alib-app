@@ -1,4 +1,5 @@
-import React, { useRef } from 'react';
+import axios from 'axios';
+import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../asset/logoAlib.jpg';
 
@@ -6,10 +7,48 @@ const LogIn = () => {
   const formDoc = useRef();
   const formPass = useRef();
 
+  const [validated, setValidated] = useState('false');
+
   const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(formDoc.current.value);
-    console.log(formPass.current.value);
+    const form = e.currentTarget;
+    if (form.checkValidity() === false) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    e.target.className += ' was-validated';
+
+    setValidated(true);
+  };
+
+  const login = async () => {
+    const doc = formDoc.current.value;
+    const pass = formPass.current.value;
+
+    try {
+      const response = await axios.post('http://localhost:8081/autenticacion/login', {
+          headers: { 'Content-Type': 'application/json' },
+          doc,
+          pass,
+        })
+      const { data } = response;
+      if (data.estado === 'Ok') {
+        alert(data.msg);
+        setValidated(true);
+
+        window.localStorage.setItem('user', JSON.stringify(data.usuario));
+        window.localStorage.setItem('token', JSON.stringify(data.token));
+
+        setTimeout(() => {
+          setValidated(false);
+        }, 3000);
+      } else {
+        formDoc.current.value = '';
+        formPass.current.value = '';
+      }
+      window.location.href = '/';
+    } catch (error) {
+      alert(error);
+    }
   };
 
   return (
@@ -54,9 +93,11 @@ const LogIn = () => {
 
                     <form
                       className='auth-login-form mt-2'
-                      action='index.html'
+                      action=''
                       method='POST'
-                      noValidate='novalidate'
+                      noValidate
+                      validated={validated}
+                      onSubmit={handleSubmit}
                     >
                       <div className='mb-1'>
                         <label htmlFor='login-doc' className='form-label'>
@@ -67,9 +108,10 @@ const LogIn = () => {
                           className='form-control'
                           id='login-doc'
                           name='doc'
-                          placeholder='john@example.com'
+                          placeholder='1124457789'
                           aria-describedby='login-email'
                           tabIndex='-1'
+                          ref={formDoc}
                         />
                       </div>
 
@@ -91,6 +133,7 @@ const LogIn = () => {
                             tabIndex='-1'
                             placeholder='············'
                             aria-describedby='login-password'
+                            ref={formPass}
                           />
                           <span className='input-group-text cursor-pointer'>
                             <svg
@@ -132,7 +175,7 @@ const LogIn = () => {
                         className='btn btn-primary w-100 waves-effect waves-float waves-light'
                         tabIndex='-1'
                         type='submit'
-                        onClick={handleSubmit}
+                        onClick={login}
                       >
                         Ingresa
                       </button>

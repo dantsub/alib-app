@@ -1,18 +1,70 @@
 const { Router } = require("express");
 const campeonato_rutas = Router();
 const {campeonatomodel} = require("../modelos/campeonatosmodel");
+var formidable = require('formidable');
+var fs = require('fs');
+var path = require('path');
+
+
+
+// campeonato_rutas.post("/guardarcamp", function(req,res){
+//     const datos = req.body;
+//     const camp = new campeonatomodel(datos);
+//     camp.save(function(err){
+//         if(err){
+//             res.send({status:"Error",msg:"Los campeonatos no pudieron ser guardados"})
+//             return false;
+//         }
+//         res.send({status:"Ok",msg:"Los campeonatos fueron guardados satisfactoriamente"})
+//     })
+// });
+
 
 campeonato_rutas.post("/guardarcamp", function(req,res){
-    const datos = req.body;
-    const camp = new campeonatomodel(datos);
-    camp.save(function(err){
+    const form = new formidable.IncomingForm();
+    const uploadFolder = path.join(__dirname, "assets");
+    // Basic Configuration
+    form.uploaddir = uploadFolder;
+
+    console.log(form);
+    form.parse(req, function(err, fields, files) {
+        if (err) {
+          // Check for and handle any errors here.
+          console.error(err.message);
+          return;
+        }
+        console.log(files);
+        console.log(fields);
+        const nombrecamp = fields.nombrecamp;
+        const fecinicamp = fields.fecinicamp;
+        const fecfincamp = fields.fecfincamp;
+        const orgcamp = fields.orgcamp;
+        const lugarcamp = fields.lugarcamp;
+        const numequipcamp = fields.numequipcamp;
+        const premioscamp = fields.premioscamp;
+        const estadocamp = fields.estadocamp;
+        const file = files.logocamp;
+        const newruta= path.join(uploadFolder, nombrecamp);
+        fs.renameSync(file.filepath, newruta);
+        const logocamp="http://localhost:3001/"+nombrecamp;
+        const dato= { nombrecamp: nombrecamp, fecinicamp: fecinicamp, fecfincamp: fecfincamp, orgcamp:orgcamp, lugarcamp:lugarcamp, numequipcamp:numequipcamp, premioscamp:premioscamp,  logocamp:logocamp, estadocamp:estadocamp};
+        const camp = new campeonatomodel(dato);
+        camp.save(function(err){
         if(err){
+            console.log(err);
             res.send({status:"Error",msg:"Los campeonatos no pudieron ser guardados"})
             return false;
         }
         res.send({status:"Ok",msg:"Los campeonatos fueron guardados satisfactoriamente"})
+
     })
+        
+    })
+   
 });
+
+
+
 
 campeonato_rutas.get("/listarcamp", async function(req,res){
     const campeonatos = await campeonatomodel.find().lean();
