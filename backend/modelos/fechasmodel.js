@@ -15,8 +15,8 @@ const fechaschema = new Schema({
 });
 
 
-fechaschema.virtual("partidos",{
-    ref : "partidos", //la collection de datos con las que se relaciona
+fechaschema.virtual("fechas",{
+    ref : "fechas", //la collection de datos con las que se relaciona
     localField: "_id", //
     foreignField: "cfecha" 
 });
@@ -25,5 +25,5 @@ fechaschema.set("toObject", { virtuals : true });
 fechaschema.set("toJSON", { virtuals : true})
 
 
-const fechamodel= model("fechas", fechaschema);
-exports.fechasmodel=fechamodel;
+const fechasmodel= model("fechas", fechaschema);
+exports.fechasmodel=fechasmodel;
