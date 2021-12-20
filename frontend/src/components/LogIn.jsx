@@ -20,7 +20,8 @@ const LogIn = () => {
     setValidated(true);
   };
 
-  const login = async () => {
+  const login = async (e) => {
+    e.preventDefault();
     const doc = formDoc.current.value;
     const pass = formPass.current.value;
 
