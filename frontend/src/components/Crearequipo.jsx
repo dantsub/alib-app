@@ -34,6 +34,7 @@ export function Crearequipo() {
     datos.append('nombre', nombre);
     datos.append('logo', logo);
     datos.append('eusuario', eusuario);
+    console.log(datos);
     console.log(nombre);
     console.log(logo);
     axios
