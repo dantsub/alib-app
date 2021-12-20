@@ -23,17 +23,17 @@ const Register = () => {
 
   const saveUser = () => {
     const doc = formDoc.current.value;
-    const name = formName.current.value;
+    const nom = formName.current.value;
     const pass = formPass.current.value;
     const email = formEmail.current.value;
     const idrol = '2';
     const idestado = '1';
 
     axios
-      .post('http://localhost:8081/autenticacion/registro', {
+      .post('http://localhost:8081/autenticacion/registrar', {
         headers: { 'Content-Type': 'application/json' },
         doc,
-        name,
+        nom,
         pass,
         email,
         idrol,
@@ -47,6 +47,7 @@ const Register = () => {
           setTimeout(() => {
             setValidated(false);
           }, 3000);
+          window.location.href = '/register';
         }
       })
       .catch((error) => alert(error));

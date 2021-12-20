@@ -1,11 +1,19 @@
 import logo from '../asset/logoAlib.jpg';
 import { Link } from 'react-router-dom';
 import LogIn from './LogIn';
+import { useEffect, useState } from 'react';
 
-export function Base({ user }) {
+export function Base() {
+  const storage = localStorage.getItem('user');
+  const [user, setuser] = useState(JSON.parse(storage));
+
+  useEffect(() => {
+    setuser(JSON.parse(storage));
+  }, [storage]);
+
   return (
     <>
-      {user ? (
+      { storage ? (
         <>
           <nav
             className='
@@ -40,7 +48,7 @@ export function Base({ user }) {
               <li className='nav-item dropdown dropdown-user'>
                 <div className='d-flex mr-1 gap-2'>
                   <div className='user-nav d-sm-flex d-none flex-column mr-1'>
-                    <span className='user-name fw-bolder'>Lesly Sharyn</span>
+                    <span className='user-name fw-bolder'>{user.nom}</span>
                     <span className='user-status'>Usuario</span>
                   </div>
                   <span className='avatar' style={{ width: '40px' }}>

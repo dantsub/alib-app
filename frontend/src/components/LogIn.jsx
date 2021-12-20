@@ -3,7 +3,7 @@ import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../asset/logoAlib.jpg';
 
-const LogIn = ({ setUser, setToken }) => {
+const LogIn = () => {
   const formDoc = useRef();
   const formPass = useRef();
 
@@ -20,32 +20,35 @@ const LogIn = ({ setUser, setToken }) => {
     setValidated(true);
   };
 
-  const login = () => {
+  const login = async () => {
     const doc = formDoc.current.value;
     const pass = formPass.current.value;
 
-    axios
-      .post('http://localhost:8081/autenticacion/login', {
-        headers: { 'Content-Type': 'application/json' },
-        doc,
-        pass,
-      })
-      .then((res) => {
-        const respuesta = res.data;
-        alert(respuesta.msg);
-        if (respuesta.estado === 'Ok') {
-          setValidated(true);
-          setTimeout(() => {
-            setValidated(false);
-          }, 3000);
-          setUser(respuesta.usuario);
-          setToken(respuesta.token);
-          window.location.href = '/';
-        }
-      })
-      .catch((error) => alert(error));
-    formDoc.current.value = '';
-    formPass.current.value = '';
+    try {
+      const response = await axios.post('http://localhost:8081/autenticacion/login', {
+          headers: { 'Content-Type': 'application/json' },
+          doc,
+          pass,
+        })
+      const { data } = response;
+      if (data.estado === 'Ok') {
+        alert(data.msg);
+        setValidated(true);
+
+        window.localStorage.setItem('user', JSON.stringify(data.usuario));
+        window.localStorage.setItem('token', JSON.stringify(data.token));
+
+        setTimeout(() => {
+          setValidated(false);
+        }, 3000);
+      } else {
+        formDoc.current.value = '';
+        formPass.current.value = '';
+      }
+      window.location.href = '/';
+    } catch (error) {
+      alert(error);
+    }
   };
 
   return (
@@ -105,7 +108,7 @@ const LogIn = ({ setUser, setToken }) => {
                           className='form-control'
                           id='login-doc'
                           name='doc'
-                          placeholder='john@example.com'
+                          placeholder='1124457789'
                           aria-describedby='login-email'
                           tabIndex='-1'
                           ref={formDoc}

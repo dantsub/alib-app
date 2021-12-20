@@ -13,10 +13,10 @@ import { Posiciones } from "./components/Posiciones";
 import { Fechas } from "./components/Fechas";
 import Register from "./components/Register";
 import { Inscribir } from "./components/Inscribir";
-/* import { useState } from "react"; */
+import React from "react";
 
 function App() {
-  /* const [user, setUser] = useState(null); */
+
   return (
     <>
       <BrowserRouter>
