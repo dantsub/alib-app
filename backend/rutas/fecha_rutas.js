@@ -29,7 +29,7 @@ fecha_rutas.post("/eliminarfechas", async function(req,res){
     const {jornada} = req.body;
     console.log(jornada);
     
-    posicionmodel.deleteOne({jornada},function(error,camp){
+    fechasmodel.deleteOne({jornada},function(error,camp){
         console.log(camp);
         if (error){
             res.send({status:"Error",msg:"La fecha NO fue encontrada. Error"});
@@ -54,7 +54,7 @@ fecha_rutas.post("/editarfechas", function(req,res){
     const fecha_fin = datos.fecha_fin;
     
 
-    const filter = { nombre: nombre };
+    const filter = { nombre : nombre };
     const updateFecha = {
         $set: {
             jornada : jornada,
@@ -63,7 +63,7 @@ fecha_rutas.post("/editarfechas", function(req,res){
         },
     };
     
-    fechamodel.updateOne(filter, updateFecha, function(error,jug){
+    fechasmodel.updateOne(filter, updateFecha, function(error,jug){
         console.log(camp);
         if (error){
             res.send({status:"Error",msg:"La Fecha NO fue encontrada. Error"});
