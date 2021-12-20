@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import logo from '../asset/logoAlib.jpg';
 
 const Register = () => {
   const formDoc = useRef();
   const formPass = useRef();
   const formEmail = useRef();
-  
+
   return (
     <div
       className='pace-done vertical-layout vertical-menu-modern blank-page navbar-floating footer-static'
