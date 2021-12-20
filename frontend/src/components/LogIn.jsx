@@ -1,15 +1,30 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import logo from '../asset/logoAlib.jpg';
 
 const LogIn = () => {
+  const formDoc = useRef();
+  const formPass = useRef();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formDoc.current.value);
+    console.log(formPass.current.value);
+  };
+
   return (
-    <div className="pace-done vertical-layout vertical-menu-modern blank-page navbar-floating footer-static" data-open="click" data-menu="vertical-menu-modern" data-col="blank-page">
+    <div
+      className='pace-done vertical-layout vertical-menu-modern blank-page navbar-floating footer-static'
+      data-open='click'
+      data-menu='vertical-menu-modern'
+      data-col='blank-page'
+    >
       <div className='pace pace-inactive'>
         <div
           className='pace-progress'
           data-progress-text='100%'
           data-progress='99'
-          style={{transform: 'translate3d(100%, 0, 0)'}}
+          style={{ transform: 'translate3d(100%, 0, 0)' }}
         >
           <div className='pace-progress-inner'></div>
         </div>
@@ -26,56 +41,54 @@ const LogIn = () => {
                 <div className='card mb-0'>
                   <div className='card-body'>
                     <a href='index.html' className='brand-logo'>
-                      <img
-                        src={logo}
-                        alt='logo'
-                        width='150'
-                        height='100'
-                      />
-                      <h2 className='brand-text text-primary ms-1 sr-only'>Alib</h2>
+                      <img src={logo} alt='logo' width='150' height='100' />
+                      <h2 className='brand-text text-primary ms-1 sr-only'>
+                        Alib
+                      </h2>
                     </a>
 
                     <h4 className='card-title mb-1'>Bienvenido a Alib! 👋</h4>
-                    <p className='card-text mb-2'>Por favor ingresa a tu cuenta</p>
+                    <p className='card-text mb-2'>
+                      Por favor ingresa a tu cuenta
+                    </p>
 
                     <form
                       className='auth-login-form mt-2'
                       action='index.html'
                       method='POST'
-                      novalidate='novalidate'
+                      noValidate='novalidate'
                     >
                       <div className='mb-1'>
-                        <label for='login-email' className='form-label'>
-                          Correo
+                        <label htmlFor='login-doc' className='form-label'>
+                          Documento
                         </label>
                         <input
                           type='text'
                           className='form-control'
-                          id='login-email'
-                          name='login-email'
+                          id='login-doc'
+                          name='doc'
                           placeholder='john@example.com'
                           aria-describedby='login-email'
-                          tabindex='-1'
-                          autofocus=''
+                          tabIndex='-1'
                         />
                       </div>
 
                       <div className='mb-1'>
                         <div className='d-flex justify-content-between'>
-                          <label className='form-label' for='login-password'>
+                          <label
+                            className='form-label'
+                            htmlFor='login-password'
+                          >
                             Contraseña
                           </label>
-                          <a href='auth-forgot-password-basic.html'>
-                            <small>Olvidaste tu contraseña?</small>
-                          </a>
                         </div>
                         <div className='input-group input-group-merge form-password-toggle'>
                           <input
                             type='password'
                             className='form-control form-control-merge'
                             id='login-password'
-                            name='login-password'
-                            tabindex='-1'
+                            name='pass'
+                            tabIndex='-1'
                             placeholder='············'
                             aria-describedby='login-password'
                           />
@@ -87,9 +100,9 @@ const LogIn = () => {
                               viewBox='0 0 24 24'
                               fill='none'
                               stroke='currentColor'
-                              stroke-width='2'
-                              stroke-linecap='round'
-                              stroke-linejoin='round'
+                              strokeWidth='2'
+                              strokeLinecap='round'
+                              strokeLinejoin='round'
                               className='feather feather-eye'
                             >
                               <path d='M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z'></path>
@@ -104,16 +117,22 @@ const LogIn = () => {
                             className='form-check-input'
                             type='checkbox'
                             id='remember-me'
-                            tabindex='3'
+                            tabIndex='3'
                           />
-                          <label className='form-check-label' for='remember-me'>
-                            {' '}Recuerdame{' '}
+                          <label
+                            className='form-check-label'
+                            htmlFor='remember-me'
+                          >
+                            {' '}
+                            Recuerdame{' '}
                           </label>
                         </div>
                       </div>
                       <button
                         className='btn btn-primary w-100 waves-effect waves-float waves-light'
-                        tabindex='-1'
+                        tabIndex='-1'
+                        type='submit'
+                        onClick={handleSubmit}
                       >
                         Ingresa
                       </button>
@@ -121,9 +140,9 @@ const LogIn = () => {
 
                     <p className='text-center mt-2'>
                       <span>Nuevo en nuestra plataforma?</span>
-                      <a href='./resgister'>
+                      <Link to='/resgister'>
                         <span>Crear una cuenta</span>
-                      </a>
+                      </Link>
                     </p>
                   </div>
                 </div>
