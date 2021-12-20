@@ -1,11 +1,20 @@
 import { Base } from './Base';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 
 
 export function Crearequipo() {
   // Con esto cambiamos el título a la página que por default esta en Alib-app
   document.title = 'Crear Equipo';
+//Traer los datos de usuario 
+  const storage = localStorage.getItem('user');
+  const [user, setuser] = useState(JSON.parse(storage));
+
+  useEffect(() => {
+    setuser(JSON.parse(storage));
+  }, [storage]);
+
+
   const [logo, setLogo] = useState();
 
   const [validated, setValidated] = useState('false');
@@ -30,7 +39,7 @@ export function Crearequipo() {
   function guardar(event) {
     event.preventDefault();
     const nombre = nomequ.current.value;
-    const eusuario = '61ba6767356bdee10c857254'; // Aquí tengo que traerme el id  del usuario en sesión
+    const eusuario = user._id; // Aquí tengo que traerme el id  del usuario en sesión
     const datos = new FormData();
     datos.append('nombre', nombre);
     datos.append('logo', logo);
