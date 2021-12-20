@@ -1,16 +1,9 @@
-<<<<<<< HEAD
 import React, { useEffect, useState } from 'react';
 import { Base } from './Base';
 import { EliminarUsuario } from './EliminarUsuario';
+import { EditarUsuario } from './EditarUsuario';
 import { consumirlistarusuarios } from '../API/Alip_Api';
 import { Link } from 'react-router-dom';
-=======
-import { Base } from "./Base";
-import { useEffect, useState } from "react";
-import { EditarUsuario } from "./EditarUsuario";
-import { consumirlistarusuarios } from "../API/Alip_Api";
-import { Link } from "react-router-dom";
->>>>>>> cf8bd44c0d5b0f1fdce15e10c8c03ea64246b718
 
 export function ListaUsuarios() {
   document.title = 'Lista de Usuarios';
@@ -44,16 +37,10 @@ export function ListaUsuarios() {
   };
 
   function estado(id) {
-<<<<<<< HEAD
-    if (id === 'Inactivo') {
+    if (id === '0') {
       return (
         <span class='badge rounded-pill badge-light-danger me-1'>Inactivo</span>
       );
-=======
-    if (id === "0") {
-      return (<span class="badge rounded-pill badge-light-danger me-1"
-                          >Inactivo</span>)
->>>>>>> cf8bd44c0d5b0f1fdce15e10c8c03ea64246b718
     } else {
       return (
         <span class='badge rounded-pill badge-light-success me-1'>Activo</span>
@@ -61,52 +48,20 @@ export function ListaUsuarios() {
     }
   }
 
-<<<<<<< HEAD
-  function botones(id) {
-    if (id === 'Activado') {
+  function rol(id) {
+    if (id === '1') {
       return (
-        <div>
-          <Link
-            className='btn btn-primary table-buttons'
-            to={{
-              pathname: '/editarusuario',
-              state: {
-                id: id,
-              },
-            }}
-          >
-            <span className='fas fa-edit'></span>
-          </Link>
-          <EliminarUsuario id={id} />
-        </div>
+        <span class='badge rounded-pill badge-light-primary me-1'>
+          Usuario Interno
+        </span>
       );
     } else {
       return (
-        <div className='btn-group'>
-          <Link
-            className='btn btn-primary table-buttons'
-            to={{
-              pathname: '/editarusuario',
-              state: {
-                id: id,
-              },
-            }}
-          >
-            <span className='fas fa-edit'></span>
-          </Link>
-        </div>
+        <span class='badge rounded-pill badge-light-secondary me-1'>
+          Usuario Externo
+        </span>
       );
     }
-=======
-  function rol(id) {
-    if (id === "1") {
-      return (<span class="badge rounded-pill badge-light-primary me-1"
-                          >Usuario Interno</span>)
-    } else {
-      return (<span class="badge rounded-pill badge-light-secondary me-1"
-                          >Usuario Externo</span>)
-    }    
->>>>>>> cf8bd44c0d5b0f1fdce15e10c8c03ea64246b718
   }
 
   return (
@@ -169,40 +124,7 @@ export function ListaUsuarios() {
                 className='card-dataTable table-responsive pt-0'
                 style={{ padding: '5px !important' }}
               >
-<<<<<<< HEAD
-                <div
-                  className='table-responsive table-bordered'
-                  id='Div-tablaProducto'
-                >
-                  <table className='table table-hover' id='tablaprod'>
-                    <thead>
-                      <tr>
-                        <th>Documento</th>
-                        <th>Nombre Completo</th>
-                        <th>Correo Electronico</th>
-                        <th>Rol</th>
-                        <th>Estado</th>
-                        <th>Acciones</th>
-                      </tr>
-                    </thead>
-                    <tbody className='js-table-body' id='tablausuarios'>
-                      {listarUsuario.map((usuario) => (
-                        <tr>
-                          <td>{usuario.doc}</td>
-                          <td>{usuario.nom}</td>
-                          <td>{usuario.email}</td>
-                          <td>{usuario.idrol}</td>
-                          <td>{estado(usuario.idestado)}</td>
-                          <td>{botones(usuario.idestado)}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-
-                  {/* <!-- #fin de la tabla --> */}
-                </div>
-=======
-                <table className="table table-hover" id="tablaprod">
+                <table className='table table-hover' id='tablaprod'>
                   <thead>
                     <tr>
                       <th>Documento</th>
@@ -213,40 +135,34 @@ export function ListaUsuarios() {
                       <th>Acciones</th>
                     </tr>
                   </thead>
-                    <tbody className="js-table-body" id="tablausuarios">
-                                {listarUsuario.map(usuario => (
-                                    <tr>
-                                        <td>{usuario.doc}</td>
-                                        <td>{usuario.nom}</td>
-                                        <td>{usuario.email}</td>
-                                        <td>{rol(usuario.idrol)}</td>
-                                        <td>{estado(usuario.idestado)}</td>
-                                    <td>
-                                      <EditarUsuario doc={usuario.doc} nom={usuario.nom} email={usuario.email} idrol={usuario.idrol} idestado={usuario.idestado}/> 
-                                        </td>
-                                    </tr>
-                                ))}
-                    
-                </tbody>
+                  <tbody className='js-table-body' id='tablausuarios'>
+                    {listarUsuario.map((usuario, idx) => (
+                      <tr key={idx}>
+                        <td>{usuario.doc}</td>
+                        <td>{usuario.nom}</td>
+                        <td>{usuario.email}</td>
+                        <td>{rol(usuario.idrol)}</td>
+                        <td>{estado(usuario.idestado)}</td>
+                        <td>
+                          <EditarUsuario
+                            doc={usuario.doc}
+                            nom={usuario.nom}
+                            email={usuario.email}
+                            idrol={usuario.idrol}
+                            idestado={usuario.idestado}
+                          />
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
                 </table>
 
                 {/* <!-- #fin de la tabla --> */}
->>>>>>> cf8bd44c0d5b0f1fdce15e10c8c03ea64246b718
               </div>
             </div>
           </div>
         </div>
       </div>
-<<<<<<< HEAD
     </>
   );
 }
-=======
-    </div>
-            
-        </>
-  );
-  
-  
-}
->>>>>>> cf8bd44c0d5b0f1fdce15e10c8c03ea64246b718
