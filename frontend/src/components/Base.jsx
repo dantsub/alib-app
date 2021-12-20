@@ -5,11 +5,17 @@ import { useEffect, useState } from 'react';
 
 export function Base() {
   const storage = localStorage.getItem('user');
-  const [user, setuser] = useState(JSON.parse(storage));
+  const [user, setUser] = useState(JSON.parse(storage));
 
   useEffect(() => {
-    setuser(JSON.parse(storage));
+    setUser(JSON.parse(storage));
   }, [storage]);
+
+  const close = () => {
+    setUser(null);
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
+  };
 
   return (
     <>
@@ -41,7 +47,7 @@ export function Base() {
                 <li className='nav-item'>
                   <span>
                     <i className='fa fa-power-off'></i>
-                    <span className=''>Cerrar sesión</span>
+                    <span className='' onClick={close}>Cerrar sesión</span>
                   </span>
                 </li>
               </ul>
