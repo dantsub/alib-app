@@ -33,5 +33,14 @@ usuarioschema.pre('save', async function(next){
   return next();
 });
 
+usuarioschema.virtual("relacionequsu",{
+  ref : "usuarios", //la collection de datos con las que se relaciona
+  localField: "_id", //
+  foreignField: "eusuario" //el nombre del campo en jugadormodel
+});
+
+usuarioschema.set("toObject", { virtuals : true });
+usuarioschema.set("toJSON", { virtuals : true})
+
 const usuariomodel = model("usuarios", usuarioschema);
 exports.usuariomodel = usuariomodel;
