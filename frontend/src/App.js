@@ -13,6 +13,7 @@ import { Posiciones } from "./components/Posiciones";
 import { Fechas } from "./components/Fechas";
 import Register from "./components/Register";
 import LogIn from "./components/LogIn";
+import { Inscribir } from "./components/Inscribir";
 /* import { useState } from "react"; */
 
 function App() {
