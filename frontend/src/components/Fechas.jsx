@@ -66,7 +66,7 @@ export function Fechas() {
                         <td>{fe.fecha_ini}</td>
                         <td>{fe.fecha_fin}</td>
                         <td>
-                          <Editarfecha />
+                          <Editarfecha jornada={fe.jornada} fecha_ini={fe.fecha_ini} fecha_fin = {fe.fecha_fin} />
                           <Eliminarfecha />
                         </td>
                       </tr>
