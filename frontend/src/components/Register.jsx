@@ -21,7 +21,8 @@ const Register = () => {
     setValidated(true);
   };
 
-  const saveUser = () => {
+  const saveUser = (e) => {
+    e.preventDefault();
     const doc = formDoc.current.value;
     const nom = formName.current.value;
     const pass = formPass.current.value;
