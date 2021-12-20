@@ -123,8 +123,7 @@ export function EditarUsuario({ doc, nom, email, idrol }) {
                 </div>
                 <div className="form-group">
                   <label for="" className="form-label"
-                    >Rol del usuario</label
-                  >
+                    >Rol del usuario</label>
                   <select className="form-control" id="rol"  ref={rolusuario}>
                     <option value="1">Usuario Interno</option>
                     <option value="0">Usuario Externo</option>
@@ -132,8 +131,7 @@ export function EditarUsuario({ doc, nom, email, idrol }) {
                   </div>
                   <div className="form-group">
                   <label for="" className="form-label"
-                    >Estado del usuario</label
-                  >
+                    >Estado del usuario</label>
                   <select className="form-control" id="estado"  ref={estadousuario}>
                     <option value="1">Activo</option>
                     <option value="0">Inactivo</option>

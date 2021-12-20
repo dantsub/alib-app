@@ -13,7 +13,7 @@ export function Fechas() {
   useEffect(() => {
     const solicitar_fechas = async () => {
       const dato = await consumirfechas();
-      setListar_fechas(dato);
+      setListar_fechas(dato.fechas);
     };
     solicitar_fechas();
   }, []);
