@@ -1,6 +1,6 @@
 import logo from '../asset/logoAlib.jpg';
 import { Link } from 'react-router-dom';
-import LogIn from './LogIn';
+/* import LogIn from './LogIn'; */
 
 export function Base({ user }) {
   return (
@@ -187,9 +187,8 @@ export function Base({ user }) {
             </div>
           </div>
         </>
-      ) : (
-        <LogIn />
-      )}
+      ) : null
+      }
     </>
   );
 }
