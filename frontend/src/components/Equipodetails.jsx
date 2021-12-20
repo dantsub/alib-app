@@ -6,6 +6,8 @@ import { Eliminarjugador } from './Eliminarjugador';
 import { Eliminarequipo } from './Eliminarequipo';
 import { Editarjugador } from './Editarjugador';
 import tiburones from '../asset/tiburonesfc.jpg';
+import { Link } from 'react-router-dom';
+
 
 export function Equipodetails() {
   // Con esto cambiamos el título a la página que por default esta en Alib-app
@@ -95,6 +97,7 @@ export function Equipodetails() {
                 <div className='col-md-3 d-flex align-items-end'>
                   <Adicionarjugador />
                 </div>
+                
 
                 <div className='col-md-3 d-flex align-items-end'>
                   <span className='mr-1' style={{ margin: '10px' }}>
@@ -102,6 +105,15 @@ export function Equipodetails() {
                   </span>
                   <Eliminarequipo nombre='Tiburones F. C.' />
                 </div>
+
+                <div className='col-md-3 d-flex align-items-end'>
+                <Link to='/inscripcion'>
+                  <button type='button' className='btn btn-primary'>
+                    Inscribir a Campeonato
+                  </button>
+                </Link>
+                </div>
+
               </div>
             </div>
             {/* <!-- Fin card-body --> */}
