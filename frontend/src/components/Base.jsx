@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 export function Base({ user }) {
   return (
     <>
-      {user ? (
+      {!user ? (
         <>
           <nav
             className='
