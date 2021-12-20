@@ -51,6 +51,7 @@ export function Crearequipo() {
     nomequ.current.value = '';
     setLogo('');
   }
+  
   return (
     <>
       <Base />

@@ -34,7 +34,7 @@ function App() {
           <Route path="/partidos" element={<Partidos />}></Route>
           <Route path="/posiciones" element={<Posiciones />}></Route>
           <Route path="/fechas" element={<Fechas />}></Route>
-          <Route path="/inscripcion" element={<Inscribir />}></Route>
+          {/* <Route path="/inscripcion" element={<Inscribir />}></Route> */}
         </Routes>
       </BrowserRouter>
     </>

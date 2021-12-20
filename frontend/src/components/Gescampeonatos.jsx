@@ -117,11 +117,11 @@ export function Gescampeonatos() {
                             <div className='container'>
                               <div className='px-0'>
                                 <img
+                                  alt=''
                                   src={camp.logocamp}
                                   className='img-fluid'
                                   width='150px'
                                   height='150px'
-                                  alt=''
                                 />
                               </div>
                             </div>
