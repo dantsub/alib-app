@@ -2,7 +2,7 @@ import { Base } from './Base';
 import { useRef, useState } from 'react';
 import axios from 'axios';
 
-export function Crearequipo() {
+export function Inscribir() {
   // Con esto cambiamos el título a la página que por default esta en Alib-app
   document.title = 'Crear Equipo';
   const [logo, setLogo] = useState();
@@ -60,8 +60,20 @@ export function Crearequipo() {
         {/* <!-- Content-wrapper --> */}
         <div className='content-wrapper'>
           <div className='card'>
+            
+          <h4 class='card-title'>Escoja un Campeonato</h4>
+                <div className='col-md-2 '>
+                  <select name='campeonatos' class='form-control'>
+                    <option value='camp1' selected>
+                      Liga Betplay Dimayor
+                    </option>
+                    <option value='camp2'>UEFA</option>
+                    <option value='camp3'>Premier</option>
+                  </select>
+                </div>
+                            
             <div className='card-body border-bottom'>
-              <h2>¡CREA TU EQUIPO!</h2>
+              <h2>¡INSCRIBE TU EQUIPO!</h2>
             </div>
 
             <div>
@@ -90,22 +102,7 @@ export function Crearequipo() {
                         Por favor ingrese el nombre del equipo
                       </div>
                     </div>
-                    <div className='form-group'>
-                      <label for='' className='form-label'>
-                        Logo del Equipo
-                      </label>
-                      <input
-                        type='file'
-                        className='form-control'
-                        id='logo'
-                        placeholder='logo'
-                        required
-                        onChange={uploadfile}
-                      />
-                      <div className='invalid-feedback'>
-                        Por favor ingrese el logo del equipo
-                      </div>
-                    </div>
+
                     <br />
                     <div className='row'>
                       <div className='col-lg-4 center-content'>
