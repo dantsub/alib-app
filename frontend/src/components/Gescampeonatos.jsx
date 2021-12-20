@@ -32,10 +32,24 @@ export function Gescampeonatos() {
     });
     setListar_campeonato(resultado_busqueda);
   };
+
   function dateformat(fecha) {
     const newfecha = new Date(fecha).toLocaleDateString();
     return newfecha;
   }
+
+
+  function estado(est) {
+    if (est === "En inscripciones") {
+      return (<span class="badge rounded-pill badge-light-success me-1"
+                          >En inscripciones</span>)
+    } else {
+      return (<span class="badge rounded-pill badge-light-danger me-1"
+                          >Terminado</span>)
+      
+    }    
+  }
+  
   return (
     <>
       <Base />
@@ -119,7 +133,7 @@ export function Gescampeonatos() {
                           <td>{camp.numequipcamp}</td>
                           <td>{camp.lugarcamp}</td>
                           <td>{camp.premioscamp}</td>
-                          <td>{camp.estadocamp}</td>
+                          <td>{estado(camp.estadocamp)}</td>
                           <td>
                             <Eliminarcampeonato nombrecamp={camp.nombrecamp} />
                             <Editarcampeonato
