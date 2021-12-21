@@ -33,8 +33,8 @@ campeonato_rutas.post("/guardarcamp", function(req,res){
           console.error(err.message);
           return;
         }
-        console.log(files);
-        console.log(fields);
+        // console.log(files);
+        // console.log(fields);
         const nombrecamp = fields.nombrecamp;
         const fecinicamp = fields.fecinicamp;
         const fecfincamp = fields.fecfincamp;
@@ -69,7 +69,7 @@ campeonato_rutas.post("/guardarcamp", function(req,res){
 campeonato_rutas.get("/listarcamp", async function(req,res){
     const campeonatos = await campeonatomodel.find().lean();
 
-    console.log(campeonatos);
+    //console.log(campeonatos);
         if (campeonatos == null){
             res.status(400).send({status:"Error", msg:"La base de datos está vacía", campeonatos});
         }else
@@ -79,10 +79,10 @@ campeonato_rutas.get("/listarcamp", async function(req,res){
 
 campeonato_rutas.post("/eliminarcamp", async function(req,res){
     const {nombrecamp} = req.body;
-    console.log(nombrecamp);
+    //console.log(nombrecamp);
     //buscar campeonato
     campeonatomodel.deleteOne({nombrecamp},function(error,camp){
-        console.log(camp);
+        //console.log(camp);
         if (error){
             res.send({status:"Error",msg:"El campeonato NO fue encontrado. Error"});
             return false;
@@ -124,7 +124,7 @@ campeonato_rutas.post("/editarcamp", function(req,res){
     };
     
     campeonatomodel.updateOne(filter, updateCamp, function(error,camp){
-        console.log(camp);
+        //console.log(camp);
         if (error){
             res.send({status:"Error",msg:"El campeonato NO fue encontrado. Error"});
             return false;
@@ -139,5 +139,6 @@ campeonato_rutas.post("/editarcamp", function(req,res){
         }
     })
 });
+
 
 exports.campeonato_rutas=campeonato_rutas;

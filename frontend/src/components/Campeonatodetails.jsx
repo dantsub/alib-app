@@ -46,7 +46,7 @@ export function Campeonatodetails() {
   }, []);
 
 
-  
+ 
 
   return (
     <>
@@ -113,6 +113,7 @@ export function Campeonatodetails() {
                         <th>Logo</th>
                         <th>Equipo</th>
                         <th>Manager</th>
+                        <th>Campeonato</th>
                         <th>Acciones</th>
                       </tr>
                     </thead>
@@ -134,8 +135,9 @@ export function Campeonatodetails() {
                           </td>
                           <td>{equip.nombre}</td>
                           <td>{equip.rep}</td>
+                          <td>{equip.ecamp}</td>
                           <td>
-                            <Aprobarequipo />
+                            <Aprobarequipo eusuario={equip.eusuario} ecamp={equip.ecamp}/>
                           </td>
                           <td>{/* <Eliminarequipo /> */}</td>
                         </tr>
