@@ -64,8 +64,6 @@ campeonato_rutas.post("/guardarcamp", function(req,res){
 });
 
 
-
-
 campeonato_rutas.get("/listarcamp", async function(req,res){
     const campeonatos = await campeonatomodel.find().lean();
 
@@ -139,6 +137,22 @@ campeonato_rutas.post("/editarcamp", function(req,res){
         }
     })
 });
+
+
+campeonato_rutas.get("/listarcampfilter", async function(req,res){
+    const filter = { _id: "61c13c4afc32079b6559d740" };
+    const campeonatos = await campeonatomodel.findOne(filter).populate({
+        path:"integrantescampeonato",
+        select: "logo nombre rep" 
+    });
+
+    //console.log(campeonatos);
+        if (campeonatos == null){
+            res.status(400).send({status:"Error", msg:"La base de datos está vacía", campeonatos});
+        }else
+            res.status(200).send({status:"Ok", msg:"Campeonatos encontrados", campeonatos});
+})
+
 
 
 exports.campeonato_rutas=campeonato_rutas;

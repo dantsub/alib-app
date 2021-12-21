@@ -7,6 +7,7 @@ import { consumircampeonatos } from '../API/Alip_Api';
 
 export function Campeonatodetails() {
   document.title = 'Equipo';
+  let [nombrecamp, setNombrecamp] = useState();
 
   let [listar_equipos, setListar_equipos] = useState([]);
   let [Listar_eqip, setListar_equip] = useState([]);
@@ -14,8 +15,9 @@ export function Campeonatodetails() {
   useEffect(() => {
     const solicitar_campeonatosequip = async () => {
       const dato = await consumircampeonatosequip();
-      setListar_equipos(dato.equipos);
-      setListar_equip(dato.equipos);
+      setListar_equipos(dato.campeonatos.integrantescampeonato);
+      setListar_equip(dato.campeonatos.integrantescampeonato);
+      setNombrecamp(dato.campeonatos.nombrecamp);
     };
     solicitar_campeonatosequip();
   }, []);
@@ -77,7 +79,7 @@ export function Campeonatodetails() {
                   </select>       
                 </div>
                 <div className='col-md-3 d-flex align-items-end'>
-                  <Listadoequipos />
+                  {/* <Listadoequipos /> */}
                 </div>
 
                 <label className='form-label' for='Searchproducto'>
@@ -135,7 +137,7 @@ export function Campeonatodetails() {
                           </td>
                           <td>{equip.nombre}</td>
                           <td>{equip.rep}</td>
-                          <td>{equip.ecamp}</td>
+                          <td>{nombrecamp}</td>
                           <td>
                             <Aprobarequipo eusuario={equip.eusuario} ecamp={equip.ecamp}/>
                           </td>

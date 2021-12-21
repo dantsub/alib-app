@@ -9,7 +9,7 @@
         "URL": "http://localhost:8081/campeonatos/listarcamp"
     },
     "CAMPEONATOS_EQUIP_API":{
-        "URL": "http://localhost:8081/equipos/listar"
+        "URL": "http://localhost:8081/campeonatos/listarcampfilter"
     },
     "LISTAR_EQUIPOS_API":{
         "URL": "http://localhost:8081/listaequipos/listar"
