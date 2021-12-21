@@ -20,8 +20,8 @@ equipo_rutas.post("/guardar", function(req,res){
           console.error(err.message);
           return;
         }
-        console.log(files);
-        console.log(fields);
+        // console.log(files);
+        // console.log(fields);
         const nombre= fields.nombre;
         const eusuario = fields.eusuario;
         const rep = "Jone Doe";

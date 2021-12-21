@@ -1,4 +1,57 @@
-export function Aprobarequipo(){
+import { useRef, useEffect, useState } from 'react';
+import axios from 'axios';
+import { consumircampeonatos } from '../API/Alip_Api';
+
+
+export function Aprobarequipo({eusuario, ecamp}){
+   console.log('Aprobarequipo',eusuario,ecamp);
+      
+    const [validated, setValidated] = useState('false');
+  
+    const handleSubmit = (event) => {
+      const form = event.currentTarget;
+      if (form.checkValidity() === false) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+      event.target.className += ' was-validated';
+  
+      setValidated(true);
+    };
+  
+    let [listar_campeonato, setListar_campeonato] = useState([]);
+  
+  
+    useEffect(() => {
+      const solicitar_campeonato = async () => {
+        const dato = await consumircampeonatos();
+        setListar_campeonato(dato.campeonatos);
+      };
+      solicitar_campeonato();
+    }, []);
+  
+    
+    const estadocamp= useRef();
+  
+    async function aprobar(ecamp,eusuario) {
+      const response = await axios.post(
+        `http://localhost:8081/equipos/aprobarequip`,
+        {eusuario: eusuario,
+         estadocamp: ecamp,
+        },
+        { headers: { 'content-type': 'application/json' } }
+      );
+      const data = response.data;
+      alert(data.msg);
+      if (data.status === 'Ok') {
+        console.log('Status OK');
+      }
+  
+    };
+  
+
+
+
     return (
     <>
         <button
@@ -53,6 +106,7 @@ export function Aprobarequipo(){
                         <button
                             type="submit"
                             className="btn btn-primary"
+                            onClick={()=>aprobar(ecamp,eusuario)}
                         >
                             Aprobar equipo
                         </button>
