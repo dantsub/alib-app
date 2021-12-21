@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Base } from './Base';
 import { Editarresultado } from './Editarresultado';
+import { Crearpartido } from './Crearpartido';
 import { consumirpartidos } from '../API/Alip_Api';
 //import { Link } from "react-router-dom";
 
@@ -74,6 +75,9 @@ export function Partidos() {
                     aria-controls='Buscar'
                     onChange={buscar_partido}
                   />
+                  <div><i className='mr-1'> Crear Partido:</i>
+              <Crearpartido /></div>
+                  
                 </div>
               </div>
             </div>
