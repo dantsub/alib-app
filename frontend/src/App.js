@@ -13,21 +13,24 @@ import { Posiciones } from "./components/Posiciones";
 import { Fechas } from "./components/Fechas";
 import Register from "./components/Register";
 import { Inscribir } from "./components/Inscribir";
+import { Inicio } from "./components/Inicio";
 import React from "react";
 
 function App() {
-
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Base />}></Route>
+          <Route path="/" element={<Inicio />}></Route>
           <Route path="/equipos" element={<Equipoadmin />}></Route>
           <Route path="/register" element={<Register />}></Route>
           <Route path="/jugadores" element={<Equipodetails />}></Route>
           <Route path="/crearequipo" element={<Crearequipo />}></Route>
           <Route path="/campeonatos" element={<Gescampeonatos />}></Route>
-          <Route path="/campeonatos_eqip" element={<Campeonatodetails />}></Route>
+          <Route
+            path="/campeonatos_eqip"
+            element={<Campeonatodetails />}
+          ></Route>
           <Route path="/listausuarios" element={<ListaUsuarios />}></Route>
           <Route path="/crearusuario" element={<CrearUsuario />}></Route>
           <Route path="/partidos" element={<Partidos />}></Route>

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Base } from './Base';
-import { Eliminarcampeonato } from './Eliminarcampeonato';
 import { Listadoequipos } from './Listadoequipos';
 import { Aprobarequipo } from './Aprobarequipo';
 import { consumircampeonatosequip } from '../API/Alip_Api';
@@ -92,9 +91,6 @@ export function Campeonatodetails() {
                   aria-controls='Buscar'
                   onChange={buscar_equipos}
                 />
-                <div className='col-md-3 d-flex align-items-end'>
-                  {/* <Eliminarcampeonato /> */}
-                </div>
               </div>
             </div>
             {/* <!-- Fin card-body --> */}

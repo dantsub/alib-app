@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 import LogIn from './LogIn';
 import { useEffect, useState } from 'react';
 
-export function Base() {
+export function Base_usuario() {
   const storage = localStorage.getItem('user');
   const [user, setUser] = useState(JSON.parse(storage));
 
   useEffect(() => {
     setUser(JSON.parse(storage));
-  }, [storage]);
+  }, [storage]);  
 
   const close = () => {
     setUser(null);
@@ -192,13 +192,6 @@ export function Base() {
                   <span class='dropdown-item'>Tabla de Posiciones</span>
                 </Link>
               </div>
-            </div>
-            <div>
-              <span className='nav-link dropdown-toggle'>
-                <Link to='/listausuarios'>
-                  <i className='fa fa-user-friends'></i> Usuarios
-                </Link>
-              </span>
             </div>
           </div>
         </>

@@ -23,8 +23,8 @@ export function Gescampeonatos() {
   const buscar_campeonato = (evento) => {
     var resultado_busqueda = Listar_cam.filter((e) => {
       if (
-        e.nombre.toLowerCase().includes(evento.target.value.toLowerCase()) ||
-        e.organizador.toLowerCase().includes(evento.target.value.toLowerCase())
+        e.nombrecamp.toLowerCase().includes(evento.target.value.toLowerCase()) ||
+        e.orgcamp.toLowerCase().includes(evento.target.value.toLowerCase())
       ) {
         return e;
       }
@@ -115,7 +115,7 @@ export function Gescampeonatos() {
                         <tr key={idx} className='js-row'>
                           <td>
                             <div className='container'>
-                            <div className='col-md-4 px-0'>
+                              <div className='col-md-4 px-0'>
                                 <img
                                   alt=''
                                   src={camp.logocamp}
@@ -134,8 +134,11 @@ export function Gescampeonatos() {
                           <td>{camp.lugarcamp}</td>
                           <td>{camp.premioscamp}</td>
                           <td>{estado(camp.estadocamp)}</td>
+                          <div>
                           <td>
                             <Eliminarcampeonato nombrecamp={camp.nombrecamp} />
+                          </td>
+                          <td>
                             <Editarcampeonato
                               nombrecamp={camp.nombrecamp}
                               fecinicamp={camp.fecinicamp}
@@ -147,6 +150,7 @@ export function Gescampeonatos() {
                               logocamp={camp.logocamp}
                             />
                           </td>
+                          </div>
                         </tr>
                       ))}
                     </tbody>

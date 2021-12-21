@@ -49,6 +49,12 @@ campeonatoschema.virtual("integrantescampeonato",{
     foreignField: "ecamp" //el nombre del campo en jugadormodel
 });
 
+campeonatoschema.virtual("aprobacioncampeonato",{
+    ref : "equipos", //la collection de datos con las que se relaciona
+    localField: "_id", //
+    foreignField: "estadocamp" //el nombre del campo en jugadormodel
+});
+
 campeonatoschema.set("toObject", { virtuals : true });
 campeonatoschema.set("toJSON", { virtuals : true})
 

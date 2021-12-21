@@ -1,5 +1,5 @@
 import { Base } from './Base';
-import { useEffect, useState } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import axios from 'axios';
 import { consumircampeonatos } from '../API/Alip_Api';
 
@@ -8,6 +8,12 @@ export function Inscribir(){
   // Con esto cambiamos el título a la página que por default esta en Alib-app
   document.title = 'Inscribir Equipo';
  
+  const storage = localStorage.getItem('user');
+  const [user, setuser] = useState(JSON.parse(storage));
+
+  useEffect(() => {
+    setuser(JSON.parse(storage));
+  }, [storage]);
 
   const [validated, setValidated] = useState('false');
 
@@ -34,9 +40,34 @@ export function Inscribir(){
   }, []);
 
 
-  function guardar(event) {
-    
-  }
+  const idcamp= useRef();
+
+  async function guardar(event) {
+    event.preventDefault();
+    const ecamp = idcamp.current.value;
+    const eusuario = user._id;
+    console.log(ecamp,eusuario)
+    const response = await axios.post(
+      `http://localhost:8081/equipos/inscribir`,
+      {
+        ecamp: ecamp,
+        eusuario: eusuario,
+      },
+      { headers: { 'content-type': 'application/json' } }
+    );
+    const data = response.data;
+    alert(data.msg);
+    if (data.status === 'Ok') {
+      console.log('Status OK');
+    }
+
+  };
+  
+
+
+
+
+  
   return (
     <>
       <Base />
@@ -64,9 +95,9 @@ export function Inscribir(){
                   >
                 <h4 class='card-title'>Escoja un Campeonato</h4>
                 <div className='col-md-2 '>
-                  <select  name='campeonatos' class='form-control' placeholder='Escoger Campeonato'>
+                  <select  name='campeonatos' class='form-control' placeholder='Escoger Campeonato' ref={idcamp}>
                     {listar_campeonato?.map((camp,idx) =>(
-                      <option value={camp._id} key={idx} selected>
+                      <option value={camp._id} key={idx} >
                       {camp.nombrecamp}
                       </option>
                     ))}
