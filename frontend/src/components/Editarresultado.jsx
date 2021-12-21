@@ -1,7 +1,7 @@
 import { useRef,useState } from 'react';
 import axios from "axios";
 
-export function Editarresultado({id,estado,encuentro,resultado,fecha,cancha}) {
+export function Editarresultado({id,rlocal,rvisit}) {
   const [validated, setValidated] = useState('false');
 
   const handleSubmit = (event) => {
@@ -15,43 +15,30 @@ export function Editarresultado({id,estado,encuentro,resultado,fecha,cancha}) {
     setValidated(true);
   };
 
-  const esta = useRef();
-  const encu = useRef();
-  const resu = useRef();
-  const fech = useRef();
-  const canc = useRef();
+ 
+  const resloc = useRef();
+  const resvisi = useRef();
 
-  function guardar(event) {
-    event.preventDefault();
-    const estado = esta.current.value;
-    const encuentro = encu.current.value;
-    const resultado = resu.current.value;
-    const fecha = fech.current.value;
-    const cancha = canc.current.value;
-    console.log(estado, encuentro, resultado,fecha,cancha )
-    axios
-      .post(`http://localhost:8081/partidos/editar`, {
-        headers: { 'content-type': 'application/json' },
-        estado,
-        encuentro,
-        resultado,
-        fecha,
-        cancha,
-      })
-      .then((res) => {
-        const respuesta = res.data;
-        alert(respuesta.msg);
-        if (respuesta.status === 'Ok') {
-          window.location.href = '/fechas';
-        }
-      })
-      .catch((error) => alert(error));
-      esta.current.value = '';
-      encu.current.value = '';
-      resu.current.value = '';
-      fech.current.value = '';
-      canc.current.value = '';
+  const editarpartido = async (event) => {
+    const estadoc = "Jugado";
+    const idpartido = id;
+    const rlocalc = resloc.current.value;
+    const rvisitantec = resvisi.current.value;
+    const response = await axios.post(`http://localhost:8081/partidos/editar`, {
+      _id:idpartido,
+      estado: estadoc,
+      rlocal: rlocalc,
+      revistante: rvisitantec
+    },
+      { headers: { 'content-type': 'application/json' } })
+    const data = response.data;
+        alert(data.msg);
+        if (data.status === 'Ok') {
+          window.location.href = '/partidos';
+    }
   }
+     
+  
   return (
     <>
       <button
@@ -98,83 +85,38 @@ export function Editarresultado({id,estado,encuentro,resultado,fecha,cancha}) {
                     
                   </tr>
                   <tr>
-                    <td>Estado</td>
+                    <td>Resultado equipo local</td>
                     <td>
                       <input
-                      ref={esta}
-                        type='text'
+                      ref={resloc}
+                        type='number'
                         size='1'
                         maxlength='2'
                         className='form-control'
                         placeholder='estado'
                         name='estado'
-                        defaultValue={estado}
+                        defaultValue={rlocal}
                       />
                     </td>
                   </tr>
                   <tr>
-                    <td>Encuentro</td>
+                    <td>Resultado equipo visitante</td>
                     <td>
                       <input
-                       ref={encu}
-                        type='text'
+                       ref={resvisi}
+                        type='number'
                         size='1'
                         maxlength='2'
                         className='form-control'
                         placeholder=''
                         name='encuentro'
-                        defaultValue={encuentro}
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Resultado</td>
-                    <td>
-                      <input
-                       ref={resu}
-                        type='text'
-                        size='1'
-                        maxlength='2'
-                        className='form-control'
-                        placeholder=''
-                        name='0/0'
-                        defaultValue={resultado}
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Fecha</td>
-                    <td>
-                      <input
-                       ref={fech}
-                        type='text'
-                        size='1'
-                        maxlength='2'
-                        className='form-control'
-                        placeholder=''
-                        name='fecha'
-                        defaultValue={fecha}
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Cancha</td>
-                    <td>
-                      <input
-                       ref={canc}
-                        type='text'
-                        size='1'
-                        maxlength='5'
-                        className='form-control'
-                        placeholder=''
-                        name='cancha'
-                        defaultValue={cancha}
+                        defaultValue={rvisit}
                       />
                     </td>
                   </tr>
                 </table>
                 <div className='modal-footer'>
-                  <button className='btn btn-primary' type='button' onClick={guardar}>
+                  <button className='btn btn-primary' type='button' onClick={editarpartido}>
                     Guardar
                   </button>
                 </div>
