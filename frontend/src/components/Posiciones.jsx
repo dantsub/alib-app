@@ -69,7 +69,9 @@ export function Posiciones() {
                         <th>PE</th>
                         <th>GF</th>
                         <th>GC</th>
-                        <th>POS</th>
+                        <th>DIF</th>
+                        <th>PUNTOS</th>
+
                       </tr>
                     </thead>
                     <tbody className='js-table-body' id='tablaequipos'>
@@ -92,7 +94,8 @@ export function Posiciones() {
                           <td>{po.PE}</td>
                           <td>{po.GF}</td>
                           <td>{po.GC}</td>
-                          <td>{po.POS}</td>
+                          <td>{po.DIF}</td>
+                          <td>{po.PUNTOS}</td>
                         </tr>
                       ))}
                     </tbody>

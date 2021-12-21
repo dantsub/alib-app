@@ -25,7 +25,12 @@ const posicioneschema = new Schema({
         required:true
     },
 
-    POS:{
+    DIF:{
+        type:"number",
+        required:true
+    },
+
+    PUNTOS:{
         type:"number",
         required:true
     }
