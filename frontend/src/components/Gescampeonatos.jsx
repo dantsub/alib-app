@@ -49,6 +49,8 @@ export function Gescampeonatos() {
       
     }    
   }
+
+
   
   return (
     <>
@@ -134,9 +136,10 @@ export function Gescampeonatos() {
                           <td>{camp.lugarcamp}</td>
                           <td>{camp.premioscamp}</td>
                           <td>{estado(camp.estadocamp)}</td>
+                          
                           <div>
                           <td>
-                            <Eliminarcampeonato nombrecamp={camp.nombrecamp} />
+                            <Eliminarcampeonato nombrecamp={camp.nombrecamp} estadocamp={camp.estadocamp}/>
                           </td>
                           <td>
                             <Editarcampeonato
@@ -148,8 +151,10 @@ export function Gescampeonatos() {
                               numequipcamp={camp.numequipcamp}
                               premioscamp={camp.premioscamp}
                               logocamp={camp.logocamp}
+                              estadocamp={camp.estadocamp}
                             />
                           </td>
+
                           </div>
                         </tr>
                       ))}

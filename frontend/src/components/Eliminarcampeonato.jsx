@@ -1,7 +1,11 @@
 import axios from 'axios';
 
-export function Eliminarcampeonato({ nombrecamp }) {
+export function Eliminarcampeonato({ nombrecamp, estadocamp }) {
   console.log('Consele Log Eliminar campeonato', nombrecamp);
+  let disabled = 'disabled'
+  if (estadocamp === "En inscripciones") {
+    disabled = ''
+  }
 
   const eliminarcamp = async (nombrecamp) => {
     const response = await axios.post(
@@ -19,6 +23,7 @@ export function Eliminarcampeonato({ nombrecamp }) {
     <>
       <button
         className='btn btn-danger table-buttons'
+        disabled = {disabled}
         data-bs-toggle='modal'
         data-bs-target={`#modal_eliminar_${nombrecamp
           .replace(/[ .]+/g, '')

@@ -8,8 +8,14 @@ export function Editarcampeonato({
   orgcamp,
   lugarcamp,
   numequipcamp,
-  premioscamp
+  premioscamp,
+  estadocamp
 }) {
+
+  let disabled = 'disabled'
+  if (estadocamp === "En inscripciones") {
+    disabled = ''
+  }
   const [validated, setValidated] = useState('false');
 
   const handleSubmit = (event) => {
@@ -37,6 +43,7 @@ export function Editarcampeonato({
     const lugarcampt = lugarcampe.current.value;
     const numequipcampt = numequipcampe.current.value;
     const premioscampt = premioscampe.current.value;
+    const estadocampt   = estadocamp;
     const response = await axios.post(
       `http://localhost:8081/campeonatos/editarcamp`,
       {
@@ -46,7 +53,8 @@ export function Editarcampeonato({
         orgcamp: orgcampt,
         lugarcamp: lugarcampt,
         numequipcamp: numequipcampt,
-        premioscamp: premioscampt
+        premioscamp: premioscampt,
+        estadocamp: estadocampt
       },
       { headers: { 'content-type': 'application/json' } }
     );
@@ -74,6 +82,7 @@ export function Editarcampeonato({
     <>
       <button
         className='btn btn-primary'
+        disabled = {disabled}
         data-bs-toggle='modal'
         data-bs-target={`#modal_editar_${nombrecamp
           .replace(/[ .]+/g, '')
