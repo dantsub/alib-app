@@ -8,8 +8,7 @@ export function Editarcampeonato({
   orgcamp,
   lugarcamp,
   numequipcamp,
-  premioscamp,
-  logocamp,
+  premioscamp
 }) {
   const [validated, setValidated] = useState('false');
 
@@ -30,7 +29,6 @@ export function Editarcampeonato({
   const lugarcampe = useRef();
   const numequipcampe = useRef();
   const premioscampe = useRef();
-  const logocampe = useRef();
 
   const editarcamp = async (doc) => {
     const fecinicampt = fecinicampe.current.value;
@@ -39,7 +37,6 @@ export function Editarcampeonato({
     const lugarcampt = lugarcampe.current.value;
     const numequipcampt = numequipcampe.current.value;
     const premioscampt = premioscampe.current.value;
-    const logocampt = logocampe.current.value;
     const response = await axios.post(
       `http://localhost:8081/campeonatos/editarcamp`,
       {
@@ -49,8 +46,7 @@ export function Editarcampeonato({
         orgcamp: orgcampt,
         lugarcamp: lugarcampt,
         numequipcamp: numequipcampt,
-        premioscamp: premioscampt,
-        logocamp: logocampt,
+        premioscamp: premioscampt
       },
       { headers: { 'content-type': 'application/json' } }
     );
@@ -65,7 +61,6 @@ export function Editarcampeonato({
     lugarcampe.current.value = '';
     numequipcampe.current.value = '';
     premioscampe.current.value = '';
-    logocampe.current.value = '';
     //estadocampe.current.value="";
   };
 
@@ -238,7 +233,7 @@ export function Editarcampeonato({
                     Por favor ingrese los premios
                   </div>
                 </div>
-                <div className='form-group'>
+                {/* <div className='form-group'>
                   <label for='' className='form-label'>
                     Logo del campeonato
                   </label>
@@ -251,7 +246,7 @@ export function Editarcampeonato({
                   <div className='invalid-feedback'>
                     Por favor ingrese el logo
                   </div>
-                </div>
+                </div> */}
               </div>
               <div className='modal-footer'>
                 <button
