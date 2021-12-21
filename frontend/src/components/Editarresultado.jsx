@@ -28,7 +28,7 @@ export function Editarresultado({id,rlocal,rvisit}) {
       _id:idpartido,
       estado: estadoc,
       rlocal: rlocalc,
-      revistante: rvisitantec
+      rvisitante: rvisitantec
     },
       { headers: { 'content-type': 'application/json' } })
     const data = response.data;
@@ -93,7 +93,7 @@ export function Editarresultado({id,rlocal,rvisit}) {
                         size='1'
                         maxlength='2'
                         className='form-control'
-                        placeholder='estado'
+                        placeholder='resultado local'
                         name='estado'
                         defaultValue={rlocal}
                       />
@@ -108,7 +108,7 @@ export function Editarresultado({id,rlocal,rvisit}) {
                         size='1'
                         maxlength='2'
                         className='form-control'
-                        placeholder=''
+                        placeholder='resultado visitante'
                         name='encuentro'
                         defaultValue={rvisit}
                       />
