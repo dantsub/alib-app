@@ -184,7 +184,7 @@ const LogIn = () => {
 
                     <p className='text-center mt-2'>
                       <span>Nuevo en nuestra plataforma?</span>
-                      <Link to='/resgister'>
+                      <Link to='/register'>
                         <span>Crear una cuenta</span>
                       </Link>
                     </p>
