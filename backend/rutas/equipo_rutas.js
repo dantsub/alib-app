@@ -115,4 +115,36 @@ equipo_rutas.post("/inscribir", function(req,res){
     })
 });
 
+
+
+equipo_rutas.post("/aprobarequip", function(req,res){
+    const datos = req.body;
+    const eusuario= datos.eusuario;
+    const estadocamp = datos.estadocamp;
+    const filter = { eusuario: eusuario };
+    const updateDoc = {
+        $set: {
+            estadocamp: estadocamp
+        },
+      };
+    equipomodel.updateOne(filter, updateDoc, function(error,eq){
+        console.log(eq);
+        if (error){
+            res.send({status:"Error",msg:"El equipo NO fue aprobado por Error"});
+            return false;
+        }
+        else{
+        if (eq){
+            res.send({status:"Ok",msg:"El equipo fue aprobado satisfactoriamente", dato:eq})
+        }
+        else{
+            res.send({status:"Error",msg:"El equipo No pudo ser aprobado, porque no fue encontrado"})
+        }
+    }
+
+    })
+});
+
+
+
 exports.equipo_rutas=equipo_rutas;
