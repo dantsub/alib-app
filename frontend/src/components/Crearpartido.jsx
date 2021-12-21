@@ -1,8 +1,34 @@
-import { useRef,useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
+import { consumircampeonatos } from '../API/Alip_Api';
+import { consumircampeonatosequip } from '../API/Alip_Api';
+
 import axios from "axios";
 
 export function Crearpartido({id,estado,local,visitante, rlocal,rvisitante,fecha}) {
   const [validated, setValidated] = useState('false');
+  
+let [listar_campeonato, setListar_campeonato] = useState([]);
+  let [Listar_cam, setListar_cam] = useState([]);
+
+  useEffect(() => {
+    const solicitar_campeonato = async () => {
+      const dato = await consumircampeonatos();
+      setListar_campeonato(dato.campeonatos);
+      setListar_cam(dato.campeonatos);
+    };
+    solicitar_campeonato();
+  }, []);
+
+  let [listar_equipos, setListar_equipos] = useState([]);
+
+  useEffect(() => {
+    const solicitar_campeonatosequip = async () => {
+      const dato = await consumircampeonatosequip();
+      setListar_equipos(dato.campeonatos.integrantescampeonato);
+    };
+    solicitar_campeonatosequip();
+  }, []);
+
 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
@@ -15,20 +41,17 @@ export function Crearpartido({id,estado,local,visitante, rlocal,rvisitante,fecha
     setValidated(true);
   };
 
-  const esta = useRef();
   const loc = useRef();
   const visi = useRef();
-  const rloc = useRef();
-  const rvisi = useRef();
   const fech = useRef();
 
   function guardar(event) {
     event.preventDefault();
-    const estado = esta.current.value;
+    const estado = "Sin Jugar";
     const local = loc.current.value;
     const visitante = visi.current.value;
-    const rlocal = rloc.current.value;
-    const rvisitante = rvisi.current.value;
+    const rlocal = 0;
+    const rvisitante = 0;
     const fecha = fech.current.value;
     console.log(estado, local, visitante,rlocal,rvisitante,fecha)
     axios
@@ -40,16 +63,10 @@ export function Crearpartido({id,estado,local,visitante, rlocal,rvisitante,fecha
         const respuesta = res.data;
         alert(respuesta.msg);
         if (respuesta.status === 'Ok') {
-          window.location.href = '/fechas';
+          window.location.href = '/partidos';
         }
       })
       .catch((error) => alert(error));
-      esta.current.value = '';
-      loc.current.value = '';
-      visi.current.value = '';
-      rloc.current.value = '';
-      rvisi.current.value = '';
-      fech.current.value = '';
   }
   return (
     <>
@@ -70,106 +87,57 @@ export function Crearpartido({id,estado,local,visitante, rlocal,rvisitante,fecha
         aria-labelledby='titulo_editar'
         aria-hidden='true'
       >
-        <div className='modal-dialog modal-sm'>
-          <div className='modal-content'>
-            <div className='modal-header'>
-              <h5 id='titulo_editar'>Crear Partido</h5>
-              <button
-                type='button'
-                className='btn-close'
-                data-bs-dismiss='modal'
-                aria-label='Close'
-              ></button>
-            </div>
-            <form
-              id='crearpartido'
-              action=''
-              noValidate
-              validated={validated}
-              onSubmit={handleSubmit}
-            >
-              <input aria-label='.' type='hidden' name='oculto' value='editarresultado' />
-              <div className='modal-body'>
-                <table className='default'>
-                  <tr>
-                    <th>--</th>
-                    <th>Local</th>
-                    <th>Vistante</th>
-                  </tr>
-                  <tr>
-                    <td>Estado</td>
-                    <td>
-                      <input
-                      ref={esta}
-                        type='text'
-                        className='form-control'
-                        placeholder=''
-                        name='estado'
-                        defaultValue={estado}
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Equipos</td>
-                    <td>
-                      <input
-                       ref={loc}
-                        type='text'
-                        className='form-control'
-                        placeholder=''
-                        name='local'
-                        defaultValue={local}
-                      /></td>
-                       <td>
-                      <input
-                       ref={visi}
-                        type='text'
-                        className='form-control'
-                        placeholder=''
-                        name='visitante'
-                        defaultValue={visitante}
-                      /></td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Resultados</td>
-                    <td>
-                      <input
-                       ref={rloc}
-                        type='text'
-                        size='1'
-                        maxlength='2'
-                        className='form-control'
-                        placeholder=''
-                        name='rlocal'
-                        defaultValue={rlocal}
-                      /></td>
-                      <td>
-                      <input
-                       ref={rvisi}
-                        type='text'
-                        size='1'
-                        maxlength='2'
-                        className='form-control'
-                        placeholder=''
-                        name='rlocal'
-                        defaultValue={rvisitante}
-                      /></td>
-                  </tr>
-                  <tr>
-                    <td>Fecha</td>
-                    <td>
-                      <input
-                       ref={fech}
-                        type='date'
-                        className='form-control'
-                        placeholder=''
-                        name='fecha'
-                        defaultValue={fecha}
-                      />
-                    </td>
-                  </tr>
-                </table>
+                <div class="modal-dialog modal-sm" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 id="titulo_eliminar">Crear Partido</h5>
+                            <button
+                                type="button"
+                                class="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"
+                            ></button>
+                        </div>
+                        <div class="modal-body">
+              <form id="editar_usuario"
+                        action=""
+                noValidate validated={validated} onSubmit={handleSubmit}>
+                
+
+                <div className="form-group">
+                  <label for="" className="form-label">Equipo Local</label>
+                  <select className='form-control-sm' id="elocal" ref={loc}>
+                      {listar_equipos.map((equipo, idx) => (
+                        <option key={idx} value={equipo.id}>
+                          {equipo.nombre}
+                        </option>
+                      ))}
+                      </select>
+                </div>
+
+                <div className="form-group">
+                  <label for="" className="form-label">Equipo Visitante</label>
+                  <select className='form-control-sm' id="elocal" ref={visi}>
+                      {listar_equipos.map((equipo, idx) => (
+                        <option key={idx} value={equipo.id}>
+                          {equipo.nombre}
+                        </option>
+                      ))}
+                      </select>
+                </div>
+
+                <div className="form-group">
+                  <label for="" className="form-label"
+                    >Fecha del partido</label>
+                  <input
+                    type='date'
+                    className='form-control'
+                    id='fechaini'
+                    placeholder='Fecha inicial'
+                    ref={fech}/>
+                </div>
+                <br />
+                <div className="form-group">
                 <div className='modal-footer'>
                   <button className='btn btn-primary' type='button' onClick={guardar}>
                     Guardar
@@ -178,6 +146,7 @@ export function Crearpartido({id,estado,local,visitante, rlocal,rvisitante,fecha
               </div>
             </form>
           </div>
+        </div>
         </div>
       </div>
     </>

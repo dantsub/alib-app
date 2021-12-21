@@ -3,12 +3,24 @@ import { Base } from './Base';
 import { Editarresultado } from './Editarresultado';
 import { Crearpartido } from './Crearpartido';
 import { consumirpartidos } from '../API/Alip_Api';
+import { consumircampeonatos } from '../API/Alip_Api';
+
 //import { Link } from "react-router-dom";
 
 
 export function Partidos() {
   // Con esto cambiamos el título a la página que por default esta en Alib-app
   document.title = 'Partidos';
+
+  let [listar_campeonato, setListar_campeonato] = useState([]);
+
+  useEffect(() => {
+    const solicitar_campeonato = async () => {
+      const dato = await consumircampeonatos();
+      setListar_campeonato(dato.campeonatos);
+    };
+    solicitar_campeonato();
+  }, []);
 
   let [Listar_Pt, setListar_Pt] = useState([]);
   let [listar_partidos, setListar_partidos] = useState([]);
@@ -57,24 +69,15 @@ export function Partidos() {
               <div className='row'>
                 <div className='col-md-3'>
                   <h4 class='card-title'>Escoja un Campeonato</h4>
-                  <select name='campeonatos' class='form-control'>
-                    <option value='camp1' selected>
-                      Liga Betplay Dimayor
-                    </option>
-                    <option value='camp2'>UEFA</option>
-                    <option value='camp3'>Premier</option>
+                  <select name='campeonatos' class='form-control' placeholder='Escoger Campeonato'>
+                      {listar_campeonato?.map((camp,idx) =>(
+                      <option value={camp._id} selected>
+                        {camp.nombrecamp}
+                        </option>
+                    ))}  
                   </select>
-                  <label className='form-label' for='Searchproducto'>
-                    Busqueda de partidos
-                  </label>
-                  <input
-                    type='text'
-                    className='form-control'
-                    id='Searchproducto'
-                    placeholder='Busqueda'
-                    aria-controls='Buscar'
-                    onChange={buscar_partido}
-                  />
+                  
+
                   <div><i className='mr-1'> Crear Partido:</i>
               <Crearpartido /></div>
                   
@@ -99,10 +102,11 @@ export function Partidos() {
                     <thead>
                       <tr>
                         <th>Estado</th>
-                        <th>Encuentro</th>
-                        <th>Resultado</th>
                         <th>Fecha</th>
-                        <th>Cancha</th>
+                        <th>Equipo Local</th>
+                        <th>Resultado Local</th>
+                        <th>Equipo Visitante</th>
+                        <th>Resultado Visitante</th>
                         <th>Acciones</th>
                       </tr>
                     </thead>
@@ -110,13 +114,13 @@ export function Partidos() {
                       {listar_partidos.map((pa,idx) => (
                         <tr key={idx}>
                           <td>{pa.estado}</td>
-                          <td>{pa.encuentro}</td>
-                          <td>{pa.resultado}</td>
                           <td>{dateformat(pa.fecha)}</td>
-                          <td>{pa.cancha} 
-                          </td>
+                          <td>{pa.local}</td>
+                          <td>{pa.rlocal}</td>
+                          <td>{pa.visitante}</td>
+                          <td>{pa.rvisitante}</td>
                           <td>
-                            <Editarresultado id={pa._id} estado={pa.estado} encuentro={pa.encuentro} resultado={pa.resultado} fecha={pa.fecha} cancha={pa.cancha} />
+                            <Editarresultado id={pa._id} rlocal={pa.rlocal} rvisit={pa.rvisitante}/>
                           </td>
                         </tr>
                       ))}
