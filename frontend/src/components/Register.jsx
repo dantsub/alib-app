@@ -48,7 +48,7 @@ const Register = () => {
           setTimeout(() => {
             setValidated(false);
           }, 3000);
-          window.location.href = '/register';
+          window.location.href = '/';
         }
       })
       .catch((error) => alert(error));
@@ -123,6 +123,7 @@ const Register = () => {
                           tabindex='1'
                           autofocus=''
                           ref={formDoc}
+                          required
                         />
                       </div>
                       <div className='mb-1'>
@@ -148,7 +149,7 @@ const Register = () => {
                           Correo
                         </label>
                         <input
-                          type='text'
+                          type='email'
                           className='form-control'
                           id='register-email'
                           name='register-email'
@@ -156,6 +157,7 @@ const Register = () => {
                           aria-describedby='register-email'
                           tabindex='2'
                           ref={formEmail}
+                          required
                         />
                       </div>
 
@@ -177,6 +179,7 @@ const Register = () => {
                             aria-describedby='register-password'
                             tabindex='3'
                             ref={formPass}
+                            required
                           />
                           <span className='input-group-text cursor-pointer'>
                             <svg
