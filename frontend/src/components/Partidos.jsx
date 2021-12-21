@@ -115,9 +115,9 @@ export function Partidos() {
                         <tr key={idx}>
                           <td>{pa.estado}</td>
                           <td>{dateformat(pa.fecha)}</td>
-                          <td>{pa.local}</td>
+                          <td>{pa.local.nombre}</td>
                           <td>{pa.rlocal}</td>
-                          <td>{pa.visitante}</td>
+                          <td>{pa.visitante.nombre}</td>
                           <td>{pa.rvisitante}</td>
                           <td>
                             <Editarresultado id={pa._id} rlocal={pa.rlocal} rvisit={pa.rvisitante}/>
