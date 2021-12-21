@@ -21,7 +21,7 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Inicio />}></Route>
+          <Route path="/" element={<Base />}></Route>
           <Route path="/equipos" element={<Equipoadmin />}></Route>
           <Route path="/register" element={<Register />}></Route>
           <Route path="/jugadores" element={<Equipodetails />}></Route>
