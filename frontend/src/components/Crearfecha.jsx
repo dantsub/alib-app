@@ -1,5 +1,7 @@
-import { useState } from 'react';
-export function Crearfecha() {
+import { useRef,useState } from 'react';
+import axios from "axios";
+
+export function Crearfecha({_id, jornada, fecha_ini, fecha_fin}) {
   const [validated, setValidated] = useState('false');
 
   const handleSubmit = (event) => {
@@ -11,13 +13,44 @@ export function Crearfecha() {
     event.target.className += ' was-validated';
     setValidated(true);
   };
+
+  
+  const fechaini = useRef();
+  const fechafin = useRef();
+  const jor = useRef();
+  function guardar(event) {
+    event.preventDefault();
+    const jornada = jor.current.value;
+    const fecha_ini = fechaini.current.value;
+    const fecha_fin = fechafin.current.value;
+    console.log(jornada, fecha_ini, fecha_fin)
+    axios
+      .post(`http://localhost:8081/fechas/guardar`, {
+        headers: { 'content-type': 'application/json' },
+        jornada,
+        fecha_ini,
+        fecha_fin,
+      })
+      .then((res) => {
+        const respuesta = res.data;
+        alert(respuesta.msg);
+        if (respuesta.status === 'Ok') {
+          window.location.href = '/fechas';
+        }
+      })
+      .catch((error) => alert(error));
+    jor.current.value = '';
+    fechaini.current.value = '';
+    fechafin.current.value = '';
+  }
+
   return (
     <>
       <button
         className='btn btn-primary align-self-end btn-crear'
         id='crear'
         data-bs-toggle='modal'
-        data-bs-target='#modal_crear_fecha'
+        data-bs-target= {`#modal_crear_fecha_${_id}`}
       >
         <i className='fa fa-calendar'></i>
       </button>
@@ -25,7 +58,7 @@ export function Crearfecha() {
       {/* <!-- Modal Crear Fecha  --> */}
       <div
         className='modal fade'
-        id='modal_crear_fecha'
+        id={`modal_crear_fecha_${_id}`}
         tabindex='-1'
         aria-labelledby='titulo_crear'
         aria-hidden='true'
@@ -53,19 +86,19 @@ export function Crearfecha() {
                 <label for='' className='form-label'>
                   Jornada
                 </label>
-                <select name='Jornadas' className='form-control-sm'>
-                  <option value='1' selected>
-                    1
-                  </option>
-                  <option value='2'>2</option>
-                  <option value='3'>3</option>
-                  <option value='4'>4</option>
-                </select>
+                <input
+                    ref={jor}
+                    type='string'
+                    className='form-control'
+                    id='jornada'
+                    placeholder='Numero de la Jornada'
+                  />
                 <div>
                   <label for='' className='form-label'>
                     Fecha inicial
                   </label>
                   <input
+                   ref={fechaini}
                     type='date'
                     className='form-control'
                     id='fechaini'
@@ -77,6 +110,7 @@ export function Crearfecha() {
                     Fecha Fin
                   </label>
                   <input
+                  ref={fechafin}
                     type='date'
                     className='form-control'
                     id='fechafin'
@@ -144,7 +178,7 @@ export function Crearfecha() {
                     </tr>
                   </table>
                   <div className='modal-footer'>
-                    <button className='btn btn-primary' type='button'>
+                    <button className='btn btn-primary' type='button' onClick={guardar}>
                       Guardar
                     </button>
                   </div>

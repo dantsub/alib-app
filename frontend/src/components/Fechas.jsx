@@ -18,6 +18,11 @@ export function Fechas() {
     solicitar_fechas();
   }, []);
 
+  function dateformat(fecha) {
+    const newfecha = new Date(fecha).toLocaleDateString();
+    return newfecha;
+  }
+
   return (
     <>
       <Base />
@@ -60,13 +65,13 @@ export function Fechas() {
                     </tr>
                   </thead>
                   <tbody className='js-table-body' id='tablaequipos'>
-                    {listar_fechas.map((fe) => (
-                      <tr className='js-row'>
+                    {listar_fechas.map((fe,idx) => (
+                      <tr key={idx} className='js-row'>
                         <td>{fe.jornada}</td>
-                        <td>{fe.fecha_ini}</td>
-                        <td>{fe.fecha_fin}</td>
+                        <td>{dateformat(fe.fecha_ini)}</td>
+                        <td>{dateformat(fe.fecha_fin)}</td>
                         <td>
-                          <Editarfecha jornada={fe.jornada} fecha_ini={fe.fecha_ini} fecha_fin = {fe.fecha_fin} />
+                          <Editarfecha _id={fe._id} jornada={fe.jornada} fecha_ini={fe.fecha_ini} fecha_fin = {fe.fecha_fin} />
                           <Eliminarfecha />
                         </td>
                       </tr>

@@ -30,7 +30,11 @@ export function Inicio() {
     
     return (
         <>
+            {storage ? (
+                <>
             {base(user.idrol)}
+                </>
+            ) : <LogIn />}
         </>
     );
                     

@@ -4,23 +4,32 @@ const partidoschema = new Schema({
         type:"string",
         required:true
     },
-    encuentro:{
-        type:"string",
+    local:{
+        type:Schema.Types.ObjectId,
+        required:true,
+        ref:"equipos"
+
+    },
+    
+    visitante:{
+        type:Schema.Types.ObjectId,
+        required:true,
+        ref:"equipos"
+    },
+    rlocal:{
+        type:"number",
         required:true
     },
-    resultado:{
-        type:"string",
+    rvisitante:{
+        type:"number",
         required:true
     },
+   
     fecha:{
         type:"date",
         required:true
-   
-    },    
-    cancha:{
-        type:"string",
-        required:true
     }
+    
 });
 
 

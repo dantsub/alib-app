@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Base } from './Base';
 import { Editarresultado } from './Editarresultado';
+import { Crearpartido } from './Crearpartido';
 import { consumirpartidos } from '../API/Alip_Api';
 //import { Link } from "react-router-dom";
 
@@ -35,6 +36,10 @@ export function Partidos() {
     });
     setListar_partidos(resultado_busqueda);
   };
+  function dateformat(fecha) {
+    const newfecha = new Date(fecha).toLocaleDateString();
+    return newfecha;
+  }
 
   return (
     <>
@@ -70,6 +75,9 @@ export function Partidos() {
                     aria-controls='Buscar'
                     onChange={buscar_partido}
                   />
+                  <div><i className='mr-1'> Crear Partido:</i>
+              <Crearpartido /></div>
+                  
                 </div>
               </div>
             </div>
@@ -99,15 +107,16 @@ export function Partidos() {
                       </tr>
                     </thead>
                     <tbody className='js-table-body' id='tablaequipos'>
-                      {listar_partidos.map((pa) => (
-                        <tr>
+                      {listar_partidos.map((pa,idx) => (
+                        <tr key={idx}>
                           <td>{pa.estado}</td>
                           <td>{pa.encuentro}</td>
                           <td>{pa.resultado}</td>
-                          <td>{pa.fecha}</td>
-                          <td>{pa.cancha}</td>
+                          <td>{dateformat(pa.fecha)}</td>
+                          <td>{pa.cancha} 
+                          </td>
                           <td>
-                            <Editarresultado />
+                            <Editarresultado id={pa._id} estado={pa.estado} encuentro={pa.encuentro} resultado={pa.resultado} fecha={pa.fecha} cancha={pa.cancha} />
                           </td>
                         </tr>
                       ))}

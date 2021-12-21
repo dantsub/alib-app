@@ -37,6 +37,18 @@ equiposchema.virtual("integrantesequipo",{
     foreignField: "jequipo" //el nombre del campo en jugadormodel
 });
 
+equiposchema.virtual("equipolocal",{
+    ref : "partidos", //la collection de datos con las que se relaciona
+    localField: "_id", //
+    foreignField: "local" //el nombre del campo en jugadormodel
+});
+
+equiposchema.virtual("equipovisitante",{
+    ref : "partidos", //la collection de datos con las que se relaciona
+    localField: "_id", //
+    foreignField: "visitante" //el nombre del campo en jugadormodel
+});
+
 equiposchema.set("toObject", { virtuals : true });
 equiposchema.set("toJSON", { virtuals : true})
 

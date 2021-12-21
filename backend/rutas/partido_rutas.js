@@ -2,7 +2,7 @@ const { Router } = require("express");
 const partido_rutas = Router();
 const {partidosmodel} = require("../modelos/partidosmodel");
 
-partido_rutas.post("/partidos", function(req,res){
+partido_rutas.post("/guardar", function(req,res){
     const datos = req.body;
     const camp = new partidosmodel(datos);
     camp.save(function(err){
@@ -29,7 +29,7 @@ partido_rutas.post("/eliminarpartido", async function(req,res){
     const {encuentro} = req.body;
     console.log(encuentro);
     
-    partidomodel.deleteOne({encuentro},function(error,camp){
+    partidosmodel.deleteOne({encuentro},function(error,camp){
         console.log(camp);
         if (error){
             res.send({status:"Error",msg:"El Partido NO fue encontrado. Error"});
@@ -46,28 +46,29 @@ partido_rutas.post("/eliminarpartido", async function(req,res){
     })
 })
 
-
-partido_rutas.post("/editarpartido", function(req,res){
+partido_rutas.post("/editar", function(req,res){
     const datos = req.body;
     const estado = datos.estado;
-    const encuentro = datos.encuentro;
-    const resultado = datos.resultado;
-    const fecha = datos.fecha;
-    const cancha = datos.cancha; 
+    const local = datos.local;
+    const visitante = datos.visitante;
+    const rlocal = datos.rlocal;
+    const rvisitante = datos.rvisitante;
+    const fecha = datos.fecha; 
 
-    const filter = { encuentro: encuentro };
+    const filter = { _id: _id };
     const updatePartido = {
         $set: {
             estado : estado,
-            encuentro : encuentro,
-            resultado : resultado,
+            local : local,
+            visitante : visitante,
+            rlocal : rlocal,
+            rvisitante : rvisitante,
             fecha : fecha,
-            cancha : cancha,
          
         },
     };
     
-    partidomodel.updateOne(filter, updatePartido, function(error,jug){
+    partidosmodel.updateOne(filter, updatePartido, function(error,jug){
         console.log(camp);
         if (error){
             res.send({status:"Error",msg:"El partido NO fue encontrado. Error"});
