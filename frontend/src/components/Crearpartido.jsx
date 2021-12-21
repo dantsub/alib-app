@@ -63,7 +63,7 @@ let [listar_campeonato, setListar_campeonato] = useState([]);
         const respuesta = res.data;
         alert(respuesta.msg);
         if (respuesta.status === 'Ok') {
-          window.location.href = '/fechas';
+          window.location.href = '/partidos';
         }
       })
       .catch((error) => alert(error));
