@@ -55,23 +55,21 @@ export function Inscribir(){
             <div>
               {/* <!-- Seccion de Formulario --> */}
               <div className='row'>
-                <div className='col-md-12 col-lg-4 mx-auto'>
+                <div className='col-md-12 '>
                   <form
                     action=''
                     noValidate
                     validated={validated}
                     onSubmit={handleSubmit}
                   >
-                  <h4 class='card-title'>Escoja un Campeonato</h4>
+                <h4 class='card-title'>Escoja un Campeonato</h4>
                 <div className='col-md-2 '>
-                
- 
                   <select  name='campeonatos' class='form-control' placeholder='Escoger Campeonato'>
-                  {listar_campeonato?.map((camp,idx) =>(
-                    <option value={camp._id} key={idx} selected>
-                    {camp.nombrecamp}
-                     </option>
-                  ))}  
+                    {listar_campeonato?.map((camp,idx) =>(
+                      <option value={camp._id} key={idx} selected>
+                      {camp.nombrecamp}
+                      </option>
+                    ))}
                   </select>       
                 </div>
                     <br />

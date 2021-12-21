@@ -4,6 +4,7 @@ import { Eliminarcampeonato } from './Eliminarcampeonato';
 import { Listadoequipos } from './Listadoequipos';
 import { Aprobarequipo } from './Aprobarequipo';
 import { consumircampeonatosequip } from '../API/Alip_Api';
+import { consumircampeonatos } from '../API/Alip_Api';
 
 export function Campeonatodetails() {
   document.title = 'Equipo';
@@ -33,6 +34,21 @@ export function Campeonatodetails() {
     setListar_equipos(resultado_busqueda);
   };
 
+
+  let [listar_campeonato, setListar_campeonato] = useState([]);
+
+
+  useEffect(() => {
+    const solicitar_campeonato = async () => {
+      const dato = await consumircampeonatos();
+      setListar_campeonato(dato.campeonatos);
+    };
+    solicitar_campeonato();
+  }, []);
+
+
+  
+
   return (
     <>
       <Base />
@@ -53,13 +69,13 @@ export function Campeonatodetails() {
               <div className='row'>
                 <h4 class='card-title'>Escoja un Campeonato</h4>
                 <div className='col-md-2 '>
-                  <select name='campeonatos' class='form-control'>
-                    <option value='camp1' selected>
-                      Liga Betplay Dimayor
-                    </option>
-                    <option value='camp2'>UEFA</option>
-                    <option value='camp3'>Premier</option>
-                  </select>
+                  <select  name='campeonatos' class='form-control' placeholder='Escoger Campeonato'>
+                      {listar_campeonato?.map((camp,idx) =>(
+                      <option value={camp._id} key={idx} selected>
+                        {camp.nombrecamp}
+                      </option>
+                    ))}  
+                  </select>       
                 </div>
                 <div className='col-md-3 d-flex align-items-end'>
                   <Listadoequipos />
