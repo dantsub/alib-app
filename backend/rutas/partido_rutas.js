@@ -15,7 +15,8 @@ partido_rutas.post("/guardar", function(req,res){
 });
 
 partido_rutas.get("/listarpartidos", async function(req,res){
-    const partidos = await partidosmodel.find().lean();
+    const partidos = await partidosmodel.find().populate("local visitante" , "nombre");
+
 
     console.log(partidos);
         if (partidos == null){
