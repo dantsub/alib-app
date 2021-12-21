@@ -1,5 +1,7 @@
-import { useState } from 'react';
-export function Editarresultado() {
+import { useRef,useState } from 'react';
+import axios from "axios";
+
+export function Editarresultado({id,estado,encuentro,resultado,fecha,cancha}) {
   const [validated, setValidated] = useState('false');
 
   const handleSubmit = (event) => {
@@ -12,21 +14,59 @@ export function Editarresultado() {
 
     setValidated(true);
   };
+
+  const esta = useRef();
+  const encu = useRef();
+  const resu = useRef();
+  const fech = useRef();
+  const canc = useRef();
+
+  function guardar(event) {
+    event.preventDefault();
+    const estado = esta.current.value;
+    const encuentro = encu.current.value;
+    const resultado = resu.current.value;
+    const fecha = fech.current.value;
+    const cancha = canc.current.value;
+    console.log(estado, encuentro, resultado,fecha,cancha )
+    axios
+      .post(`http://localhost:8081/partidos/guardar`, {
+        headers: { 'content-type': 'application/json' },
+        estado,
+        encuentro,
+        resultado,
+        fecha,
+        cancha,
+      })
+      .then((res) => {
+        const respuesta = res.data;
+        alert(respuesta.msg);
+        if (respuesta.status === 'Ok') {
+          window.location.href = '/fechas';
+        }
+      })
+      .catch((error) => alert(error));
+      esta.current.value = '';
+      encu.current.value = '';
+      resu.current.value = '';
+      fech.current.value = '';
+      canc.current.value = '';
+  }
   return (
     <>
       <button
         className='btn btn-primary'
         id='editar'
         data-bs-toggle='modal'
-        data-bs-target='#modal_editar'
+        data-bs-target={`#modal_editar_${id}`}
       >
         <i className='fas fa-edit'></i>
+        
       </button>
-
       {/* <!-- Modal editar partido  --> */}
       <div
         className='modal fade'
-        id='modal_editar'
+        id={`modal_editar_${id}`}
         tabindex='-1'
         aria-labelledby='titulo_editar'
         aria-hidden='true'
@@ -54,104 +94,87 @@ export function Editarresultado() {
                 <table className='default'>
                   <tr>
                     <th>--</th>
-                    <th>EquipoA</th>
-                    <th>EquipoB</th>
+                    <th>RESULTADOS</th>
+                    
                   </tr>
                   <tr>
-                    <td>Goles</td>
+                    <td>Estado</td>
                     <td>
                       <input
+                      ref={esta}
                         type='text'
                         size='1'
                         maxlength='2'
                         className='form-control'
-                        placeholder=''
-                        name='r1'
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type='text'
-                        size='1'
-                        maxlength='2'
-                        className='form-control'
-                        placeholder=''
-                        name='r2'
+                        placeholder='estado'
+                        name='estado'
+                        defaultValue={estado}
                       />
                     </td>
                   </tr>
                   <tr>
-                    <td>Faltas</td>
+                    <td>Encuentro</td>
                     <td>
                       <input
+                       ref={encu}
                         type='text'
                         size='1'
                         maxlength='2'
                         className='form-control'
                         placeholder=''
-                        name='f1'
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type='text'
-                        size='1'
-                        maxlength='2'
-                        className='form-control'
-                        placeholder=''
-                        name='f2'
+                        name='encuentro'
+                        defaultValue={encuentro}
                       />
                     </td>
                   </tr>
                   <tr>
-                    <td>T. Amarillas</td>
+                    <td>Resultado</td>
                     <td>
                       <input
+                       ref={resu}
                         type='text'
                         size='1'
                         maxlength='2'
                         className='form-control'
                         placeholder=''
-                        name='ta1'
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type='text'
-                        size='1'
-                        maxlength='2'
-                        className='form-control'
-                        placeholder=''
-                        name='ta2'
+                        name='0/0'
+                        defaultValue={resultado}
                       />
                     </td>
                   </tr>
                   <tr>
-                    <td>T. Rojas</td>
+                    <td>Fecha</td>
                     <td>
                       <input
+                       ref={fech}
                         type='text'
                         size='1'
                         maxlength='2'
                         className='form-control'
                         placeholder=''
-                        name='tr1'
+                        name='fecha'
+                        defaultValue={fecha}
                       />
                     </td>
+                  </tr>
+                  <tr>
+                    <td>Cancha</td>
                     <td>
                       <input
+                       ref={canc}
                         type='text'
                         size='1'
-                        maxlength='2'
+                        maxlength='5'
                         className='form-control'
                         placeholder=''
-                        name='tr2'
+                        name='cancha'
+                        defaultValue={cancha}
                       />
                     </td>
                   </tr>
                 </table>
                 <div className='modal-footer'>
-                  <button className='btn btn-primary' type='button'>
+                  <button className='btn btn-primary' type='button' onClick={guardar}>
                     Guardar
                   </button>
                 </div>

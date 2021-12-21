@@ -15,8 +15,20 @@ const partidoschema = new Schema({
     fecha:{
         type:"date",
         required:true
-   
-    },    
+    },
+    local:{
+            type:Schema.Types.ObjectId,
+            required:true,
+            ref:"equipos"
+
+        },
+    
+    visitante:{
+        type:Schema.Types.ObjectId,
+        required:true,
+        ref:"equipos"
+        },
+         
     cancha:{
         type:"string",
         required:true

@@ -11,18 +11,13 @@ const fechaschema = new Schema({
     fecha_fin:{
         type:"date",
         required:true
-    }
+    },
+
+    ecamp: {
+        type: Schema.Types.ObjectId,
+        ref: 'campeonatos', //nombre de la collection a la que te vas a relacionar 
+     }
 });
-
-
-fechaschema.virtual("fechas",{
-    ref : "fechas", //la collection de datos con las que se relaciona
-    localField: "_id", //
-    foreignField: "cfecha" 
-});
-
-fechaschema.set("toObject", { virtuals : true });
-fechaschema.set("toJSON", { virtuals : true})
 
 
 const fechasmodel= model("fechas", fechaschema);

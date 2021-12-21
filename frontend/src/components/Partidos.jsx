@@ -35,6 +35,10 @@ export function Partidos() {
     });
     setListar_partidos(resultado_busqueda);
   };
+  function dateformat(fecha) {
+    const newfecha = new Date(fecha).toLocaleDateString();
+    return newfecha;
+  }
 
   return (
     <>
@@ -99,15 +103,16 @@ export function Partidos() {
                       </tr>
                     </thead>
                     <tbody className='js-table-body' id='tablaequipos'>
-                      {listar_partidos.map((pa) => (
-                        <tr>
+                      {listar_partidos.map((pa,idx) => (
+                        <tr key={idx}>
                           <td>{pa.estado}</td>
                           <td>{pa.encuentro}</td>
                           <td>{pa.resultado}</td>
-                          <td>{pa.fecha}</td>
-                          <td>{pa.cancha}</td>
+                          <td>{dateformat(pa.fecha)}</td>
+                          <td>{pa.cancha} 
+                          </td>
                           <td>
-                            <Editarresultado />
+                            <Editarresultado id={pa._id} estado={pa.estado} encuentro={pa.encuentro} resultado={pa.resultado} fecha={pa.fecha} cancha={pa.cancha} />
                           </td>
                         </tr>
                       ))}

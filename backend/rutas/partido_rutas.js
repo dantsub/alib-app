@@ -2,7 +2,7 @@ const { Router } = require("express");
 const partido_rutas = Router();
 const {partidosmodel} = require("../modelos/partidosmodel");
 
-partido_rutas.post("/partidos", function(req,res){
+partido_rutas.post("/guardar", function(req,res){
     const datos = req.body;
     const camp = new partidosmodel(datos);
     camp.save(function(err){

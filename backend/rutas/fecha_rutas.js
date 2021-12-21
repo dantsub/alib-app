@@ -2,7 +2,7 @@ const { Router } = require("express");
 const fecha_rutas = Router();
 const {fechasmodel} = require("../modelos/fechasmodel");
 
-fecha_rutas.post("/fechas", function(req,res){
+fecha_rutas.post("/guardar", function(req,res){
     const datos = req.body;
     const camp = new fechasmodel(datos);
     camp.save(function(err){
@@ -49,12 +49,13 @@ fecha_rutas.post("/eliminarfechas", async function(req,res){
 
 fecha_rutas.post("/editarfechas", function(req,res){
     const datos = req.body;
+    const _id = datos._id;
     const jornada = datos.jornada;
     const fecha_ini = datos.fecha_ini;
     const fecha_fin = datos.fecha_fin;
     
 
-    const filter = { jornada : jornada };
+    const filter = { _id : _id };
     const updateFecha = {
         $set: {
             jornada : jornada,

@@ -1,8 +1,9 @@
 import { useRef, useState } from 'react';
 import axios from "axios";
 
-export function Editarfecha({jornada, fecha_ini, fecha_fin}) {
+export function Editarfecha({_id, jornada, fecha_ini, fecha_fin}) {
   const [validated, setValidated] = useState('false');
+
 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
@@ -10,20 +11,22 @@ export function Editarfecha({jornada, fecha_ini, fecha_fin}) {
       event.preventDefault();
       event.stopPropagation();
     }
-    event.target.className += ' was-validated';
+    event.target.className += 'was-validated';
     setValidated(true);
   };
 
   const fechaini = useRef();
   const fechafin = useRef();
   const jor = useRef();
-  const editarfecha = async(event)=>{
+  const editar = async(id)=>{
     const jorn = jor.current.value;
     const fechai = fechaini.current.value;
     const fechaf = fechafin.current.value;
+    console.log(jorn, fechai, fechaf)
     const response = await axios.post(
       `http://localhost:8081/fechas/editarfechas`,
       {
+        _id : id,
         jornada: jorn,
         fecha_ini: fechai,
         fecha_fin: fechaf,
@@ -47,7 +50,7 @@ export function Editarfecha({jornada, fecha_ini, fecha_fin}) {
         className='btn btn-primary align-self-end btn-crear'
         id='editar'
         data-bs-toggle='modal'
-        data-bs-target={`#modal_editar_fecha_${jornada.replace(/[ .]+/g, '').toLowerCase()}`}
+        data-bs-target={`#modal_editar_fecha_${_id}`}
       >
         <i className='fas fa-edit'></i>
       </button>
@@ -55,7 +58,7 @@ export function Editarfecha({jornada, fecha_ini, fecha_fin}) {
       {/* <!-- Modal Crear Fecha  --> */}
       <div
         className='modal fade'
-        id={`modal_editar_fecha_${jornada.replace(/[ .]+/g, '').toLowerCase()}`}
+        id={`modal_editar_fecha_${_id}`}
         tabindex='-1'
         aria-labelledby='titulo_editar'
         aria-hidden='true'
@@ -81,9 +84,9 @@ export function Editarfecha({jornada, fecha_ini, fecha_fin}) {
               >
                 <input aria-label=" ," type='hidden' name='oculto' value='editarfecha'/>
                 <label for='' className='form-label'>
-                  Jornada {jornada}
+                  Jornada
                 </label>
-                <select name='Jornadas' className='form-control-sm'>
+                <select name='Jornadas' className='form-control-sm' ref={jor}>
                   <option value='1' selected>
                     1
                   </option>
@@ -96,6 +99,7 @@ export function Editarfecha({jornada, fecha_ini, fecha_fin}) {
                     Fecha inicial
                   </label>
                   <input
+                  
                     type='date'
                     className='form-control'
                     id='fechaini'
@@ -107,6 +111,7 @@ export function Editarfecha({jornada, fecha_ini, fecha_fin}) {
                     Fecha Fin
                   </label>
                   <input
+                  
                     type='date'
                     className='form-control'
                     id='fechafin'
@@ -173,7 +178,7 @@ export function Editarfecha({jornada, fecha_ini, fecha_fin}) {
                   </tr>
 
                   <div className='modal-footer'>
-                    <button className='btn btn-primary' type='submit' onClick={()=>{editarfecha(jornada)}} >
+                    <button className='btn btn-primary' type='submit' onClick={()=>{editar(_id)}} >
                       Editar
                     </button>
                   </div>

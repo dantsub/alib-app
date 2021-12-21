@@ -36,6 +36,12 @@ const campeonatoschema = new Schema({
     }         
 });
 
+campeonatoschema.virtual("fechascampeonatos",{
+    ref : "fechas", //la collection de datos con las que se relaciona
+    localField: "_id", //
+    foreignField: "ecamp" //el nombre del campo en jugadormodel
+});
+
 
 campeonatoschema.virtual("integrantescampeonato",{
     ref : "equipos", //la collection de datos con las que se relaciona
