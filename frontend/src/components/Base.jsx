@@ -132,6 +132,7 @@ export function Base() {
                 className='nav-link dropdown-toggle'
                 data-toggle='dropdown'
                 aria-expanded='false'
+                style={{cursor:"pointer", color:"#7367f0"}}
               >
                 <i className='fa fa-flag'></i> Campeonatos
               </span>
@@ -152,6 +153,7 @@ export function Base() {
                 className='nav-link dropdown-toggle'
                 data-toggle='dropdown'
                 aria-expanded='false'
+                style={{cursor:"pointer", color:"#7367f0"}}
               >
                 <i className='fa fa-users'></i> Equipos
               </span>
@@ -172,6 +174,7 @@ export function Base() {
                 className='nav-link dropdown-toggle'
                 data-toggle='dropdown'
                 aria-expanded='false'
+                style={{cursor:"pointer", color:"#7367f0"}}
               >
                 <i className='fa fa-futbol'></i> Partidos
               </span>
