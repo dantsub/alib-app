@@ -247,7 +247,6 @@ export function Editarcampeonato({
                     className='form-control'
                     id='logo_campeonato'
                     placeholder='Logo del campeonato'
-                    
                   />
                   <div className='invalid-feedback'>
                     Por favor ingrese el logo

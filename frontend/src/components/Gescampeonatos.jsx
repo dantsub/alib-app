@@ -23,8 +23,8 @@ export function Gescampeonatos() {
   const buscar_campeonato = (evento) => {
     var resultado_busqueda = Listar_cam.filter((e) => {
       if (
-        e.nombre.toLowerCase().includes(evento.target.value.toLowerCase()) ||
-        e.organizador.toLowerCase().includes(evento.target.value.toLowerCase())
+        e.nombrecamp.toLowerCase().includes(evento.target.value.toLowerCase()) ||
+        e.orgcamp.toLowerCase().includes(evento.target.value.toLowerCase())
       ) {
         return e;
       }
