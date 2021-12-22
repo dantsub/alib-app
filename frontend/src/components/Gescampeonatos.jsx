@@ -44,9 +44,13 @@ export function Gescampeonatos() {
       return (<span class="badge rounded-pill badge-light-success me-1"
                           >En inscripciones</span>)
     } else {
-      return (<span class="badge rounded-pill badge-light-danger me-1"
+      if (est === "Terminado") {
+        return (<span class="badge rounded-pill badge-light-danger me-1"
                           >Terminado</span>)
-      
+      } else{
+        return (<span class='badge rounded-pill badge bg-info text-dark me-1'
+                          >En proceso</span>)
+      }
     }    
   }
 
@@ -119,11 +123,11 @@ export function Gescampeonatos() {
                             <div className='container'>
                               <div className='col-md-4 px-0'>
                                 <img
-                                  alt=''
                                   src={camp.logocamp}
+                                  alt=''
                                   className='img-fluid'
-                                  width='150px'
-                                  height='150px'
+                                  width='80px'
+                                  height='80px'
                                 />
                               </div>
                             </div>
