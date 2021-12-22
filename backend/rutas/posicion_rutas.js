@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const posicion_rutas = Router();
-const {posicionesmodel} = require("../modelos/posicionesmodel");
+const { posicionesmodel } = require("../modelos/posicionesmodel");
 
 posicion_rutas.post("/posiciones", function(req,res){
     const datos = req.body;
@@ -24,6 +24,23 @@ posicion_rutas.get("/listarposiciones", async function(req,res){
             res.status(200).send({status:"Ok", msg:"Posiciones encontradas", posiciones});
 })
 
+posicion_rutas.post("/actualizar", async function(req,res){
+    const { equipo, puntos } = req.body;
+    const posicion = await posicionesmodel.findOne({equipo}).lean();
+
+    if (posicion == null){
+        res.status(400).send({status:"Error", msg:"La posicion no existe"});
+    } else {
+        posicion.puntos += puntos;
+        posicion.save(function(err){
+            if (err){
+                res.send({status:"Error", msg:"La posicion no pudo ser actualizada"});
+                return false;
+            }
+            res.send({status:"Ok", msg:"La posicion fue actualizada"});
+        })
+    }
+})
 
 posicion_rutas.post("/eliminarposicion", async function(req,res){
     const {nombre} = req.body;
