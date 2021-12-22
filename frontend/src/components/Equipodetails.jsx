@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Base } from './Base';
+import { Inicio } from './Inicio';
+import LogIn from './LogIn';
 import { consumirjugadores } from '../API/Alip_Api';
 import { Adicionarjugador } from './Adicionarjugador';
 import { Eliminarjugador } from './Eliminarjugador';
@@ -11,6 +12,13 @@ import { Link } from 'react-router-dom';
 export function Equipodetails() {
   // Con esto cambiamos el título a la página que por default esta en Alib-app
   document.title = 'Equipo';
+
+  const storage = localStorage.getItem('user');
+  const [user, setuser] = useState(JSON.parse(storage));
+
+  useEffect(() => {
+    setuser(JSON.parse(storage));
+  }, [storage]);
 
   let [Listar_Jug, setListar_Jug] = useState([]);
   let [listar_jugador, setListar_jugador] = useState([]);
@@ -54,7 +62,9 @@ export function Equipodetails() {
 
   return (
     <>
-      <Base />
+      {storage ? (
+        <>
+        <Inicio/>
 
       {/* <!-- BEGIN: Content --> */}
 
@@ -168,6 +178,9 @@ export function Equipodetails() {
           </div>
         </div>
       </div>
+    </>
+      ) : <LogIn />
+      }
     </>
   );
 }

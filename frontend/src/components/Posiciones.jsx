@@ -1,10 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { consumirposiciones } from '../API/Alip_Api';
-import { Base } from './Base';
+import { Inicio } from './Inicio';
+import LogIn from './LogIn';
 
 export function Posiciones() {
   // Con esto cambiamos el título a la página que por default esta en Alib-app
   document.title = 'Posicion';
+
+  const storage = localStorage.getItem('user');
+  const [user, setuser] = useState(JSON.parse(storage));
+
+  useEffect(() => {
+    setuser(JSON.parse(storage));
+  }, [storage]);
 
   let [listar_posicion, setListar_posicion] = useState([]);
 
@@ -18,7 +26,9 @@ export function Posiciones() {
 
   return (
     <>
-      <Base />
+      {storage ? (
+        <>
+        <Inicio/>
 
       {/* <!-- BEGIN: Content --> */}
       <div className='app-content content'>
@@ -92,6 +102,9 @@ export function Posiciones() {
           </div>
         </div>
       </div>
+    </>
+      ) : <LogIn />
+      }
     </>
   );
 }

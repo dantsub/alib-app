@@ -1,11 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { Base } from './Base';
+import { Inicio } from '././Inicio';
+import LogIn from './LogIn';
 import { Aprobarequipo } from './Aprobarequipo';
 import { consumircampeonatosequip } from '../API/Alip_Api';
 import { consumircampeonatos } from '../API/Alip_Api';
 
 export function Campeonatodetails() {
   document.title = 'Equipo';
+
+  const storage = localStorage.getItem('user');
+  const [user, setuser] = useState(JSON.parse(storage));
+
+  useEffect(() => {
+    setuser(JSON.parse(storage));
+  }, [storage]);
+
   let [nombrecamp, setNombrecamp] = useState();
   let [listar_equipos, setListar_equipos] = useState([]);
   let [Listar_eqip, setListar_equip] = useState([]);
@@ -67,7 +76,9 @@ export function Campeonatodetails() {
 
   return (
     <>
-      <Base />
+      {storage ? (
+        <>
+        <Inicio/>
 
       {/* <!-- BEGIN: Content --> */}
 
@@ -175,5 +186,9 @@ export function Campeonatodetails() {
         </div>
       </div>
     </>
+      ) : <LogIn />
+      }
+    </>
   );
 }
+

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Base } from './Base';
+import { Inicio } from './Inicio';
+import LogIn from './LogIn';
 import { Editarresultado } from './Editarresultado';
 import { Crearpartido } from './Crearpartido';
 import { consumirpartidos } from '../API/Alip_Api';
@@ -9,6 +10,13 @@ import { consumirpartidos } from '../API/Alip_Api';
 export function Partidos() {
   // Con esto cambiamos el título a la página que por default esta en Alib-app
   document.title = 'Partidos';
+
+  const storage = localStorage.getItem('user');
+  const [user, setuser] = useState(JSON.parse(storage));
+
+  useEffect(() => {
+    setuser(JSON.parse(storage));
+  }, [storage]);
 
   let [Listar_Pt, setListar_Pt] = useState([]);
   let [listar_partidos, setListar_partidos] = useState([]);
@@ -30,7 +38,9 @@ export function Partidos() {
 
   return (
     <>
-      <Base />
+      {storage ? (
+        <>
+        <Inicio/>
 
       {/* <!-- BEGIN: Content --> */}
       <div className='app-content content'>
@@ -119,6 +129,9 @@ export function Partidos() {
           </div>
         </div>
       </div>
+    </>
+      ) : <LogIn />
+      }
     </>
   );
 }
