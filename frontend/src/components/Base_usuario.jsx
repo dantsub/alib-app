@@ -15,6 +15,7 @@ export function Base_usuario() {
     setUser(null);
     localStorage.removeItem('user');
     localStorage.removeItem('token');
+    window.location.href = '/';
   };
 
   return (
