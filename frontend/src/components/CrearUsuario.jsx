@@ -1,10 +1,18 @@
-import { Base } from './Base';
-import React, { useRef, useState } from 'react';
+import { Inicio } from './Inicio';
+import LogIn from './LogIn';
+import React, { useRef, useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 export function CrearUsuario() {
   document.title = 'Crear Usuario';
+
+  const storage = localStorage.getItem('user');
+  const [user, setuser] = useState(JSON.parse(storage));
+
+  useEffect(() => {
+    setuser(JSON.parse(storage));
+  }, [storage]);
 
   const [validated, setValidated] = useState('false');
 
@@ -65,7 +73,9 @@ export function CrearUsuario() {
 
   return (
     <>
-      <Base />
+      {storage ? (
+        <>
+        <Inicio/>
 
       {/* <!-- BEGIN: Content --> */}
       <div className='app-content content'>
@@ -195,6 +205,9 @@ export function CrearUsuario() {
         {/* <!-- / Content-wrapper --> */}
       </div>
       {/* <!-- END: Content --> */}
+    </>
+      ) : <LogIn />
+      }
     </>
   );
 }

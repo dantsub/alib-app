@@ -1,4 +1,5 @@
-import { Base } from './Base';
+import { Inicio } from './Inicio';
+import LogIn from './LogIn';
 import React, { useRef, useEffect, useState } from 'react';
 import axios from 'axios';
 import { consumircampeonatos } from '../API/Alip_Api';
@@ -63,7 +64,7 @@ export function Inscribir() {
     <>
       {storage ? (
         <>
-        <Base_usuario/>
+        <Inicio/>
 
       {/* <!-- BEGIN: Content --> */}
       <div className='app-content content'>

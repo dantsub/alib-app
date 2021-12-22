@@ -1,11 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { Base } from './Base';
+import { Inicio } from './Inicio';
+import LogIn from './LogIn';
 import { EditarUsuario } from './EditarUsuario';
 import { consumirlistarusuarios } from '../API/Alip_Api';
 import { Link } from 'react-router-dom';
 
 export function ListaUsuarios() {
   document.title = 'Lista de Usuarios';
+
+  const storage = localStorage.getItem('user');
+  const [user, setuser] = useState(JSON.parse(storage));
+
+  useEffect(() => {
+    setuser(JSON.parse(storage));
+  }, [storage]);
 
   let [listar_us, setlistar_us] = useState([]);
   let [listarUsuario, setListarUsuario] = useState([]);
@@ -69,7 +77,9 @@ export function ListaUsuarios() {
 
   return (
     <>
-      <Base />
+      {storage ? (
+        <>
+        <Inicio/>
 
       <div className='app-content content'>
         {/* <!-- Content-wrapper --> */}
@@ -166,6 +176,9 @@ export function ListaUsuarios() {
           </div>
         </div>
       </div>
+    </>
+      ) : <LogIn />
+      }
     </>
   );
 }

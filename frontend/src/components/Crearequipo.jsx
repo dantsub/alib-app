@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Base } from './Base';
+import { Inicio } from '././Inicio';
+import LogIn from './LogIn';
 import axios from 'axios';
 
 export function Crearequipo() {
@@ -63,7 +64,9 @@ export function Crearequipo() {
 
   return (
     <>
-      <Base />
+      {storage ? (
+        <>
+        <Inicio/>
 
       {/* <!-- BEGIN: Content --> */}
       <div className='app-content content'>
@@ -136,6 +139,9 @@ export function Crearequipo() {
           </div>
         </div>
       </div>
+     </>
+      ) : <LogIn />
+      }
     </>
   );
 }

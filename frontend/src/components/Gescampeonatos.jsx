@@ -3,10 +3,18 @@ import { Eliminarcampeonato } from './Eliminarcampeonato';
 import { Adicionarcampeonato } from './Adicionarcampeonato';
 import { consumircampeonatos } from '../API/Alip_Api';
 import { Editarcampeonato } from './Editarcampeonato';
-import { Base } from './Base';
+import { Inicio } from './Inicio';
+import LogIn from './LogIn';
 
 export function Gescampeonatos() {
   document.title = 'Campeonato';
+
+  const storage = localStorage.getItem('user');
+  const [user, setuser] = useState(JSON.parse(storage));
+
+  useEffect(() => {
+    setuser(JSON.parse(storage));
+  }, [storage]);
 
   let [listar_campeonato, setListar_campeonato] = useState([]);
   let [Listar_cam, setListar_cam] = useState([]);
@@ -66,7 +74,9 @@ export function Gescampeonatos() {
 
   return (
     <>
-      <Base />
+      {storage ? (
+        <>
+        <Inicio/>
       {/* <!-- BEGIN: Content --> */}
       <div className='app-content content'>
         {/* <!-- Content-wrapper --> */}
@@ -181,6 +191,9 @@ export function Gescampeonatos() {
           </div>
         </div>
       </div>
+    </>
+      ) : <LogIn />
+      }
     </>
   );
 }
