@@ -2,7 +2,7 @@ const { Router } = require("express");
 const posicion_rutas = Router();
 const { posicionesmodel } = require("../modelos/posicionesmodel");
 
-posicion_rutas.post("/posiciones", function(req,res){
+posicion_rutas.post("/guardar", function(req,res){
     const datos = req.body;
     const camp = new posicionesmodel(datos);
     camp.save(function(err){
