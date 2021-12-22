@@ -188,9 +188,6 @@ export function Base() {
                 <Link to='/partidos'>
                   <span className='dropdown-item'>Gestión</span>
                 </Link>
-                <Link to='/fechas'>
-                  <span className='dropdown-item'>Fechas</span>
-                </Link>
                 <Link to='/posiciones'>
                   <span className='dropdown-item'>Tabla de Posiciones</span>
                 </Link>

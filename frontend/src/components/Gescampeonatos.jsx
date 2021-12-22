@@ -112,7 +112,7 @@ export function Gescampeonatos() {
                   <table className='table table-hover'>
                     <thead>
                       <tr className='js-row'>
-                        <th>Logo</th>
+                        <th>Logo Campeonato</th>
                         <th>Campeonato</th>
                         <th>Fecha Ini.</th>
                         <th>Fecha fin</th>
@@ -134,8 +134,8 @@ export function Gescampeonatos() {
                                   src={camp.logocamp}
                                   alt=''
                                   className='img-fluid'
-                                  width='80px'
-                                  height='80px'
+                                  width='300px'
+                                  height='300px'
                                 />
                               </div>
                             </div>

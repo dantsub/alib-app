@@ -61,7 +61,9 @@ export function Inscribir() {
 
   return (
     <>
-      <Base />
+      {storage ? (
+        <>
+        <Base_usuario/>
 
       {/* <!-- BEGIN: Content --> */}
       <div className='app-content content'>
@@ -117,6 +119,9 @@ export function Inscribir() {
           </div>
         </div>
       </div>
+    </>
+      ) : <LogIn />
+      }
     </>
   );
 }

@@ -143,11 +143,8 @@ export function BaseUsuario() {
                 className='dropdown-menu'
                 aria-labelledby='navbarDropdownMenuLink'
               >
-                <Link to='/campeonatos'>
-                  <span className='dropdown-item'>Gestión</span>
-                </Link>
-                <Link to='/campeonatos_eqip'>
-                  <span className='dropdown-item'>Camp. Equipos</span>
+                <Link to='/inscripcion'>
+                  <span class='dropdown-item'>Inscripción a campeonato</span>
                 </Link>
               </div>
             </div>
@@ -164,11 +161,11 @@ export function BaseUsuario() {
                 className='dropdown-menu'
                 aria-labelledby='navbarDropdownMenuLink'
               >
-                <Link to='/equipos'>
-                  <span className='dropdown-item'>Gestión</span>
+                <Link to='/crearequipo'>
+                  <span class='dropdown-item'>Crear Equipo</span>
                 </Link>
                 <Link to='/jugadores'>
-                  <span className='dropdown-item'>Jugadores</span>
+                  <span class='dropdown-item'>Gestión de equipo</span>
                 </Link>
               </div>
             </div>
@@ -185,12 +182,6 @@ export function BaseUsuario() {
                 className='dropdown-menu'
                 aria-labelledby='navbarDropdownMenuLink'
               >
-                <Link to='/partidos'>
-                  <span className='dropdown-item'>Gestión</span>
-                </Link>
-                <Link to='/fechas'>
-                  <span className='dropdown-item'>Fechas</span>
-                </Link>
                 <Link to='/posiciones'>
                   <span className='dropdown-item'>Tabla de Posiciones</span>
                 </Link>
