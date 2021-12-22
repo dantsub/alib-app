@@ -3,8 +3,7 @@ import axios from 'axios';
 import { consumircampeonatos } from '../API/Alip_Api';
 
 
-export function Aprobarequipo({eusuario, ecamp}){
-   console.log('Aprobarequipo',eusuario,ecamp);
+export function Aprobarequipo({eusuario, ecamp, idequipo}){
       
     const [validated, setValidated] = useState('false');
   
@@ -45,8 +44,28 @@ export function Aprobarequipo({eusuario, ecamp}){
       alert(data.msg);
       if (data.status === 'Ok') {
         console.log('Status OK');
-      }
-  
+        }
+        
+    };
+
+    async function registrarposicion() {
+        alert(idequipo)
+        const ide = idequipo;
+        alert(ide)
+        const response2 = await axios.post(
+            `http://localhost:8081/posiciones/guardar`,
+            {
+                equipo: ide,
+                puntos:0,
+                poscamp: "61c13c4afc32079b6559d740"
+            },
+            { headers: { 'content-type': 'application/json' } }
+        );
+        const data2 = response2.data;
+        alert(data2.msg);
+        if (data2.status === 'Ok') {
+            console.log('Status OK');
+        }
     };
   
 
@@ -106,7 +125,11 @@ export function Aprobarequipo({eusuario, ecamp}){
                         <button
                             type="submit"
                             className="btn btn-primary"
-                            onClick={()=>aprobar(ecamp,eusuario)}
+                                    onClick={() => {
+                                        aprobar(ecamp,eusuario);
+                                        registrarposicion(idequipo);
+                                    }
+                                    }
                         >
                             Aprobar equipo
                         </button>

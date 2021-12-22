@@ -35,7 +35,7 @@ export function Partidos() {
   }, []);
   console.log(Listar_Pt);
 
-  /* const buscar_partido = (evento) => {
+  const buscar_partido = (evento) => {
     var resultado_busqueda = Listar_Pt.filter((e) => {
       if (
         e.estado.toLowerCase().includes(evento.target.value.toLowerCase()) ||
@@ -47,7 +47,7 @@ export function Partidos() {
       return false;
     });
     setListar_partidos(resultado_busqueda);
-  }; */
+  };
   function dateformat(fecha) {
     const newfecha = new Date(fecha).toLocaleDateString();
     return newfecha;
@@ -70,11 +70,11 @@ export function Partidos() {
                 <div className='col-md-3'>
                   <h4 class='card-title'>Escoja un Campeonato</h4>
                   <select name='campeonatos' class='form-control' placeholder='Escoger Campeonato'>
-                      {listar_campeonato?.map((camp,idx) =>(
-                      <option value={camp._id} selected>
-                        {camp.nombrecamp}
-                        </option>
-                    ))}  
+                    <option value='camp1' selected>
+                      Liga Betplay Dimayor
+                    </option>
+                    <option value='camp2'>UEFA</option>
+                    <option value='camp3'>Premier</option>
                   </select>
                   
 
