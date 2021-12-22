@@ -1,7 +1,7 @@
-import axios from 'axios';
 import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../asset/logoAlib.jpg';
+import axios from 'axios';
 
 const LogIn = () => {
   const formDoc = useRef();
@@ -26,11 +26,14 @@ const LogIn = () => {
     const pass = formPass.current.value;
 
     try {
-      const response = await axios.post('http://localhost:8081/autenticacion/login', {
+      const response = await axios.post(
+        'http://localhost:8081/autenticacion/login',
+        {
           headers: { 'Content-Type': 'application/json' },
           doc,
           pass,
-        })
+        }
+      );
       const { data } = response;
       if (data.estado === 'Ok') {
         alert(data.msg);

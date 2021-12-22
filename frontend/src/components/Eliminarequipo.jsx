@@ -30,7 +30,7 @@ export function Eliminarequipo({ nombre }) {
       <div
         className='modal fade'
         id={`modal_eliminar_${nombre.replace(/[ .]+/g, '').toLowerCase()}`}
-        tabindex='-1'
+        tabIndex='-1'
         aria-labelledby='exampleModalLabel'
         aria-hidden='true'
       >
@@ -48,13 +48,23 @@ export function Eliminarequipo({ nombre }) {
               ></button>
             </div>
             <form id='borrarequipo' action=''>
-              <input aria-label='.' type='hidden' name='oculto' value='eliminar' />
-              <input aria-label='.' type='hidden' name='ocultoborrar' value='' />
+              <input
+                aria-label='.'
+                type='hidden'
+                name='oculto'
+                value='eliminar'
+              />
+              <input
+                aria-label='.'
+                type='hidden'
+                name='ocultoborrar'
+                value=''
+              />
               <div className='modal-body'>
                 <p className='text-center'>
                   ¿Está seguro que desea eliminar el equipo?
                 </p>
-                <p class='text-center fw-bold'>{nombre}</p>
+                <p className='text-center fw-bold'>{nombre}</p>
               </div>
               <div className='modal-footer'>
                 <button

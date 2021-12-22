@@ -1,7 +1,7 @@
-import { useRef,useState } from 'react';
-import axios from "axios";
+import React, { useRef, useState } from 'react';
+import axios from 'axios';
 
-export function Crearfecha({_id, jornada, fecha_ini, fecha_fin}) {
+export function Crearfecha({ _id, jornada, fecha_ini, fecha_fin }) {
   const [validated, setValidated] = useState('false');
 
   const handleSubmit = (event) => {
@@ -14,7 +14,6 @@ export function Crearfecha({_id, jornada, fecha_ini, fecha_fin}) {
     setValidated(true);
   };
 
-  
   const fechaini = useRef();
   const fechafin = useRef();
   const jor = useRef();
@@ -23,7 +22,7 @@ export function Crearfecha({_id, jornada, fecha_ini, fecha_fin}) {
     const jornada = jor.current.value;
     const fecha_ini = fechaini.current.value;
     const fecha_fin = fechafin.current.value;
-    console.log(jornada, fecha_ini, fecha_fin)
+    console.log(jornada, fecha_ini, fecha_fin);
     axios
       .post(`http://localhost:8081/fechas/guardar`, {
         headers: { 'content-type': 'application/json' },
@@ -50,7 +49,7 @@ export function Crearfecha({_id, jornada, fecha_ini, fecha_fin}) {
         className='btn btn-primary align-self-end btn-crear'
         id='crear'
         data-bs-toggle='modal'
-        data-bs-target= {`#modal_crear_fecha_${_id}`}
+        data-bs-target={`#modal_crear_fecha_${_id}`}
       >
         <i className='fa fa-calendar'></i>
       </button>
@@ -59,7 +58,7 @@ export function Crearfecha({_id, jornada, fecha_ini, fecha_fin}) {
       <div
         className='modal fade'
         id={`modal_crear_fecha_${_id}`}
-        tabindex='-1'
+        tabIndex='-1'
         aria-labelledby='titulo_crear'
         aria-hidden='true'
       >
@@ -82,23 +81,28 @@ export function Crearfecha({_id, jornada, fecha_ini, fecha_fin}) {
                 validated={validated}
                 onSubmit={handleSubmit}
               >
-                <input aria-label=" ," type='hidden' name='oculto' value='crearfecha' />
-                <label for='' className='form-label'>
+                <input
+                  aria-label=' ,'
+                  type='hidden'
+                  name='oculto'
+                  value='crearfecha'
+                />
+                <label htmlFor='' className='form-label'>
                   Jornada
                 </label>
                 <input
-                    ref={jor}
-                    type='string'
-                    className='form-control'
-                    id='jornada'
-                    placeholder='Numero de la Jornada'
-                  />
+                  ref={jor}
+                  type='string'
+                  className='form-control'
+                  id='jornada'
+                  placeholder='Numero de la Jornada'
+                />
                 <div>
-                  <label for='' className='form-label'>
+                  <label htmlFor='' className='form-label'>
                     Fecha inicial
                   </label>
                   <input
-                   ref={fechaini}
+                    ref={fechaini}
                     type='date'
                     className='form-control'
                     id='fechaini'
@@ -106,11 +110,11 @@ export function Crearfecha({_id, jornada, fecha_ini, fecha_fin}) {
                   />
                 </div>
                 <div>
-                  <label for='' className='form-label'>
+                  <label htmlFor='' className='form-label'>
                     Fecha Fin
                   </label>
                   <input
-                  ref={fechafin}
+                    ref={fechafin}
                     type='date'
                     className='form-control'
                     id='fechafin'
@@ -178,7 +182,11 @@ export function Crearfecha({_id, jornada, fecha_ini, fecha_fin}) {
                     </tr>
                   </table>
                   <div className='modal-footer'>
-                    <button className='btn btn-primary' type='button' onClick={guardar}>
+                    <button
+                      className='btn btn-primary'
+                      type='button'
+                      onClick={guardar}
+                    >
                       Guardar
                     </button>
                   </div>

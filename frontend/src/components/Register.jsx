@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import logo from '../asset/logoAlib.jpg';
 
 const Register = () => {
@@ -120,7 +121,7 @@ const Register = () => {
                           name='register-document'
                           placeholder='2564789953'
                           aria-describedby='register-document'
-                          tabindex='1'
+                          tabIndex='1'
                           autofocus=''
                           ref={formDoc}
                           required
@@ -140,7 +141,7 @@ const Register = () => {
                           name='register-username'
                           placeholder='johndoe'
                           aria-describedby='register-username'
-                          tabindex='1'
+                          tabIndex='1'
                           ref={formName}
                         />
                       </div>
@@ -155,7 +156,7 @@ const Register = () => {
                           name='register-email'
                           placeholder='john@example.com'
                           aria-describedby='register-email'
-                          tabindex='2'
+                          tabIndex='2'
                           ref={formEmail}
                           required
                         />
@@ -177,7 +178,7 @@ const Register = () => {
                             name='register-password'
                             placeholder='············'
                             aria-describedby='register-password'
-                            tabindex='3'
+                            tabIndex='3'
                             ref={formPass}
                             required
                           />
@@ -206,7 +207,7 @@ const Register = () => {
                             className='form-check-input'
                             type='checkbox'
                             id='register-privacy-policy'
-                            tabindex='4'
+                            tabIndex='4'
                           />
                           <label
                             className='form-check-label'
@@ -219,7 +220,7 @@ const Register = () => {
                       </div>
                       <button
                         className='btn btn-primary w-100 waves-effect waves-float waves-light'
-                        tabindex='-1'
+                        tabIndex='-1'
                         type='submit'
                         onClick={saveUser}
                       >
@@ -229,9 +230,9 @@ const Register = () => {
 
                     <p className='text-center mt-2'>
                       <span>Ya tienes cuenta?</span>
-                      <a href='./'>
+                      <Link to='/'>
                         <span> Ingresa a tu cuenta</span>
-                      </a>
+                      </Link>
                     </p>
                   </div>
                 </div>

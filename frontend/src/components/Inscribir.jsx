@@ -1,13 +1,12 @@
 import { Base } from './Base';
-import { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import axios from 'axios';
 import { consumircampeonatos } from '../API/Alip_Api';
 
-
-export function Inscribir(){
+export function Inscribir() {
   // Con esto cambiamos el título a la página que por default esta en Alib-app
   document.title = 'Inscribir Equipo';
- 
+
   const storage = localStorage.getItem('user');
   const [user, setuser] = useState(JSON.parse(storage));
 
@@ -30,7 +29,6 @@ export function Inscribir(){
 
   let [listar_campeonato, setListar_campeonato] = useState([]);
 
-
   useEffect(() => {
     const solicitar_campeonato = async () => {
       const dato = await consumircampeonatos();
@@ -39,14 +37,13 @@ export function Inscribir(){
     solicitar_campeonato();
   }, []);
 
-
-  const idcamp= useRef();
+  const idcamp = useRef();
 
   async function guardar(event) {
     event.preventDefault();
     const ecamp = idcamp.current.value;
     const eusuario = user._id;
-    console.log(ecamp,eusuario)
+    console.log(ecamp, eusuario);
     const response = await axios.post(
       `http://localhost:8081/equipos/inscribir`,
       {
@@ -60,25 +57,19 @@ export function Inscribir(){
     if (data.status === 'Ok') {
       console.log('Status OK');
     }
+  }
 
-  };
-  
-
-
-
-
-  
   return (
     <>
-      <Base />
+      {storage ? (
+        <>
+        <Base_usuario/>
 
       {/* <!-- BEGIN: Content --> */}
       <div className='app-content content'>
         {/* <!-- Content-wrapper --> */}
         <div className='content-wrapper'>
           <div className='card'>
-            
-                            
             <div className='card-body border-bottom'>
               <h2>¡INSCRIBE TU EQUIPO!</h2>
             </div>
@@ -93,16 +84,21 @@ export function Inscribir(){
                     validated={validated}
                     onSubmit={handleSubmit}
                   >
-                <h4 class='card-title'>Escoja un Campeonato</h4>
-                <div className='col-md-2 '>
-                  <select  name='campeonatos' class='form-control' placeholder='Escoger Campeonato' ref={idcamp}>
-                    {listar_campeonato?.map((camp,idx) =>(
-                      <option value={camp._id} key={idx} >
-                      {camp.nombrecamp}
-                      </option>
-                    ))}
-                  </select>       
-                </div>
+                    <h4 className='card-title'>Escoja un Campeonato</h4>
+                    <div className='col-md-2 '>
+                      <select
+                        name='campeonatos'
+                        className='form-control'
+                        placeholder='Escoger Campeonato'
+                        ref={idcamp}
+                      >
+                        {listar_campeonato?.map((camp, idx) => (
+                          <option value={camp._id} key={idx}>
+                            {camp.nombrecamp}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
                     <br />
                     <div className='row'>
                       <div className='col-lg-4 center-content'>
@@ -123,6 +119,9 @@ export function Inscribir(){
           </div>
         </div>
       </div>
+    </>
+      ) : <LogIn />
+      }
     </>
   );
 }

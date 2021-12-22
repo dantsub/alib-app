@@ -1,5 +1,5 @@
 import { Base } from './Base';
-import { useRef, useState, useParams } from 'react';
+import React, { useRef, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
@@ -151,7 +151,7 @@ export function CrearUsuario() {
                             name='login-password'
                             placeholder='Contraseña'
                             aria-describedby='login-password'
-                            tabindex='0'
+                            tabIndex='0'
                             ref={passusuario}
                           />
                         </div>
@@ -178,12 +178,12 @@ export function CrearUsuario() {
                         >
                           Guardar
                         </button>
-                        <Link to="/listausuarios"> <button
-                    type="button"
-                    className="btn btn-secondary"
-                  >
-                    Cancelar
-                  </button></Link>
+                        <Link to='/listausuarios'>
+                          {' '}
+                          <button type='button' className='btn btn-secondary'>
+                            Cancelar
+                          </button>
+                        </Link>
                       </div>
                     </form>
                   </div>

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Base } from './Base';
-import { Listadoequipos } from './Listadoequipos';
 import { Aprobarequipo } from './Aprobarequipo';
 import { consumircampeonatosequip } from '../API/Alip_Api';
 import { consumircampeonatos } from '../API/Alip_Api';
@@ -8,7 +7,6 @@ import { consumircampeonatos } from '../API/Alip_Api';
 export function Campeonatodetails() {
   document.title = 'Equipo';
   let [nombrecamp, setNombrecamp] = useState();
-  let [id_equipoecamp, setidecamp] = useState();
   let [listar_equipos, setListar_equipos] = useState([]);
   let [Listar_eqip, setListar_equip] = useState([]);
 
@@ -35,9 +33,7 @@ export function Campeonatodetails() {
     setListar_equipos(resultado_busqueda);
   };
 
-
   let [listar_campeonato, setListar_campeonato] = useState([]);
-
 
   useEffect(() => {
     const solicitar_campeonato = async () => {
@@ -47,27 +43,27 @@ export function Campeonatodetails() {
     solicitar_campeonato();
   }, []);
 
-  function estadoequipo(est,camp) {
-    if (est != camp) {
+  function estadoequipo(est, camp) {
+    if (est !== camp) {
       return (
-        <span class='badge rounded-pill badge-light-danger me-1'>Pendiente</span>
+        <span className='badge rounded-pill badge-light-danger me-1'>
+          Pendiente
+        </span>
       );
     } else {
       return (
-        <span class='badge rounded-pill badge-light-success me-1'>Aprobado</span>
+        <span className='badge rounded-pill badge-light-success me-1'>
+          Aprobado
+        </span>
       );
     }
   }
 
   function boton(est, camp, id) {
-    if (est != camp) {
-      return (
-        <Aprobarequipo ecamp={camp} idequipo={id}/>
-      );
+    if (est !== camp) {
+      return <Aprobarequipo ecamp={camp} idequipo={id} />;
     }
   }
-
-
 
   return (
     <>
@@ -87,21 +83,25 @@ export function Campeonatodetails() {
               {/* <!-- Seccion de filtros --> */}
               <h4 className='card-title'>Busqueda y filtros</h4>
               <div className='row'>
-                <h4 class='card-title'>Escoja un Campeonato</h4>
+                <h4 className='card-title'>Escoja un Campeonato</h4>
                 <div className='col-md-2 '>
-                  <select  name='campeonatos' class='form-control' placeholder='Escoger Campeonato'>
-                      {listar_campeonato?.map((camp,idx) =>(
+                  <select
+                    name='campeonatos'
+                    className='form-control'
+                    placeholder='Escoger Campeonato'
+                  >
+                    {listar_campeonato?.map((camp, idx) => (
                       <option value={camp._id} key={idx} selected>
                         {camp.nombrecamp}
                       </option>
-                    ))}  
-                  </select>       
+                    ))}
+                  </select>
                 </div>
                 <div className='col-md-3 d-flex align-items-end'>
                   {/* <Listadoequipos /> */}
                 </div>
 
-                <label className='form-label' for='Searchproducto'>
+                <label className='form-label' htmlFor='Searchproducto'>
                   Busqueda de equipos
                 </label>
                 <input

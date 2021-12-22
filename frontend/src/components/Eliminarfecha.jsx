@@ -15,7 +15,7 @@ export function Eliminarfecha() {
       <div
         className='modal fade'
         id='modal_eliminar_fecha'
-        tabindex='-1'
+        tabIndex='-1'
         aria-labelledby='exampleModalLabel'
         aria-hidden='true'
       >
@@ -33,8 +33,18 @@ export function Eliminarfecha() {
               ></button>
             </div>
             <form id='eliminarfecha' action=''>
-              <input aria-label='.' type='hidden' name='oculto' value='eliminar' />
-              <input aria-label='.' type='hidden' name='ocultoborrar' value='' />
+              <input
+                aria-label='.'
+                type='hidden'
+                name='oculto'
+                value='eliminar'
+              />
+              <input
+                aria-label='.'
+                type='hidden'
+                name='ocultoborrar'
+                value=''
+              />
               <div className='modal-body'>
                 <p className='text-center'>
                   ¿Está seguro que desea eliminar la fecha?

@@ -23,7 +23,9 @@ export function Gescampeonatos() {
   const buscar_campeonato = (evento) => {
     var resultado_busqueda = Listar_cam.filter((e) => {
       if (
-        e.nombrecamp.toLowerCase().includes(evento.target.value.toLowerCase()) ||
+        e.nombrecamp
+          .toLowerCase()
+          .includes(evento.target.value.toLowerCase()) ||
         e.orgcamp.toLowerCase().includes(evento.target.value.toLowerCase())
       ) {
         return e;
@@ -38,24 +40,30 @@ export function Gescampeonatos() {
     return newfecha;
   }
 
-
   function estado(est) {
-    if (est === "En inscripciones") {
-      return (<span class="badge rounded-pill badge-light-success me-1"
-                          >En inscripciones</span>)
+    if (est === 'En inscripciones') {
+      return (
+        <span className='badge rounded-pill badge-light-success me-1'>
+          En inscripciones
+        </span>
+      );
     } else {
-      if (est === "Terminado") {
-        return (<span class="badge rounded-pill badge-light-danger me-1"
-                          >Terminado</span>)
-      } else{
-        return (<span class='badge rounded-pill badge bg-info text-dark me-1'
-                          >En proceso</span>)
+      if (est === 'Terminado') {
+        return (
+          <span className='badge rounded-pill badge-light-danger me-1'>
+            Terminado
+          </span>
+        );
+      } else {
+        return (
+          <span className='badge rounded-pill badge bg-info text-dark me-1'>
+            En proceso
+          </span>
+        );
       }
-    }    
+    }
   }
 
-
-  
   return (
     <>
       <Base />
@@ -104,7 +112,7 @@ export function Gescampeonatos() {
                   <table className='table table-hover'>
                     <thead>
                       <tr className='js-row'>
-                        <th>Logo</th>
+                        <th>Logo Campeonato</th>
                         <th>Campeonato</th>
                         <th>Fecha Ini.</th>
                         <th>Fecha fin</th>
@@ -126,8 +134,8 @@ export function Gescampeonatos() {
                                   src={camp.logocamp}
                                   alt=''
                                   className='img-fluid'
-                                  width='80px'
-                                  height='80px'
+                                  width='300px'
+                                  height='300px'
                                 />
                               </div>
                             </div>
@@ -140,25 +148,27 @@ export function Gescampeonatos() {
                           <td>{camp.lugarcamp}</td>
                           <td>{camp.premioscamp}</td>
                           <td>{estado(camp.estadocamp)}</td>
-                          
-                          <div>
-                          <td>
-                            <Eliminarcampeonato nombrecamp={camp.nombrecamp} estadocamp={camp.estadocamp}/>
-                          </td>
-                          <td>
-                            <Editarcampeonato
-                              nombrecamp={camp.nombrecamp}
-                              fecinicamp={camp.fecinicamp}
-                              fecfincamp={camp.fecfincamp}
-                              orgcamp={camp.orgcamp}
-                              lugarcamp={camp.lugarcamp}
-                              numequipcamp={camp.numequipcamp}
-                              premioscamp={camp.premioscamp}
-                              logocamp={camp.logocamp}
-                              estadocamp={camp.estadocamp}
-                            />
-                          </td>
 
+                          <div>
+                            <td>
+                              <Eliminarcampeonato
+                                nombrecamp={camp.nombrecamp}
+                                estadocamp={camp.estadocamp}
+                              />
+                            </td>
+                            <td>
+                              <Editarcampeonato
+                                nombrecamp={camp.nombrecamp}
+                                fecinicamp={camp.fecinicamp}
+                                fecfincamp={camp.fecfincamp}
+                                orgcamp={camp.orgcamp}
+                                lugarcamp={camp.lugarcamp}
+                                numequipcamp={camp.numequipcamp}
+                                premioscamp={camp.premioscamp}
+                                logocamp={camp.logocamp}
+                                estadocamp={camp.estadocamp}
+                              />
+                            </td>
                           </div>
                         </tr>
                       ))}

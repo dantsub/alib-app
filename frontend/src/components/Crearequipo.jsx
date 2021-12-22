@@ -1,19 +1,17 @@
-import { Base } from './Base';
 import React, { useEffect, useRef, useState } from 'react';
+import { Base } from './Base';
 import axios from 'axios';
-
 
 export function Crearequipo() {
   // Con esto cambiamos el título a la página que por default esta en Alib-app
   document.title = 'Crear Equipo';
-//Traer los datos de usuario 
+  //Traer los datos de usuario
   const storage = localStorage.getItem('user');
   const [user, setuser] = useState(JSON.parse(storage));
 
   useEffect(() => {
     setuser(JSON.parse(storage));
   }, [storage]);
-
 
   const [logo, setLogo] = useState();
 
@@ -62,7 +60,7 @@ export function Crearequipo() {
     nomequ.current.value = '';
     setLogo('');
   }
-  
+
   return (
     <>
       <Base />

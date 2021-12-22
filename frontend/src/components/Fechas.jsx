@@ -33,8 +33,8 @@ export function Fechas() {
           <div className='card'>
             <div className='card-body border-bottom'>
               <h2>Fechas</h2>
-              <h4 class='card-title'>Escoja un Campeonato</h4>
-              <select name='campeonatos' class='form-control-sm'>
+              <h4 className='card-title'>Escoja un Campeonato</h4>
+              <select name='campeonatos' className='form-control-sm'>
                 <option value='camp1' selected>
                   Liga Betplay Dimayor
                 </option>
@@ -65,13 +65,18 @@ export function Fechas() {
                     </tr>
                   </thead>
                   <tbody className='js-table-body' id='tablaequipos'>
-                    {listar_fechas.map((fe,idx) => (
+                    {listar_fechas.map((fe, idx) => (
                       <tr key={idx} className='js-row'>
                         <td>{fe.jornada}</td>
                         <td>{dateformat(fe.fecha_ini)}</td>
                         <td>{dateformat(fe.fecha_fin)}</td>
                         <td>
-                          <Editarfecha _id={fe._id} jornada={fe.jornada} fecha_ini={fe.fecha_ini} fecha_fin = {fe.fecha_fin} />
+                          <Editarfecha
+                            _id={fe._id}
+                            jornada={fe.jornada}
+                            fecha_ini={fe.fecha_ini}
+                            fecha_fin={fe.fecha_fin}
+                          />
                           <Eliminarfecha />
                         </td>
                       </tr>

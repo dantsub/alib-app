@@ -1,8 +1,8 @@
-import { Base } from './Base';
+import React, { useEffect, useState } from 'react';
 import { Eliminarequipo } from './Eliminarequipo';
-import { useEffect, useState } from 'react';
 import { consumirequipo } from '../API/Alip_Api';
 import { Link } from 'react-router-dom';
+import { Base } from './Base';
 
 export function Equipoadmin() {
   // Con esto cambiamos el título a la página que por default esta en Alib-app
@@ -52,7 +52,7 @@ export function Equipoadmin() {
               <h4 className='card-title'>Busqueda y filtros</h4>
               <div className='row'>
                 <div className='col-md-3'>
-                  <label className='form-label' for='Searchproducto'>
+                  <label className='form-label' htmlFor='Searchproducto'>
                     Busqueda de equipos
                   </label>
                   <input

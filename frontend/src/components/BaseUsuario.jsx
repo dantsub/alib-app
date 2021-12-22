@@ -1,15 +1,15 @@
+import React, { useEffect, useState } from 'react';
 import logo from '../asset/logoAlib.jpg';
 import { Link } from 'react-router-dom';
 import LogIn from './LogIn';
-import { useEffect, useState } from 'react';
 
-export function Base_usuario() {
+export function BaseUsuario() {
   const storage = localStorage.getItem('user');
   const [user, setUser] = useState(JSON.parse(storage));
 
   useEffect(() => {
     setUser(JSON.parse(storage));
-  }, [storage]);  
+  }, [storage]);
 
   const close = () => {
     setUser(null);
@@ -20,7 +20,7 @@ export function Base_usuario() {
 
   return (
     <>
-      { storage ? (
+      {storage ? (
         <>
           <nav
             className='
@@ -48,7 +48,9 @@ export function Base_usuario() {
                 <li className='nav-item'>
                   <span>
                     <i className='fa fa-power-off'></i>
-                    <span className='' onClick={close}>Cerrar sesión</span>
+                    <span className='' onClick={close}>
+                      Cerrar sesión
+                    </span>
                   </span>
                 </li>
               </ul>
@@ -87,7 +89,7 @@ export function Base_usuario() {
                         src={logo}
                         className='img-fluid align-items-center'
                         style={{ width: '900' }}
-                        alt="logo"
+                        alt='logo'
                       />
                     </div>
 
@@ -133,12 +135,12 @@ export function Base_usuario() {
                 className='nav-link dropdown-toggle'
                 data-toggle='dropdown'
                 aria-expanded='false'
-                style={{cursor:"pointer", color:"#7367f0"}}
+                style={{ cursor: 'pointer', color: '#7367f0' }}
               >
                 <i className='fa fa-flag'></i> Campeonatos
               </span>
               <div
-                class='dropdown-menu'
+                className='dropdown-menu'
                 aria-labelledby='navbarDropdownMenuLink'
               >
                 <Link to='/inscripcion'>
@@ -151,12 +153,12 @@ export function Base_usuario() {
                 className='nav-link dropdown-toggle'
                 data-toggle='dropdown'
                 aria-expanded='false'
-                style={{cursor:"pointer", color:"#7367f0"}}
+                style={{ cursor: 'pointer', color: '#7367f0' }}
               >
                 <i className='fa fa-users'></i> Equipos
               </span>
               <div
-                class='dropdown-menu'
+                className='dropdown-menu'
                 aria-labelledby='navbarDropdownMenuLink'
               >
                 <Link to='/crearequipo'>
@@ -172,23 +174,24 @@ export function Base_usuario() {
                 className='nav-link dropdown-toggle'
                 data-toggle='dropdown'
                 aria-expanded='false'
-                style={{cursor:"pointer", color:"#7367f0"}}
+                style={{ cursor: 'pointer', color: '#7367f0' }}
               >
                 <i className='fa fa-futbol'></i> Partidos
               </span>
               <div
-                class='dropdown-menu'
+                className='dropdown-menu'
                 aria-labelledby='navbarDropdownMenuLink'
               >
                 <Link to='/posiciones'>
-                  <span class='dropdown-item'>Tabla de Posiciones</span>
+                  <span className='dropdown-item'>Tabla de Posiciones</span>
                 </Link>
               </div>
             </div>
           </div>
         </>
-      ) : <LogIn />
-      }
+      ) : (
+        <LogIn />
+      )}
     </>
   );
 }

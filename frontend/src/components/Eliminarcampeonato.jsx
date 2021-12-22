@@ -1,10 +1,11 @@
 import axios from 'axios';
+import React from 'react';
 
 export function Eliminarcampeonato({ nombrecamp, estadocamp }) {
   console.log('Consele Log Eliminar campeonato', nombrecamp);
-  let disabled = 'disabled'
-  if (estadocamp === "En inscripciones") {
-    disabled = ''
+  let disabled = 'disabled';
+  if (estadocamp === 'En inscripciones') {
+    disabled = '';
   }
 
   const eliminarcamp = async (nombrecamp) => {
@@ -23,7 +24,7 @@ export function Eliminarcampeonato({ nombrecamp, estadocamp }) {
     <>
       <button
         className='btn btn-danger table-buttons'
-        disabled = {disabled}
+        disabled={disabled}
         data-bs-toggle='modal'
         data-bs-target={`#modal_eliminar_${nombrecamp
           .replace(/[ .]+/g, '')
@@ -36,7 +37,7 @@ export function Eliminarcampeonato({ nombrecamp, estadocamp }) {
       <div
         className='modal fade'
         id={`modal_eliminar_${nombrecamp.replace(/[ .]+/g, '').toLowerCase()}`}
-        tabindex='-1'
+        tabIndex='-1'
         aria-labelledby='exampleModalLabel'
         aria-hidden='true'
       >
@@ -54,13 +55,23 @@ export function Eliminarcampeonato({ nombrecamp, estadocamp }) {
               ></button>
             </div>
             <form id='eliminarcampeonato' action=''>
-              <input aria-label='.' type='hidden' name='oculto' value='eliminar' />
-              <input aria-label='.' type='hidden' name='ocultoborrar' value='' />
+              <input
+                aria-label='.'
+                type='hidden'
+                name='oculto'
+                value='eliminar'
+              />
+              <input
+                aria-label='.'
+                type='hidden'
+                name='ocultoborrar'
+                value=''
+              />
               <div className='modal-body'>
                 <p className='text-center'>
                   ¿Está seguro que desea eliminar el campeonato?
                 </p>
-                <p class='text-center fw-bold'>{nombrecamp}</p>
+                <p className='text-center fw-bold'>{nombrecamp}</p>
               </div>
               <div className='modal-footer'>
                 <button

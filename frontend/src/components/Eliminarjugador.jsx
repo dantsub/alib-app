@@ -21,14 +21,14 @@ export function Eliminarjugador({ documento, nombre }) {
         data-bs-toggle='modal'
         data-bs-target={`#modal_${documento}`}
       >
-        <i class='fa fa-trash'></i> Eliminar jugador
+        <i className='fa fa-trash'></i> Eliminar jugador
       </button>
 
       {/* <!-- Modal Eliminar --> */}
       <div
         className='modal fade'
         id={`modal_${documento}`}
-        tabindex='-1'
+        tabIndex='-1'
         aria-labelledby='exampleModalLabel'
         aria-hidden='true'
       >
@@ -57,7 +57,7 @@ export function Eliminarjugador({ documento, nombre }) {
                 <p className='text-center'>
                   ¿Está seguro que desea eliminar el jugador?
                 </p>
-                <p class='text-center fw-bold'>{nombre}</p>
+                <p className='text-center fw-bold'>{nombre}</p>
               </div>
               <div className='modal-footer'>
                 <button

@@ -23,7 +23,7 @@ equipo_rutas.post("/guardar", function (req, res) {
     // console.log(fields);
     const nombre = fields.nombre;
     const eusuario = fields.eusuario;
-    const rep = "Jone Doe";
+    const rep = "Nora Dams";
     const fecha = Date.now();
     const file = files.logo;
     const newruta = path.join(uploadFolder, nombre);

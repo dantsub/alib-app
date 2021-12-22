@@ -8,7 +8,6 @@ import { Editarjugador } from './Editarjugador';
 import tiburones from '../asset/tiburonesfc.jpg';
 import { Link } from 'react-router-dom';
 
-
 export function Equipodetails() {
   // Con esto cambiamos el título a la página que por default esta en Alib-app
   document.title = 'Equipo';
@@ -71,7 +70,12 @@ export function Equipodetails() {
                 <div className='col col-lg-2'>
                   <span className='brand-logo' style={{ width: '40px' }}>
                     <div className='brand-logo round' width='40' height='40'>
-                      <img src={tiburones} width='120' height='120' alt="tiburones" />
+                      <img
+                        src={tiburones}
+                        width='120'
+                        height='120'
+                        alt='tiburones'
+                      />
                     </div>
                     <span className='avatar-status-online'></span>
                   </span>
@@ -97,7 +101,6 @@ export function Equipodetails() {
                 <div className='col-md-3 d-flex align-items-end'>
                   <Adicionarjugador />
                 </div>
-                
 
                 <div className='col-md-3 d-flex align-items-end'>
                   <span className='mr-1' style={{ margin: '10px' }}>
@@ -107,13 +110,12 @@ export function Equipodetails() {
                 </div>
 
                 <div className='col-md-3 d-flex align-items-end'>
-                <Link to='/inscripcion'>
-                  <button type='button' className='btn btn-primary'>
-                    Inscribir a Campeonato
-                  </button>
-                </Link>
+                  <Link to='/inscripcion'>
+                    <button type='button' className='btn btn-primary'>
+                      Inscribir a Campeonato
+                    </button>
+                  </Link>
                 </div>
-
               </div>
             </div>
             {/* <!-- Fin card-body --> */}

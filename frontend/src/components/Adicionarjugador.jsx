@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import axios from 'axios';
 
 export function Adicionarjugador() {
@@ -54,7 +54,7 @@ export function Adicionarjugador() {
         data-bs-toggle='modal'
         data-bs-target='#modal_adicionar_jugador'
       >
-        <i class='fa fa-address-book'></i> Adicionar Jugador
+        <i className='fa fa-address-book'></i> Adicionar Jugador
       </button>
 
       {/* <!-- Modal Adicionar Jugador  --> */}
@@ -62,7 +62,7 @@ export function Adicionarjugador() {
       <div
         className='modal fade'
         id='modal_adicionar_jugador'
-        tabindex='-1'
+        tabIndex='-1'
         aria-labelledby='exampleModalLabel'
         aria-hidden='true'
       >
@@ -86,11 +86,21 @@ export function Adicionarjugador() {
               validated={validated}
               onSubmit={handleSubmit}
             >
-              <input aria-label=" ." type='hidden' name='oculto' value='adicionarjugador' />
-              <input aria-label=" ." type='hidden' name='ocultoborrar' value='' />
+              <input
+                aria-label=' .'
+                type='hidden'
+                name='oculto'
+                value='adicionarjugador'
+              />
+              <input
+                aria-label=' .'
+                type='hidden'
+                name='ocultoborrar'
+                value=''
+              />
               <div className='modal-body'>
                 <div className='form-group'>
-                  <label for='' className='form-label'>
+                  <label htmlFor='' className='form-label'>
                     Nombre del Jugador
                   </label>
                   <input
@@ -107,7 +117,7 @@ export function Adicionarjugador() {
                   </div>
                 </div>
                 <div className='form-group'>
-                  <label for='' className='form-label'>
+                  <label htmlFor='' className='form-label'>
                     Documento
                   </label>
                   <input
@@ -123,7 +133,7 @@ export function Adicionarjugador() {
                   </div>
                 </div>
                 <div className='form-group'>
-                  <label for='' className='form-label'>
+                  <label htmlFor='' className='form-label'>
                     Fecha de nacimiento
                   </label>
                   <input
