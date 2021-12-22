@@ -82,8 +82,8 @@ export function Posiciones() {
                               />
                             </div>
                           </td>
-                          <td>{po.equipo.nombre}</td>
-                          <td>{po.PUNTOS}</td>
+                          <td>{po.equipo?po.equipo.nombre:""}</td>
+                          <td>{po.puntos}</td>
                         </tr>
                       ))}
                     </tbody>

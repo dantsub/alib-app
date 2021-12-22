@@ -21,7 +21,7 @@ posicion_rutas.post("/guardar", function (req, res) {
 });
 
 posicion_rutas.get("/listarposiciones", async function (req, res) {
-  const posiciones = await posicionesmodel.find().lean();
+  const posiciones = await posicionesmodel.find().populate("equipo", "nombre");
 
   console.log(posiciones);
   if (posiciones == null) {
