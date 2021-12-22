@@ -35,7 +35,7 @@ export function Partidos() {
   }, []);
   console.log(Listar_Pt);
 
-  const buscar_partido = (evento) => {
+  /* const buscar_partido = (evento) => {
     var resultado_busqueda = Listar_Pt.filter((e) => {
       if (
         e.estado.toLowerCase().includes(evento.target.value.toLowerCase()) ||
@@ -47,7 +47,7 @@ export function Partidos() {
       return false;
     });
     setListar_partidos(resultado_busqueda);
-  };
+  }; */
   function dateformat(fecha) {
     const newfecha = new Date(fecha).toLocaleDateString();
     return newfecha;
@@ -120,7 +120,7 @@ export function Partidos() {
                           <td>{pa.visitante.nombre}</td>
                           <td>{pa.rvisitante}</td>
                           <td>
-                            <Editarresultado id={pa._id} rlocal={pa.rlocal} rvisit={pa.rvisitante}/>
+                            <Editarresultado idLocal={pa.local._id} idVisitante={pa.visitante._id} id={pa._id} rlocal={pa.rlocal} rvisit={pa.rvisitante}/>
                           </td>
                         </tr>
                       ))}
