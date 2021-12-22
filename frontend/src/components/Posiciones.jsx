@@ -74,7 +74,7 @@ export function Posiciones() {
                           <td>
                             <div className='col-md-4 px-0'>
                               <img
-                                src={po.logo}
+                                src={po.equipo.logo}
                                 alt=''
                                 className='img-fluid'
                                 width='150px'

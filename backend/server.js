@@ -25,7 +25,7 @@ app.use("/partidos", partido_rutas);
 app.use("/posiciones", posicion_rutas);
 
 mongoose
-  .connect(process.env.SERVER_DB_URL)
+  .connect("mongodb+srv://alibapp:Mintic2021@cluster0.3bbj8.mongodb.net/alibdb?retryWrites=true&w=majority")
   .then((res) => console.log(res, "Conectado a la base de datos"))
   .catch((err) => console.log(err));
 
