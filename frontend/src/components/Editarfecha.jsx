@@ -1,9 +1,8 @@
-import { useRef, useState } from 'react';
-import axios from "axios";
+import React, { useRef, useState } from 'react';
+import axios from 'axios';
 
-export function Editarfecha({_id, jornada, fecha_ini, fecha_fin}) {
+export function Editarfecha({ _id, jornada, fecha_ini, fecha_fin }) {
   const [validated, setValidated] = useState('false');
-
 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
@@ -18,30 +17,30 @@ export function Editarfecha({_id, jornada, fecha_ini, fecha_fin}) {
   const fechaini = useRef();
   const fechafin = useRef();
   const jor = useRef();
-  const editar = async(id)=>{
+  const editar = async (id) => {
     const jorn = jor.current.value;
     const fechai = fechaini.current.value;
     const fechaf = fechafin.current.value;
-    console.log(jorn, fechai, fechaf)
+    console.log(jorn, fechai, fechaf);
     const response = await axios.post(
       `http://localhost:8081/fechas/editarfechas`,
       {
-        _id : id,
+        _id: id,
         jornada: jorn,
         fecha_ini: fechai,
         fecha_fin: fechaf,
       },
       { headers: { 'content-type': 'application/json' } }
-    )
+    );
     const data = response.data;
-    if (data.status==="OK"){
-    console.log('Status OK');
+    if (data.status === 'OK') {
+      console.log('Status OK');
     }
   };
 
-  function dateEdit(fecha){
+  function dateEdit(fecha) {
     const fe = new Date(fecha);
-    var newfecha = fe.toISOString().substr(0,10);
+    var newfecha = fe.toISOString().substr(0, 10);
     return newfecha;
   }
   return (
@@ -59,7 +58,7 @@ export function Editarfecha({_id, jornada, fecha_ini, fecha_fin}) {
       <div
         className='modal fade'
         id={`modal_editar_fecha_${_id}`}
-        tabindex='-1'
+        tabIndex='-1'
         aria-labelledby='titulo_editar'
         aria-hidden='true'
       >
@@ -82,8 +81,13 @@ export function Editarfecha({_id, jornada, fecha_ini, fecha_fin}) {
                 validated={validated}
                 onSubmit={handleSubmit}
               >
-                <input aria-label=" ," type='hidden' name='oculto' value='editarfecha'/>
-                <label for='' className='form-label'>
+                <input
+                  aria-label=' ,'
+                  type='hidden'
+                  name='oculto'
+                  value='editarfecha'
+                />
+                <label htmlFor='' className='form-label'>
                   Jornada
                 </label>
                 <select name='Jornadas' className='form-control-sm' ref={jor}>
@@ -95,28 +99,30 @@ export function Editarfecha({_id, jornada, fecha_ini, fecha_fin}) {
                   <option value='4'>4</option>
                 </select>
                 <div>
-                  <label for='' className='form-label'>
+                  <label htmlFor='' className='form-label'>
                     Fecha inicial
                   </label>
                   <input
-                  
                     type='date'
                     className='form-control'
                     id='fechaini'
                     placeholder='Fecha inicial'
-                    ref={fechaini} defaultValue={dateEdit(fecha_ini)}/>
+                    ref={fechaini}
+                    defaultValue={dateEdit(fecha_ini)}
+                  />
                 </div>
                 <div>
-                  <label for='' className='form-label'>
+                  <label htmlFor='' className='form-label'>
                     Fecha Fin
                   </label>
                   <input
-                  
                     type='date'
                     className='form-control'
                     id='fechafin'
                     placeholder='Fecha final'
-                    ref={fechafin} defaultValue={dateEdit(fecha_fin)}/>
+                    ref={fechafin}
+                    defaultValue={dateEdit(fecha_fin)}
+                  />
                 </div>
                 <table className='table-responsive'>
                   <tr className='col-4'>
@@ -178,7 +184,13 @@ export function Editarfecha({_id, jornada, fecha_ini, fecha_fin}) {
                   </tr>
 
                   <div className='modal-footer'>
-                    <button className='btn btn-primary' type='submit' onClick={()=>{editar(_id)}} >
+                    <button
+                      className='btn btn-primary'
+                      type='submit'
+                      onClick={() => {
+                        editar(_id);
+                      }}
+                    >
                       Editar
                     </button>
                   </div>

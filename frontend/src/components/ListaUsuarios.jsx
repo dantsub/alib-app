@@ -38,11 +38,15 @@ export function ListaUsuarios() {
   function estado(id) {
     if (id === '0') {
       return (
-        <span class='badge rounded-pill badge-light-danger me-1'>Inactivo</span>
+        <span className='badge rounded-pill badge-light-danger me-1'>
+          Inactivo
+        </span>
       );
     } else {
       return (
-        <span class='badge rounded-pill badge-light-success me-1'>Activo</span>
+        <span className='badge rounded-pill badge-light-success me-1'>
+          Activo
+        </span>
       );
     }
   }
@@ -50,13 +54,13 @@ export function ListaUsuarios() {
   function rol(id) {
     if (id === '1') {
       return (
-        <span class='badge rounded-pill badge-light-primary me-1'>
+        <span className='badge rounded-pill badge-light-primary me-1'>
           Usuario Interno
         </span>
       );
     } else {
       return (
-        <span class='badge rounded-pill badge-light-secondary me-1'>
+        <span className='badge rounded-pill badge-light-secondary me-1'>
           Usuario Externo
         </span>
       );
@@ -77,7 +81,7 @@ export function ListaUsuarios() {
               <h4 className='card-title'>Busqueda y filtros</h4>
               <div className='row'>
                 <div className='col-md-3'>
-                  <label className='form-label' for='Searchproducto'>
+                  <label className='form-label' htmlFor='Searchproducto'>
                     Busqueda de usuarios
                   </label>
                   <input

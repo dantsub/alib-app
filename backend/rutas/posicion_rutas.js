@@ -37,10 +37,11 @@ posicion_rutas.post("/actualizar", async function (req, res) {
   let { equipo, puntos } = req.body;
   const posicion = await posicionesmodel.findOne({ equipo }).lean();
 
+
   if (posicion == null) {
     res.status(400).send({ status: "Error", msg: "La posicion no existe" });
   } else {
-    puntos += posicion.puntos;
+    puntos += parseInt(posicion.puntos);
     posicionesmodel.updateOne({ equipo }, { puntos }, function (err) {
       if (err) {
         res.send({

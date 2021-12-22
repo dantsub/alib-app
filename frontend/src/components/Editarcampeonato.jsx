@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import axios from 'axios';
 
 export function Editarcampeonato({
@@ -9,12 +9,11 @@ export function Editarcampeonato({
   lugarcamp,
   numequipcamp,
   premioscamp,
-  estadocamp
+  estadocamp,
 }) {
-
-  let disabled = 'disabled'
-  if (estadocamp === "En inscripciones") {
-    disabled = ''
+  let disabled = 'disabled';
+  if (estadocamp === 'En inscripciones') {
+    disabled = '';
   }
   const [validated, setValidated] = useState('false');
 
@@ -43,7 +42,7 @@ export function Editarcampeonato({
     const lugarcampt = lugarcampe.current.value;
     const numequipcampt = numequipcampe.current.value;
     const premioscampt = premioscampe.current.value;
-    const estadocampt   = estadocamp;
+    const estadocampt = estadocamp;
     const response = await axios.post(
       `http://localhost:8081/campeonatos/editarcamp`,
       {
@@ -54,7 +53,7 @@ export function Editarcampeonato({
         lugarcamp: lugarcampt,
         numequipcamp: numequipcampt,
         premioscamp: premioscampt,
-        estadocamp: estadocampt
+        estadocamp: estadocampt,
       },
       { headers: { 'content-type': 'application/json' } }
     );
@@ -82,7 +81,7 @@ export function Editarcampeonato({
     <>
       <button
         className='btn btn-primary'
-        disabled = {disabled}
+        disabled={disabled}
         data-bs-toggle='modal'
         data-bs-target={`#modal_editar_${nombrecamp
           .replace(/[ .]+/g, '')
@@ -96,7 +95,7 @@ export function Editarcampeonato({
       <div
         className='modal fade'
         id={`modal_editar_${nombrecamp.replace(/[ .]+/g, '').toLowerCase()}`}
-        tabindex='-1'
+        tabIndex='-1'
         aria-labelledby='exampleModalLabel'
         aria-hidden='true'
       >
@@ -120,11 +119,21 @@ export function Editarcampeonato({
               validated={validated}
               onSubmit={handleSubmit}
             >
-              <input aria-label="." type='hidden' name='oculto' value='adicionarcampeonato' />
-              <input aria-label="." type='hidden' name='ocultoborrar' value='' />
+              <input
+                aria-label='.'
+                type='hidden'
+                name='oculto'
+                value='adicionarcampeonato'
+              />
+              <input
+                aria-label='.'
+                type='hidden'
+                name='ocultoborrar'
+                value=''
+              />
               <div className='modal-body'>
                 <div className='form-group'>
-                  <label for='' className='form-label'>
+                  <label htmlFor='' className='form-label'>
                     Nombre del Campeonato
                   </label>
                   <input
@@ -141,7 +150,7 @@ export function Editarcampeonato({
                   </div>
                 </div>
                 <div className='form-group'>
-                  <label for='' className='form-label'>
+                  <label htmlFor='' className='form-label'>
                     Fecha inicial
                   </label>
                   <input
@@ -159,7 +168,7 @@ export function Editarcampeonato({
                 </div>
 
                 <div className='form-group'>
-                  <label for='' className='form-label'>
+                  <label htmlFor='' className='form-label'>
                     Fecha final
                   </label>
                   <input
@@ -176,7 +185,7 @@ export function Editarcampeonato({
                   </div>
                 </div>
                 <div className='form-group'>
-                  <label for='' className='form-label'>
+                  <label htmlFor='' className='form-label'>
                     Organizador del evento
                   </label>
                   <input
@@ -193,7 +202,7 @@ export function Editarcampeonato({
                   </div>
                 </div>
                 <div className='form-group'>
-                  <label for='' className='form-label'>
+                  <label htmlFor='' className='form-label'>
                     Lugar del evento
                   </label>
                   <input
@@ -210,7 +219,7 @@ export function Editarcampeonato({
                   </div>
                 </div>
                 <div className='form-group'>
-                  <label for='' className='form-label'>
+                  <label htmlFor='' className='form-label'>
                     Número de equipos
                   </label>
                   <input
@@ -227,7 +236,7 @@ export function Editarcampeonato({
                   </div>
                 </div>
                 <div className='form-group'>
-                  <label for='' className='form-label'>
+                  <label htmlFor='' className='form-label'>
                     Premios
                   </label>
                   <input
@@ -243,7 +252,7 @@ export function Editarcampeonato({
                   </div>
                 </div>
                 {/* <div className='form-group'>
-                  <label for='' className='form-label'>
+                  <label htmlFor='' className='form-label'>
                     Logo del campeonato
                   </label>
                   <input

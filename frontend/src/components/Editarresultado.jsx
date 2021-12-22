@@ -1,5 +1,5 @@
-import { useRef,useState } from 'react';
-import axios from "axios";
+import React, { useRef, useState } from 'react';
+import axios from 'axios';
 
 export function Editarresultado({ id, rlocal, rvisit, idLocal, idVisitante }) {
   const [validated, setValidated] = useState('false');
@@ -15,44 +15,48 @@ export function Editarresultado({ id, rlocal, rvisit, idLocal, idVisitante }) {
     setValidated(true);
   };
 
- 
   const resloc = useRef();
   const resvisi = useRef();
 
   const editarpartido = async (event) => {
     event.preventDefault();
-    const estadoc = "Jugado";
+    const estadoc = 'Jugado';
     const idpartido = id;
     let rlocalc = resloc.current.value;
     let rvisitantec = resvisi.current.value;
-    const response = await axios.post(`http://localhost:8081/partidos/editar`, {
-      _id:idpartido,
-      estado: estadoc,
-      rlocal: rlocalc,
-      rvisitante: rvisitantec
-    },
-      { headers: { 'content-type': 'application/json' } })
+    const response = await axios.post(
+      `http://localhost:8081/partidos/editar`,
+      {
+        _id: idpartido,
+        estado: estadoc,
+        rlocal: rlocalc,
+        rvisitante: rvisitantec,
+      },
+      { headers: { 'content-type': 'application/json' } }
+    );
     const data = response.data;
     alert(data.msg);
     if (data.status === 'Ok') {
       if (rlocalc === rvisitantec) {
         rlocalc = rvisitantec = 1;
       }
-      editarPuntos(idLocal, rlocalc);
-      editarPuntos(idVisitante, rvisitantec);
+      await editarPuntos(idLocal, rlocalc);
+      await editarPuntos(idVisitante, rvisitantec);
       window.location.href = '/partidos';
     }
-  }
+  };
 
   const editarPuntos = async (equipo, puntos) => {
     try {
-      const response = await axios.post('http://localhost:8081/partidos/actualizar', {
+      const response = await axios.post(
+        'http://localhost:8081/posiciones/actualizar',
+        {
           equipo,
-          puntos,
+          puntos: parseInt(puntos),
         },
-        { headers: { 'content-type': 'application/json' }
-      })
-  
+        { headers: { 'content-type': 'application/json' } }
+      );
+
       const data = response.data;
       if (data.status === 'Ok') {
         alert(data.msg);
@@ -60,8 +64,7 @@ export function Editarresultado({ id, rlocal, rvisit, idLocal, idVisitante }) {
     } catch (error) {
       console.log(error);
     }
-  }
-
+  };
 
   return (
     <>
@@ -72,13 +75,12 @@ export function Editarresultado({ id, rlocal, rvisit, idLocal, idVisitante }) {
         data-bs-target={`#modal_editar_${id}`}
       >
         <i className='fas fa-edit'></i>
-        
       </button>
       {/* <!-- Modal editar partido  --> */}
       <div
         className='modal fade'
         id={`modal_editar_${id}`}
-        tabindex='-1'
+        tabIndex='-1'
         aria-labelledby='titulo_editar'
         aria-hidden='true'
       >
@@ -100,47 +102,59 @@ export function Editarresultado({ id, rlocal, rvisit, idLocal, idVisitante }) {
               validated={validated}
               onSubmit={handleSubmit}
             >
-              <input aria-label='.' type='hidden' name='oculto' value='editarresultado' />
+              <input
+                aria-label='.'
+                type='hidden'
+                name='oculto'
+                value='editarresultado'
+              />
               <div className='modal-body'>
                 <table className='default'>
-                  <tr>
-                    <th>--</th>
-                    <th>RESULTADOS</th>
-                    
-                  </tr>
-                  <tr>
-                    <td>Resultado equipo local</td>
-                    <td>
-                      <input
-                      ref={resloc}
-                        type='number'
-                        size='1'
-                        maxlength='2'
-                        className='form-control'
-                        placeholder='resultado local'
-                        name='estado'
-                        defaultValue={rlocal}
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Resultado equipo visitante</td>
-                    <td>
-                      <input
-                       ref={resvisi}
-                        type='number'
-                        size='1'
-                        maxlength='2'
-                        className='form-control'
-                        placeholder='resultado visitante'
-                        name='encuentro'
-                        defaultValue={rvisit}
-                      />
-                    </td>
-                  </tr>
+                  <thead>
+                    <tr>
+                      <th>--</th>
+                      <th>RESULTADOS</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Resultado equipo local</td>
+                      <td>
+                        <input
+                          ref={resloc}
+                          type='number'
+                          size='1'
+                          maxLength='2'
+                          className='form-control'
+                          placeholder='resultado local'
+                          name='estado'
+                          defaultValue={rlocal}
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Resultado equipo visitante</td>
+                      <td>
+                        <input
+                          ref={resvisi}
+                          type='number'
+                          size='1'
+                          maxLength='2'
+                          className='form-control'
+                          placeholder='resultado visitante'
+                          name='encuentro'
+                          defaultValue={rvisit}
+                        />
+                      </td>
+                    </tr>
+                  </tbody>
                 </table>
                 <div className='modal-footer'>
-                  <button className='btn btn-primary' type='button' onClick={editarpartido}>
+                  <button
+                    className='btn btn-primary'
+                    type='button'
+                    onClick={editarpartido}
+                  >
                     Guardar
                   </button>
                 </div>

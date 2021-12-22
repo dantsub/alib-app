@@ -1,15 +1,15 @@
+import React, { useEffect, useState } from 'react';
 import logo from '../asset/logoAlib.jpg';
 import { Link } from 'react-router-dom';
 import LogIn from './LogIn';
-import { useEffect, useState } from 'react';
 
-export function Base_usuario() {
+export function BaseUsuario() {
   const storage = localStorage.getItem('user');
   const [user, setUser] = useState(JSON.parse(storage));
 
   useEffect(() => {
     setUser(JSON.parse(storage));
-  }, [storage]);  
+  }, [storage]);
 
   const close = () => {
     setUser(null);
@@ -20,7 +20,7 @@ export function Base_usuario() {
 
   return (
     <>
-      { storage ? (
+      {storage ? (
         <>
           <nav
             className='
@@ -48,7 +48,9 @@ export function Base_usuario() {
                 <li className='nav-item'>
                   <span>
                     <i className='fa fa-power-off'></i>
-                    <span className='' onClick={close}>Cerrar sesión</span>
+                    <span className='' onClick={close}>
+                      Cerrar sesión
+                    </span>
                   </span>
                 </li>
               </ul>
@@ -87,7 +89,7 @@ export function Base_usuario() {
                         src={logo}
                         className='img-fluid align-items-center'
                         style={{ width: '900' }}
-                        alt="logo"
+                        alt='logo'
                       />
                     </div>
 
@@ -133,19 +135,19 @@ export function Base_usuario() {
                 className='nav-link dropdown-toggle'
                 data-toggle='dropdown'
                 aria-expanded='false'
-                style={{cursor:"pointer", color:"#7367f0"}}
+                style={{ cursor: 'pointer', color: '#7367f0' }}
               >
                 <i className='fa fa-flag'></i> Campeonatos
               </span>
               <div
-                class='dropdown-menu'
+                className='dropdown-menu'
                 aria-labelledby='navbarDropdownMenuLink'
               >
                 <Link to='/campeonatos'>
-                  <span class='dropdown-item'>Gestión</span>
+                  <span className='dropdown-item'>Gestión</span>
                 </Link>
                 <Link to='/campeonatos_eqip'>
-                  <span class='dropdown-item'>Camp. Equipos</span>
+                  <span className='dropdown-item'>Camp. Equipos</span>
                 </Link>
               </div>
             </div>
@@ -154,19 +156,19 @@ export function Base_usuario() {
                 className='nav-link dropdown-toggle'
                 data-toggle='dropdown'
                 aria-expanded='false'
-                style={{cursor:"pointer", color:"#7367f0"}}
+                style={{ cursor: 'pointer', color: '#7367f0' }}
               >
                 <i className='fa fa-users'></i> Equipos
               </span>
               <div
-                class='dropdown-menu'
+                className='dropdown-menu'
                 aria-labelledby='navbarDropdownMenuLink'
               >
                 <Link to='/equipos'>
-                  <span class='dropdown-item'>Gestión</span>
+                  <span className='dropdown-item'>Gestión</span>
                 </Link>
                 <Link to='/jugadores'>
-                  <span class='dropdown-item'>Jugadores</span>
+                  <span className='dropdown-item'>Jugadores</span>
                 </Link>
               </div>
             </div>
@@ -175,29 +177,30 @@ export function Base_usuario() {
                 className='nav-link dropdown-toggle'
                 data-toggle='dropdown'
                 aria-expanded='false'
-                style={{cursor:"pointer", color:"#7367f0"}}
+                style={{ cursor: 'pointer', color: '#7367f0' }}
               >
                 <i className='fa fa-futbol'></i> Partidos
               </span>
               <div
-                class='dropdown-menu'
+                className='dropdown-menu'
                 aria-labelledby='navbarDropdownMenuLink'
               >
                 <Link to='/partidos'>
-                  <span class='dropdown-item'>Gestión</span>
+                  <span className='dropdown-item'>Gestión</span>
                 </Link>
                 <Link to='/fechas'>
-                  <span class='dropdown-item'>Fechas</span>
+                  <span className='dropdown-item'>Fechas</span>
                 </Link>
                 <Link to='/posiciones'>
-                  <span class='dropdown-item'>Tabla de Posiciones</span>
+                  <span className='dropdown-item'>Tabla de Posiciones</span>
                 </Link>
               </div>
             </div>
           </div>
         </>
-      ) : <LogIn />
-      }
+      ) : (
+        <LogIn />
+      )}
     </>
   );
 }

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { consumirlistarequipos } from '../API/Alip_Api';
 
 export function Listadoequipos() {
@@ -23,7 +23,7 @@ export function Listadoequipos() {
         data-bs-toggle='modal'
         data-bs-target='#modal_adicionar_campeonato'
       >
-        <i class='fa fa-plus-square'></i> Adicionar equipos
+        <i className='fa fa-plus-square'></i> Adicionar equipos
       </button>
 
       {/* <!-- Modal ADICIONAR EQUIPOS A CAMPEONATOS  --> */}
@@ -31,7 +31,7 @@ export function Listadoequipos() {
       <div
         className='modal fade'
         id='modal_adicionar_campeonato'
-        tabindex='-1'
+        tabIndex='-1'
         aria-labelledby='exampleModalLabel'
         aria-hidden='true'
       >
@@ -54,7 +54,12 @@ export function Listadoequipos() {
                 name='oculto'
                 value='adicionarequiposcampeonato'
               />
-              <input aria-label="." type='hidden' name='ocultoborrar' value='' />
+              <input
+                aria-label='.'
+                type='hidden'
+                name='ocultoborrar'
+                value=''
+              />
               <div className='modal-body'>
                 <table className='table table-hover'>
                   <thead>
@@ -85,7 +90,7 @@ export function Listadoequipos() {
                         <td>{equip.nombre}</td>
                         <td>{equip.rep}</td>
                         <td>
-                          <div class='form-check text-center'>
+                          <div className='form-check text-center'>
                             <input
                               className='form-check-input'
                               type='checkbox'
@@ -94,7 +99,7 @@ export function Listadoequipos() {
                             />
                             <label
                               className='form-check-label'
-                              for='flexCheckDefault'
+                              htmlFor='flexCheckDefault'
                             />
                           </div>
                         </td>

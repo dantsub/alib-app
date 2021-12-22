@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import axios from 'axios';
 
 export function Adicionarcampeonato() {
@@ -27,7 +27,6 @@ export function Adicionarcampeonato() {
     setLogocamp(event.target.files[0]);
   };
 
-
   function guardarcamp(event) {
     event.preventDefault();
     const nombrecamp = nombrecampg.current.value;
@@ -41,14 +40,14 @@ export function Adicionarcampeonato() {
     const datos = new FormData();
     datos.append('nombrecamp', nombrecamp);
     datos.append('fecinicamp', fecinicamp);
-    datos.append('fecfincamp',fecfincamp);
+    datos.append('fecfincamp', fecfincamp);
     datos.append('orgcamp', orgcamp);
     datos.append('lugarcamp', lugarcamp);
-    datos.append('numequipcamp',numequipcamp);
-    datos.append('premioscamp',premioscamp);
-    datos.append('logocamp',logocamp);
-    datos.append('estadocamp',estadocamp);
-    
+    datos.append('numequipcamp', numequipcamp);
+    datos.append('premioscamp', premioscamp);
+    datos.append('logocamp', logocamp);
+    datos.append('estadocamp', estadocamp);
+
     console.log(nombrecamp);
     console.log(fecinicamp);
     console.log(logocamp);
@@ -65,13 +64,13 @@ export function Adicionarcampeonato() {
         }
       })
       .catch((error) => alert(error));
-      nombrecampg.current.value = '';
-      fecinicampg.current.value = '';
-      fecfincampg.current.value = '';
-      orgcampg.current.value = '';
-      lugarcampg.current.value = '';
-      numequipcampg.current.value = '';
-      premioscampg.current.value = '';
+    nombrecampg.current.value = '';
+    fecinicampg.current.value = '';
+    fecfincampg.current.value = '';
+    orgcampg.current.value = '';
+    lugarcampg.current.value = '';
+    numequipcampg.current.value = '';
+    premioscampg.current.value = '';
   }
 
   return (
@@ -82,7 +81,7 @@ export function Adicionarcampeonato() {
         data-bs-toggle='modal'
         data-bs-target='#modal_adicionar_campeonato'
       >
-        <i class='fa fa-plus-square'></i> Adicionar Campeonato
+        <i className='fa fa-plus-square'></i> Adicionar Campeonato
       </button>
 
       {/* <!-- Modal Adicionar Campeonato  --> */}
@@ -90,7 +89,7 @@ export function Adicionarcampeonato() {
       <div
         className='modal fade'
         id='modal_adicionar_campeonato'
-        tabindex='-1'
+        tabIndex='-1'
         aria-labelledby='exampleModalLabel'
         aria-hidden='true'
       >
@@ -114,11 +113,21 @@ export function Adicionarcampeonato() {
               validated={validated}
               onSubmit={handleSubmit}
             >
-              <input aria-label="." type='hidden' name='oculto' value='adicionarcampeonato' />
-              <input aria-label="." type='hidden' name='ocultoborrar' value='' />
+              <input
+                aria-label='.'
+                type='hidden'
+                name='oculto'
+                value='adicionarcampeonato'
+              />
+              <input
+                aria-label='.'
+                type='hidden'
+                name='ocultoborrar'
+                value=''
+              />
               <div className='modal-body'>
                 <div className='form-group'>
-                  <label for='' className='form-label'>
+                  <label htmlFor='' className='form-label'>
                     Nombre del Campeonato
                   </label>
                   <input
@@ -134,7 +143,7 @@ export function Adicionarcampeonato() {
                   </div>
                 </div>
                 <div className='form-group'>
-                  <label for='' className='form-label'>
+                  <label htmlFor='' className='form-label'>
                     Fecha inicial
                   </label>
                   <input
@@ -150,7 +159,7 @@ export function Adicionarcampeonato() {
                   </div>
                 </div>
                 <div className='form-group'>
-                  <label for='' className='form-label'>
+                  <label htmlFor='' className='form-label'>
                     Fecha final
                   </label>
                   <input
@@ -166,7 +175,7 @@ export function Adicionarcampeonato() {
                   </div>
                 </div>
                 <div className='form-group'>
-                  <label for='' className='form-label'>
+                  <label htmlFor='' className='form-label'>
                     Organizador del evento
                   </label>
                   <input
@@ -182,7 +191,7 @@ export function Adicionarcampeonato() {
                   </div>
                 </div>
                 <div className='form-group'>
-                  <label for='' className='form-label'>
+                  <label htmlFor='' className='form-label'>
                     Lugar del evento
                   </label>
                   <input
@@ -198,7 +207,7 @@ export function Adicionarcampeonato() {
                   </div>
                 </div>
                 <div className='form-group'>
-                  <label for='' className='form-label'>
+                  <label htmlFor='' className='form-label'>
                     Número de equipos
                   </label>
                   <input
@@ -214,7 +223,7 @@ export function Adicionarcampeonato() {
                   </div>
                 </div>
                 <div className='form-group'>
-                  <label for='' className='form-label'>
+                  <label htmlFor='' className='form-label'>
                     Premios
                   </label>
                   <input
@@ -230,7 +239,7 @@ export function Adicionarcampeonato() {
                   </div>
                 </div>
                 <div className='form-group'>
-                  <label for='' className='form-label'>
+                  <label htmlFor='' className='form-label'>
                     Logo del campeonato
                   </label>
                   <input

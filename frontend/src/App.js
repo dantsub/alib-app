@@ -1,5 +1,4 @@
 import "./App.css";
-import { Base } from "./components/Base";
 import { Equipoadmin } from "./components/Equipoadmin";
 import { Equipodetails } from "./components/Equipodetails";
 import { Crearequipo } from "./components/Crearequipo";

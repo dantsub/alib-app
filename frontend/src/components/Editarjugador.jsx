@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import axios from 'axios';
 
 export function Editarjugador({ documento, nombre, fnacimiento }) {
@@ -53,7 +53,7 @@ export function Editarjugador({ documento, nombre, fnacimiento }) {
         data-bs-toggle='modal'
         data-bs-target={`#modal_adicionar_${documento}`}
       >
-        <i class='fa fa-address-book'></i> Editar Jugador
+        <i className='fa fa-address-book'></i> Editar Jugador
       </button>
 
       {/* <!-- Modal Editar Jugador  --> */}
@@ -61,7 +61,7 @@ export function Editarjugador({ documento, nombre, fnacimiento }) {
       <div
         className='modal fade'
         id={`modal_adicionar_${documento}`}
-        tabindex='-1'
+        tabIndex='-1'
         aria-labelledby='exampleModalLabel'
         aria-hidden='true'
       >
@@ -85,8 +85,18 @@ export function Editarjugador({ documento, nombre, fnacimiento }) {
               validated={validated}
               onSubmit={handleSubmit}
             >
-              <input aria-label="." type='hidden' name='oculto' value='adicionarjugador' />
-              <input aria-label="." type='hidden' name='ocultoborrar' value='' />
+              <input
+                aria-label='.'
+                type='hidden'
+                name='oculto'
+                value='adicionarjugador'
+              />
+              <input
+                aria-label='.'
+                type='hidden'
+                name='ocultoborrar'
+                value=''
+              />
               <div className='modal-body'>
                 <div className='form-group'>
                   <label htmlFor='nombre' className='form-label'>
