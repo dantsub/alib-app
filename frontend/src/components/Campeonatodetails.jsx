@@ -8,7 +8,7 @@ import { consumircampeonatos } from '../API/Alip_Api';
 export function Campeonatodetails() {
   document.title = 'Equipo';
   let [nombrecamp, setNombrecamp] = useState();
-
+  let [id_equipoecamp, setidecamp] = useState();
   let [listar_equipos, setListar_equipos] = useState([]);
   let [Listar_eqip, setListar_equip] = useState([]);
 
@@ -47,8 +47,27 @@ export function Campeonatodetails() {
     solicitar_campeonato();
   }, []);
 
+  function estadoequipo(est,camp) {
+    if (est != camp) {
+      return (
+        <span class='badge rounded-pill badge-light-danger me-1'>Pendiente</span>
+      );
+    } else {
+      return (
+        <span class='badge rounded-pill badge-light-success me-1'>Aprobado</span>
+      );
+    }
+  }
 
- 
+  function boton(est, camp, id) {
+    if (est != camp) {
+      return (
+        <Aprobarequipo ecamp={camp} idequipo={id}/>
+      );
+    }
+  }
+
+
 
   return (
     <>
@@ -116,6 +135,7 @@ export function Campeonatodetails() {
                         <th>Equipo</th>
                         <th>Manager</th>
                         <th>Campeonato</th>
+                        <th>Estado</th>
                         <th>Acciones</th>
                       </tr>
                     </thead>
@@ -138,8 +158,10 @@ export function Campeonatodetails() {
                           <td>{equip.nombre}</td>
                           <td>{equip.rep}</td>
                           <td>{nombrecamp}</td>
+                          <td>{estadoequipo(equip.estadocamp, equip.ecamp)}</td>
                           <td>
-                            <Aprobarequipo eusuario={equip.eusuario} ecamp={equip.ecamp}/>
+                            {/* <Aprobarequipo ecamp={equip.ecamp} idequipo={equip._id}/> */}
+                            {boton(equip.estadocamp, equip.ecamp, equip._id)}
                           </td>
                           <td>{/* <Eliminarequipo /> */}</td>
                         </tr>

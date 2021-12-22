@@ -3,7 +3,7 @@ import axios from 'axios';
 import { consumircampeonatos } from '../API/Alip_Api';
 
 
-export function Aprobarequipo({eusuario, ecamp, idequipo}){
+export function Aprobarequipo({ecamp, idequipo}){
       
     const [validated, setValidated] = useState('false');
   
@@ -32,12 +32,14 @@ export function Aprobarequipo({eusuario, ecamp, idequipo}){
     
     const estadocamp= useRef();
   
-    async function aprobar(ecamp,eusuario) {
+    async function aprobar(ecamp, idequipo) {
+
       const response = await axios.post(
         `http://localhost:8081/equipos/aprobarequip`,
-        {eusuario: eusuario,
-         estadocamp: ecamp,
-        },
+          {
+              _id: idequipo,
+              estadocamp: ecamp
+          },
         { headers: { 'content-type': 'application/json' } }
       );
       const data = response.data;
@@ -48,10 +50,8 @@ export function Aprobarequipo({eusuario, ecamp, idequipo}){
         
     };
 
-    async function registrarposicion() {
-        alert(idequipo)
+    async function registrarposicion(idequipo) {
         const ide = idequipo;
-        alert(ide)
         const response2 = await axios.post(
             `http://localhost:8081/posiciones/guardar`,
             {
@@ -126,7 +126,7 @@ export function Aprobarequipo({eusuario, ecamp, idequipo}){
                             type="submit"
                             className="btn btn-primary"
                                     onClick={() => {
-                                        aprobar(ecamp,eusuario);
+                                        aprobar(ecamp, idequipo);
                                         registrarposicion(idequipo);
                                     }
                                     }
