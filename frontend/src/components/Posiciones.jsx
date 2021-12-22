@@ -64,13 +64,7 @@ export function Posiciones() {
                       <tr>
                         <th>Logo</th>
                         <th>Equipo</th>
-                        <th>PG</th>
-                        <th>PP</th>
-                        <th>PE</th>
-                        <th>GF</th>
-                        <th>GC</th>
-                        <th>DIF</th>
-                        <th>PUNTOS</th>
+                        <th>Puntos</th>
 
                       </tr>
                     </thead>
@@ -88,13 +82,7 @@ export function Posiciones() {
                               />
                             </div>
                           </td>
-                          <td>{po.nombre}</td>
-                          <td>{po.PG}</td>
-                          <td>{po.PP}</td>
-                          <td>{po.PE}</td>
-                          <td>{po.GF}</td>
-                          <td>{po.GC}</td>
-                          <td>{po.DIF}</td>
+                          <td>{po.equipo.nombre}</td>
                           <td>{po.PUNTOS}</td>
                         </tr>
                       ))}
