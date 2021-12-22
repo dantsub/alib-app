@@ -39,6 +39,12 @@ export function Editarresultado({ id, rlocal, rvisit, idLocal, idVisitante }) {
     if (data.status === 'Ok') {
       if (rlocalc === rvisitantec) {
         rlocalc = rvisitantec = 1;
+      } else if (rlocalc > rvisitantec) {
+        rlocalc = 3;
+        rvisitantec = 0;
+      } else {
+        rlocalc = 0;
+        rvisitantec = 3;
       }
       await editarPuntos(idLocal, rlocalc);
       await editarPuntos(idVisitante, rvisitantec);
