@@ -48,7 +48,6 @@ export function Partidos() {
     });
     setListar_partidos(resultado_busqueda);
   };
-  
   function dateformat(fecha) {
     const newfecha = new Date(fecha).toLocaleDateString();
     return newfecha;
@@ -121,7 +120,7 @@ export function Partidos() {
                           <td>{pa.visitante.nombre}</td>
                           <td>{pa.rvisitante}</td>
                           <td>
-                            <Editarresultado id={pa._id} rlocal={pa.rlocal} rvisit={pa.rvisitante}/>
+                            <Editarresultado idLocal={pa.local._id} idVisitante={pa.visitante._id} id={pa._id} rlocal={pa.rlocal} rvisit={pa.rvisitante}/>
                           </td>
                         </tr>
                       ))}

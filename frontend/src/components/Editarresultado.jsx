@@ -1,7 +1,7 @@
 import { useRef,useState } from 'react';
 import axios from "axios";
 
-export function Editarresultado({id,rlocal,rvisit}) {
+export function Editarresultado({ id, rlocal, rvisit, idLocal, idVisitante }) {
   const [validated, setValidated] = useState('false');
 
   const handleSubmit = (event) => {
@@ -20,6 +20,7 @@ export function Editarresultado({id,rlocal,rvisit}) {
   const resvisi = useRef();
 
   const editarpartido = async (event) => {
+    event.preventDefault();
     const estadoc = "Jugado";
     const idpartido = id;
     const rlocalc = resloc.current.value;
@@ -32,13 +33,33 @@ export function Editarresultado({id,rlocal,rvisit}) {
     },
       { headers: { 'content-type': 'application/json' } })
     const data = response.data;
-        alert(data.msg);
-        if (data.status === 'Ok') {
-          window.location.href = '/partidos';
+    alert(data.msg);
+    if (data.status === 'Ok') {
+      editarPuntos(idLocal, rlocalc);
+      editarPuntos(idVisitante, rvisitantec);
+      window.location.href = '/partidos';
     }
   }
-     
+
+  const editarPuntos = async (equipo, puntos) => {
+    try {
+      const response = await axios.post('http://localhost:8081/partidos/actualizar', {
+          equipo,
+          puntos,
+        },
+        { headers: { 'content-type': 'application/json' }
+      })
   
+      const data = response.data;
+      if (data.status === 'Ok') {
+        alert(data.msg);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+
   return (
     <>
       <button
