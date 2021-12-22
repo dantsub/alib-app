@@ -229,7 +229,7 @@ const Register = () => {
 
                     <p className='text-center mt-2'>
                       <span>Ya tienes cuenta?</span>
-                      <a href='./login'>
+                      <a href='./'>
                         <span> Ingresa a tu cuenta</span>
                       </a>
                     </p>

@@ -23,8 +23,8 @@ export function Editarresultado({ id, rlocal, rvisit, idLocal, idVisitante }) {
     event.preventDefault();
     const estadoc = "Jugado";
     const idpartido = id;
-    const rlocalc = resloc.current.value;
-    const rvisitantec = resvisi.current.value;
+    let rlocalc = resloc.current.value;
+    let rvisitantec = resvisi.current.value;
     const response = await axios.post(`http://localhost:8081/partidos/editar`, {
       _id:idpartido,
       estado: estadoc,
@@ -35,6 +35,9 @@ export function Editarresultado({ id, rlocal, rvisit, idLocal, idVisitante }) {
     const data = response.data;
     alert(data.msg);
     if (data.status === 'Ok') {
+      if (rlocalc === rvisitantec) {
+        rlocalc = rvisitantec = 1;
+      }
       editarPuntos(idLocal, rlocalc);
       editarPuntos(idVisitante, rvisitantec);
       window.location.href = '/partidos';
